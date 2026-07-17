@@ -1,0 +1,97 @@
+import { motion } from 'motion/react';
+import { Star } from 'lucide-react';
+
+export default function ReviewSection() {
+  const reviews = [
+    {
+      id: 1,
+      stars: 5,
+      text: '출장 때문에 호텔에서 이용했는데 예약부터 방문까지 정말 빨랐습니다. 관리도 꼼꼼했고 분위기도 편안해서 다음에도 다시 이용하고 싶었습니다.',
+      author: '이*호 고객님',
+      location: '시흥출장마사지 이용',
+    },
+    {
+      id: 2,
+      stars: 5,
+      text: '퇴근 후 집에서 편하게 받을 수 있어서 생각보다 훨씬 만족했습니다. 친절하고 약속 시간도 정확했습니다. 믿고 부를 수 있는 홈타이입니다.',
+      author: '김*은 고객님',
+      location: '홈타이 케어 이용',
+    },
+    {
+      id: 3,
+      stars: 5,
+      text: '시흥에서 여러 출장안마 업체를 이용해봤는데 응대도 가장 친절하고 선입금 없는 100% 현장 후불제라 부담 없이 편안하게 이용했습니다. 다음에도 간다출장마사지를 이용할 예정입니다.',
+      author: '박*진 고객님',
+      location: '스웨디시 테라피 이용',
+    },
+  ];
+
+  return (
+    <section className="py-[80px] lg:py-[120px] bg-[#0c0c0c] border-t border-white/5 relative overflow-hidden" id="customer-reviews-section">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-14">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
+          <span className="text-[14px] text-[#C8A04D] font-sans font-semibold tracking-[0.25em] uppercase block">
+            REAL CUSTOMER REVIEW
+          </span>
+          <h2 className="text-3xl md:text-[44px] lg:text-[48px] font-bold text-white tracking-tight leading-tight">
+            고객이 다시 찾는<br />간다출장마사지
+          </h2>
+          <p className="text-[17px] leading-[1.85] text-[#B8B8B8] mt-2">
+            실제 이용 고객들의 솔직하고 만족스러운 후기를 소개합니다.
+          </p>
+          <div className="w-12 h-[1px] bg-[#C8A04D]/60 mx-auto mt-4" />
+        </div>
+
+        {/* Reviews Grid & Mobile Slider */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
+          {reviews.map((review, idx) => {
+            return (
+              <motion.div
+                key={review.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.6, delay: idx * 0.15 }}
+                className="bg-[#181818] border border-[#C8A04D]/18 hover:border-[#C8A04D] rounded-[18px] p-8 md:p-9 flex flex-col justify-between transition-all duration-[350ms] ease-out hover:-translate-y-[6px] shadow-none group/review-card h-full min-h-[280px]"
+              >
+                <div className="space-y-6">
+                  {/* Star Rating */}
+                  <div className="flex items-center space-x-1">
+                    {[...Array(review.stars)].map((_, i) => (
+                      <Star key={i} className="w-4.5 h-4.5 fill-[#C8A04D] text-[#C8A04D] transition-transform duration-300 group-hover/review-card:scale-110" />
+                    ))}
+                  </div>
+
+                  {/* Review Text */}
+                  <p className="text-[#DDDDDD] font-sans text-[17px] leading-[1.85] break-keep font-light">
+                    "{review.text}"
+                  </p>
+                </div>
+
+                {/* Author Info */}
+                <div className="mt-8 pt-5 border-t border-white/5 flex items-center justify-between shrink-0">
+                  <span className="text-[13px] text-white font-sans font-medium">
+                    {review.author}
+                  </span>
+                  <span className="text-[11px] text-[#C8A04D] font-mono tracking-wider">
+                    {review.location}
+                  </span>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Footer Note */}
+        <div className="mt-14 text-center">
+          <p className="text-[11px] text-[#6A6A6A] font-sans">
+            ※ 고객 개인정보 보호 및 식별성 방지를 위해 일부 내용(이름)은 안전하게 편집되었습니다.
+          </p>
+        </div>
+
+      </div>
+    </section>
+  );
+}

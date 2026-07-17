@@ -1,0 +1,241 @@
+import React from 'react';
+import { motion } from 'motion/react';
+import { Phone, MessageSquare, ShieldCheck, Mail, MapPin, Clock, ExternalLink } from 'lucide-react';
+import { REGIONS_LIST } from '../data/regions';
+import GoldLogo from './GoldLogo';
+
+interface FooterProps {
+  currentRegionId: string;
+  onNavigate: (id: string) => void;
+}
+
+export default function Footer({ currentRegionId, onNavigate }: FooterProps) {
+  // 11 requested premium regions with their corresponding internal IDs
+  const serviceRegions = [
+    { id: '시흥출장마사지', name: '시흥출장마사지' },
+    { id: '정왕동출장마사지', name: '정왕동' },
+    { id: '배곧출장마사지', name: '배곧동' },
+    { id: '월곶출장마사지', name: '월곶동' },
+    { id: '오이도출장마사지', name: '오이도' },
+    { id: '거북섬출장마사지', name: '거북섬' },
+    { id: '능곡동출장마사지', name: '능곡동' },
+    { id: '은행동출장마사지', name: '은행동' },
+    { id: '목감출장마사지', name: '목감동' },
+    { id: '신천동출장마사지', name: '신천동' },
+    { id: '시화MTV출장마사지', name: '시화MTV' },
+  ];
+
+  const quickLinks = [
+    { label: '홈', href: '#app-header' },
+    { label: '서비스', href: '#service-process-section' },
+    { label: '가격안내', href: '#premium-courses-section' },
+    { label: '이용절차', href: '#service-process-section' },
+    { label: '후기', href: '#customer-reviews-section' },
+    { label: 'FAQ', href: '#premium-faqs-section' },
+    { label: '예약문의', href: '#contact-section' },
+  ];
+
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleRegionClick = (id: string) => {
+    onNavigate(id);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  return (
+    <footer className="bg-[#080808] border-t border-[#C8A04D]/18 pt-[100px] pb-12 mt-24 text-neutral-300" id="site-footer">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-14">
+        
+        {/* Main Footer Grid */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 pb-16"
+        >
+          {/* Column 1: Brand & Contact Info */}
+          <div className="lg:col-span-4 space-y-6">
+            <div className="flex flex-col space-y-3">
+              <div className="flex items-center space-x-1">
+                <GoldLogo isSmall />
+              </div>
+              <p className="text-[13px] text-[#9A9A9A] font-sans font-light leading-relaxed">
+                시흥출장마사지 전문 프리미엄 홈케어 서비스
+              </p>
+            </div>
+            
+            <div className="space-y-3 pt-2">
+              <div className="flex items-center space-x-3 group">
+                <Phone className="w-4 h-4 text-[#C8A04D] shrink-0" />
+                <span className="text-[13px] font-mono text-[#D5D5D5]">전화번호: </span>
+                <a href="tel:010-8451-4040" className="text-[13px] font-sans font-bold text-white hover:text-[#C8A04D] transition-colors">
+                  010-8451-4040
+                </a>
+              </div>
+              
+              <div className="flex items-center space-x-3">
+                <MessageSquare className="w-4 h-4 text-[#C8A04D] shrink-0" />
+                <span className="text-[13px] font-sans text-[#D5D5D5]">카카오톡: </span>
+                <a href="https://open.kakao.com/o/sxxxxx" target="_blank" rel="noopener noreferrer" className="text-[13px] font-sans font-medium text-white hover:text-[#C8A04D] transition-colors">
+                  간다출장상담센터
+                </a>
+              </div>
+
+              <div className="flex items-center space-x-3">
+                <Clock className="w-4 h-4 text-[#C8A04D] shrink-0" />
+                <span className="text-[13px] font-sans text-[#D5D5D5]">운영시간: </span>
+                <span className="text-[13px] font-sans font-semibold text-white">
+                  24시간 연중무휴 (24/7)
+                </span>
+              </div>
+            </div>
+
+            <p className="text-[11px] text-[#555555] leading-relaxed font-sans max-w-sm pt-4">
+              저희 간다 브랜드는 시흥출장마사지, 출장안마, 출장마사지 및 홈타이 서비스를 대표하는 공인 플랫폼으로서, 음주 만취자 및 선입금 사기 방지를 준수합니다.
+            </p>
+          </div>
+
+          {/* Column 2: Service Regions */}
+          <div className="lg:col-span-3 space-y-6">
+            <span className="text-[13px] text-[#C8A04D] font-sans font-bold tracking-[0.2em] uppercase block">
+              SERVICE REGION
+            </span>
+            
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2.5">
+              {serviceRegions.map((region) => {
+                const isActive = region.id === currentRegionId;
+                return (
+                  <button
+                    key={region.id}
+                    onClick={() => handleRegionClick(region.id)}
+                    className={`text-left text-[13px] font-sans transition-all duration-200 cursor-pointer flex items-center space-x-1.5 ${
+                      isActive 
+                        ? 'text-[#C8A04D] font-semibold' 
+                        : 'text-[#D5D5D5] hover:text-[#C8A04D] font-light'
+                    }`}
+                  >
+                    <span className={`w-1 h-1 rounded-full ${isActive ? 'bg-[#C8A04D]' : 'bg-[#C8A04D]/30'}`} />
+                    <span>{region.name}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Column 3: Quick Links */}
+          <div className="lg:col-span-2 space-y-6">
+            <span className="text-[13px] text-[#C8A04D] font-sans font-bold tracking-[0.2em] uppercase block">
+              NAVIGATION
+            </span>
+            
+            <ul className="space-y-3">
+              {quickLinks.map((link, idx) => (
+                <li key={idx} className="w-fit">
+                  <a
+                    href={link.href}
+                    onClick={(e) => handleScroll(e, link.href)}
+                    className="relative text-[13px] font-sans font-light text-[#D5D5D5] hover:text-[#C8A04D] transition-colors duration-300 block pb-0.5 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:scale-x-0 after:origin-bottom-right hover:after:scale-x-100 hover:after:origin-bottom-left after:bg-[#C8A04D] after:transition-transform after:duration-300"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: Customer Guide */}
+          <div className="lg:col-span-3 space-y-6">
+            <span className="text-[13px] text-[#C8A04D] font-sans font-bold tracking-[0.2em] uppercase block">
+              CUSTOMER GUIDE
+            </span>
+            
+            <ul className="space-y-3 text-[13px] font-sans font-light text-[#D5D5D5]">
+              <li className="flex items-center space-x-2">
+                <span className="w-1 h-1 bg-[#C8A04D]" />
+                <span>24시간 실시간 상담 가능</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <span className="w-1 h-1 bg-[#C8A04D]" />
+                <span>100% 현장 안전 후불제</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <span className="w-1 h-1 bg-[#C8A04D]" />
+                <span>호텔 및 모텔 방문 가능</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <span className="w-1 h-1 bg-[#C8A04D]" />
+                <span>자택 및 오피스텔 방문 가능</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <span className="w-1 h-1 bg-[#C8A04D]" />
+                <a href="#site-footer" className="hover:text-[#C8A04D] transition-colors">예약 및 이용안내 규정</a>
+              </li>
+            </ul>
+          </div>
+
+        </motion.div>
+
+        {/* Corporate safety policy disclosures row (Required for total compatibility) */}
+        <div className="border-t border-white/5 py-8 grid grid-cols-1 md:grid-cols-2 gap-6 text-[11px] text-neutral-500 font-sans leading-relaxed">
+          <div className="space-y-2">
+            <span className="text-neutral-400 font-semibold block">안심 보증 제도 안내</span>
+            <p className="break-keep font-light">
+              최근 출장마사지 업계를 사칭하여 예약금, 유니폼 비용, 선지급 수수료를 무단 요구하는 보이스피싱 및 입금 사기가 극성을 부리고 있습니다. 저희 간다는 어떠한 사전 비용도 절대 요구하지 않는 100% 완전 대면 후불 안전보장 장치를 고수합니다.
+            </p>
+          </div>
+          <div className="space-y-2">
+            <span className="text-neutral-400 font-semibold block">이용 제한 정책 고지</span>
+            <p className="break-keep font-light">
+              공정거래위원회 표준 약관 및 매니저 보호 매뉴얼에 따라 폭력, 과도한 만취, 비상식적인 행동, 무단 예약 파기(노쇼) 전력이 있으신 분들은 실시간 배차 차단 시스템에 등록되며 영구적으로 이용이 불가능합니다.
+            </p>
+          </div>
+        </div>
+
+        {/* Bottom Bar: Copyright and SNS Links */}
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Centered copyright on mobile, left on desktop */}
+          <div className="text-center md:text-left space-y-1">
+            <span className="text-[12px] text-[#888888] font-mono block">
+              &copy; 2026 GANDA MASSAGE. All Rights Reserved.
+            </span>
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 text-[10px] text-neutral-600">
+              <a href="#site-footer" className="hover:text-neutral-400 transition-colors">이용약관</a>
+              <span>|</span>
+              <a href="#site-footer" className="hover:text-neutral-400 transition-colors">개인정보처리방침</a>
+              <span>|</span>
+              <a href="#site-footer" className="hover:text-[#C8A04D] transition-colors text-[#C8A04D]/80">후불제 안심 안전장치</a>
+            </div>
+          </div>
+
+          {/* Social / Contact Icons (hover to Gold) */}
+          <div className="flex items-center space-x-4">
+            <a 
+              href="tel:010-8451-4040" 
+              className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-neutral-400 hover:text-[#C8A04D] hover:border-[#C8A04D]/50 transition-all duration-300 hover:scale-105"
+              title="전화 연결"
+            >
+              <Phone className="w-4 h-4 fill-current" />
+            </a>
+            <a 
+              href="https://open.kakao.com/o/sxxxxx" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-neutral-400 hover:text-[#C8A04D] hover:border-[#C8A04D]/50 transition-all duration-300 hover:scale-105"
+              title="카카오톡 상담"
+            >
+              <MessageSquare className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+  );
+}

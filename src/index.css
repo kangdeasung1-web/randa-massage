@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, Cambria, serif;
+  
+  --color-brand-bg: #111111;
+  --color-brand-primary: #FFFFFF;
+  --color-brand-gold: #C8A04D;
+  --color-brand-gray: #D0D0D0;
+  --color-brand-light: #1A1A1A;
+  --color-brand-border: rgba(255, 255, 255, 0.08);
+}
+
+/* Custom global rules for luxurious Apple/Airbnb styling */
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: #C8A04D;
+  color: #111111;
+}
+
+body {
+  background-color: #111111;
+  color: #D0D0D0;
+  font-family: var(--font-sans);
+  line-height: 1.8; /* 180% line height */
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  color: #FFFFFF;
+  line-height: 1.4;
+}
+
+/* Scrollbar customization to keep it clean and minimal */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #111111;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3a;
+}

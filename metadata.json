@@ -1,0 +1,6 @@
+{
+  "name": "간다출장마사지 - 프리미엄 홈 케어",
+  "description": "고급 호텔 스파 수준의 고품격 방문 테라피 서비스 간다출장마사지. 시흥시 전역(배곧, 정왕동, 월곶, 오이도 등)의 100% 안전 후불제 맞춤형 세션과 세련된 힐링 라이프스타일을 제안합니다.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
