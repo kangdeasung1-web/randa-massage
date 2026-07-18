@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Phone, MessageSquare, ShieldCheck, Mail, MapPin, Clock, ExternalLink } from 'lucide-react';
 import { REGIONS_LIST } from '../data/regions';
+import { getPathByRegionId } from '../data/slugs';
 import GoldLogo from './GoldLogo';
 
 interface FooterProps {
@@ -10,19 +11,19 @@ interface FooterProps {
 }
 
 export default function Footer({ currentRegionId, onNavigate }: FooterProps) {
-  // 11 requested premium regions with their corresponding internal IDs
+  // 11 requested premium regions with their corresponding internal IDs and keyword-rich anchor texts
   const serviceRegions = [
     { id: '시흥출장마사지', name: '시흥출장마사지' },
-    { id: '정왕동출장마사지', name: '정왕동' },
-    { id: '배곧출장마사지', name: '배곧동' },
-    { id: '월곶출장마사지', name: '월곶동' },
-    { id: '오이도출장마사지', name: '오이도' },
-    { id: '거북섬출장마사지', name: '거북섬' },
-    { id: '능곡동출장마사지', name: '능곡동' },
-    { id: '은행동출장마사지', name: '은행동' },
-    { id: '목감출장마사지', name: '목감동' },
-    { id: '신천동출장마사지', name: '신천동' },
-    { id: '시화MTV출장마사지', name: '시화MTV' },
+    { id: '정왕동출장마사지', name: '정왕동출장마사지' },
+    { id: '배곧출장마사지', name: '배곧출장마사지' },
+    { id: '월곶출장마사지', name: '월곶출장마사지' },
+    { id: '오이도출장마사지', name: '오이도출장마사지' },
+    { id: '거북섬출장마사지', name: '거북섬출장마사지' },
+    { id: '능곡동출장마사지', name: '능곡동출장마사지' },
+    { id: '은행동출장마사지', name: '은행동출장마사지' },
+    { id: '목감출장마사지', name: '목감출장마사지' },
+    { id: '신천동출장마사지', name: '신천동출장마사지' },
+    { id: '시화MTV출장마사지', name: '시화MTV출장마사지' },
   ];
 
   const quickLinks = [
@@ -75,15 +76,15 @@ export default function Footer({ currentRegionId, onNavigate }: FooterProps) {
               <div className="flex items-center space-x-3 group">
                 <Phone className="w-4 h-4 text-[#C8A04D] shrink-0" />
                 <span className="text-[13px] font-mono text-[#D5D5D5]">전화번호: </span>
-                <a href="tel:010-8451-4040" className="text-[13px] font-sans font-bold text-white hover:text-[#C8A04D] transition-colors">
-                  010-8451-4040
+                <a href="tel:010-7497-2653" className="text-[13px] font-sans font-bold text-white hover:text-[#C8A04D] transition-colors">
+                  010-7497-2653
                 </a>
               </div>
               
               <div className="flex items-center space-x-3">
                 <MessageSquare className="w-4 h-4 text-[#C8A04D] shrink-0" />
                 <span className="text-[13px] font-sans text-[#D5D5D5]">카카오톡: </span>
-                <a href="https://open.kakao.com/o/sxxxxx" target="_blank" rel="noopener noreferrer" className="text-[13px] font-sans font-medium text-white hover:text-[#C8A04D] transition-colors">
+                <a href="https://open.kakao.com/o/se8MdBEi" target="_blank" rel="noopener noreferrer" className="text-[13px] font-sans font-medium text-white hover:text-[#C8A04D] transition-colors">
                   간다출장상담센터
                 </a>
               </div>
@@ -112,9 +113,13 @@ export default function Footer({ currentRegionId, onNavigate }: FooterProps) {
               {serviceRegions.map((region) => {
                 const isActive = region.id === currentRegionId;
                 return (
-                  <button
+                  <a
                     key={region.id}
-                    onClick={() => handleRegionClick(region.id)}
+                    href={getPathByRegionId(region.id)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleRegionClick(region.id);
+                    }}
                     className={`text-left text-[13px] font-sans transition-all duration-200 cursor-pointer flex items-center space-x-1.5 ${
                       isActive 
                         ? 'text-[#C8A04D] font-semibold' 
@@ -123,7 +128,7 @@ export default function Footer({ currentRegionId, onNavigate }: FooterProps) {
                   >
                     <span className={`w-1 h-1 rounded-full ${isActive ? 'bg-[#C8A04D]' : 'bg-[#C8A04D]/30'}`} />
                     <span>{region.name}</span>
-                  </button>
+                  </a>
                 );
               })}
             </div>
@@ -217,14 +222,14 @@ export default function Footer({ currentRegionId, onNavigate }: FooterProps) {
           {/* Social / Contact Icons (hover to Gold) */}
           <div className="flex items-center space-x-4">
             <a 
-              href="tel:010-8451-4040" 
+              href="tel:010-7497-2653" 
               className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-neutral-400 hover:text-[#C8A04D] hover:border-[#C8A04D]/50 transition-all duration-300 hover:scale-105"
               title="전화 연결"
             >
               <Phone className="w-4 h-4 fill-current" />
             </a>
             <a 
-              href="https://open.kakao.com/o/sxxxxx" 
+              href="https://open.kakao.com/o/se8MdBEi" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-neutral-400 hover:text-[#C8A04D] hover:border-[#C8A04D]/50 transition-all duration-300 hover:scale-105"

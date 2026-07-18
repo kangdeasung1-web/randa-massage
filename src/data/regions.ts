@@ -16,8 +16,6 @@ export const REGIONS_LIST: RegionData[] = [
 export function getNeighborsForRegion(regionId: string): RegionData[] {
   const proximityMap: Record<string, string[]> = {
     "시흥출장마사지": ["정왕동출장마사지", "배곧출장마사지", "은행동출장마사지", "목감출장마사지", "신천동출장마사지"],
-    "시흥출장안마": ["신천동출장마사지", "대야동출장마사지", "은행동출장마사지", "장곡동출장마사지", "시흥출장마사지"],
-    "시흥홈타이": ["정왕동출장마사지", "배곧출장마사지", "목감출장마사지", "능곡동출장마사지", "시흥출장마사지"],
     "정왕동출장마사지": ["배곧출장마사지", "오이도출장마사지", "월곶출장마사지", "시화출장마사지", "시흥출장마사지"],
     "배곧출장마사지": ["정왕동출장마사지", "오이도출장마사지", "월곶출장마사지", "거북섬출장마사지", "시흥출장마사지"],
     "월곶출장마사지": ["배곧출장마사지", "오이도출장마사지", "정왕동출장마사지", "목감출장마사지", "시흥출장마사지"],
@@ -49,9 +47,9 @@ export function generateSEOPage(region: RegionData): GeneratedPage {
   const name = region.name;
   const customData = CUSTOM_SEO_DATA[region.id] || CUSTOM_SEO_DATA[region.name];
 
-  let title = `${name} | 출장안마 · 홈타이 전문 간다출장마사지`;
-  let description = `간다출장마사지는 ${name} 전문 브랜드입니다. 시흥출장안마, 출장마사지, 홈타이 서비스를 정왕동, 배곧, 월곶, 오이도, 거북섬, 시화MTV 등 시흥 전지역에서 24시간 후불제로 제공합니다.`;
-  let h1 = `${name} | 출장안마 · 홈타이 전문 간다출장마사지`;
+  let title = `${name} | 프리미엄 출장마사지 전문 간다`;
+  let description = `간다출장마사지는 ${name} 전문 브랜드입니다. 출장마사지 서비스를 정왕동, 배곧, 월곶, 오이도, 거북섬, 시화MTV 등 시흥 전지역에서 24시간 후불제로 제공합니다.`;
+  let h1 = `${name} | 프리미엄 출장마사지 전문 간다`;
 
   if (customData) {
     if (customData.title) title = customData.title;

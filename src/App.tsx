@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { REGIONS_LIST, getPageById, GeneratedPage } from './data/regions';
+import { REGIONS_LIST, getPageById, GeneratedPage, getNeighborsForRegion } from './data/regions';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CourseSection from './components/CourseSection';
@@ -7,6 +7,7 @@ import ProcessSection from './components/ProcessSection';
 import ReviewSection from './components/ReviewSection';
 import FaqSection from './components/FaqSection';
 import CtaSection from './components/CtaSection';
+import CtaButtons from './components/CtaButtons';
 import Breadcrumb from './components/Breadcrumb';
 import SchemaMarkup from './components/SchemaMarkup';
 import NotFoundPage from './components/NotFoundPage';
@@ -36,23 +37,24 @@ import {
 } from 'lucide-react';
 
 import brandModelImg from './assets/images/ganda-hero-model.webp';
+import brandModelImgAvif from './assets/images/ganda-hero-model.avif';
 
 const MASTER_FAQS = [
   {
     q: "시흥출장마사지 예약금을 먼저 내야 하나요?",
-    a: "간다출장마사지는 선입금이나 예약금을 절대로 받지 않는 100% 현장 후불제 시스템입니다. 시흥출장마사지, 시흥출장안마, 시흥홈타이 업계를 사칭하는 악성 선입금 사기로부터 고객님의 자산과 신뢰를 철저하게 보호하고 있으니, 반드시 현장에서 관리사를 직접 대면하신 후에 결제해 주시기 바랍니다."
+    a: "간다출장마사지는 선입금이나 예약금을 절대로 받지 않는 100% 현장 후불제 시스템입니다. 예약금 없는 안심 후불 결제를 통해 악성 선입금 사기로부터 고객님의 자산과 신뢰를 철저하게 보호하고 있으니, 반드시 현장에서 관리사를 직접 대면하신 후에 결제해 주시기 바랍니다."
   },
   {
-    q: "시흥출장안마는 어디까지 방문하나요?",
+    q: "시흥출장마사지는 어디까지 방문하나요?",
     a: "경기도 시흥시 전 지역을 대상으로 촘촘한 방문망을 구성하고 있습니다. 배곧, 정왕동, 월곶동, 은계지구, 목감동, 장현지구 등 대단지 아파트와 오피스텔 같은 주택가는 물론, 관내에 정식 등록된 모든 호텔이나 모텔 등의 숙박시설까지 고객님이 머무시는 사적 공간이라면 언제든지 신속하고 정확하게 찾아갑니다."
   },
   {
     q: "호텔이나 모텔에서도 이용 가능한가요?",
-    a: "네, 시흥 관내 모든 숙박업소에서도 안전하고 편리하게 시흥출장안마 서비스를 이용하실 수 있습니다. 입실하신 후 호실 번호와 정확한 주소지를 전담 고객센터로 말씀해 주시면, 철저한 위생 수칙을 준수한 힐링 스태프가 예약 시간 20~30분 내외로 빠르게 방문 케어를 준비합니다."
+    a: "네, 시흥 관내 모든 숙박업소에서도 안전하고 편리하게 출장마사지 서비스를 이용하실 수 있습니다. 입실하신 후 호실 번호와 정확한 주소지를 전담 고객센터로 말씀해 주시면, 철저한 위생 수칙을 준수한 힐링 스태프가 예약 시간 20~30분 내외로 빠르게 방문 케어를 준비합니다."
   },
   {
-    q: "시흥홈타이 예약 방법은 어떻게 되나요?",
-    a: "시흥홈타이 예약은 별도의 가입 절차나 개인 정보 유출 우려 없이 빠르고 간편하게 진행됩니다. 24시간 실시간 전화상담 센터나 공식 카카오톡 채널을 통해 원하시는 날짜와 세션 코스, 성함 및 상세 주소지를 전달해 주시면 즉각적인 일정 조율을 거쳐 고객님만을 위한 전담 홈케어 관리사가 신속히 배차됩니다."
+    q: "예약 방법은 어떻게 되나요?",
+    a: "예약은 별도의 가입 절차나 개인 정보 유출 우려 없이 빠르고 간편하게 진행됩니다. 24시간 실시간 전화상담 센터나 공식 카카오톡 채널을 통해 원하시는 날짜와 세션 코스, 성함 및 상세 주소지를 전달해 주시면 즉각적인 일정 조율을 거쳐 고객님만을 위한 전담 홈케어 관리사가 신속히 배차됩니다."
   },
   {
     q: "정왕동출장마사지 방문 시간은 얼마나 걸리나요?",
@@ -99,7 +101,7 @@ const MASTER_FAQS = [
     a: "당사는 엄격한 면접과 체계적인 호텔식 에스테틱 교육을 수료한 정예 테라피스트들로만 구성됩니다. 실력은 물론 서비스 마인드와 용모까지 두루 갖춘 전문 스태프들이 고객님의 컨디션을 정밀하게 파악하여 수준 높은 맞춤 케어를 진행합니다."
   },
   {
-    q: "출장안마 이용 시간 연장도 가능한가요?",
+    q: "출장마사지 이용 시간 연장도 가능한가요?",
     a: "네, 세션 도중 연장을 원하실 경우 다음 예약 일정을 확인한 뒤 즉석에서 연장 이용이 가능합니다. 단, 예약이 몰리는 야간이나 주말 시간대에는 미리 여유 있는 코스를 선택하시거나 사전 상담 시 말씀해 주시면 더욱 원활한 진행이 가능합니다."
   },
   {
@@ -145,10 +147,24 @@ const formatParagraphs = (text: string) => {
   ));
 };
 
-export default function App() {
-  const [activeRegionId, setActiveRegionId] = useState<string>("시흥출장마사지");
+export default function App({ initialPath }: { initialPath?: string }) {
+  const getInitialRegion = () => {
+    const path = initialPath || (typeof window !== 'undefined' ? window.location.pathname : '/');
+    const region = getRegionByPath(path);
+    if (region) return region.regionId;
+    return "시흥출장마사지";
+  };
+
+  const getInitialRouteError = () => {
+    const path = initialPath || (typeof window !== 'undefined' ? window.location.pathname : '/');
+    const region = getRegionByPath(path);
+    if (!region && path !== '/' && path !== '') return true;
+    return false;
+  };
+
+  const [activeRegionId, setActiveRegionId] = useState<string>(getInitialRegion());
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
-  const [routeError, setRouteError] = useState(false);
+  const [routeError, setRouteError] = useState(getInitialRouteError());
   const [isMobile, setIsMobile] = useState(false);
   const [isImgLoaded, setIsImgLoaded] = useState(false);
 
@@ -322,7 +338,7 @@ export default function App() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-[17px] leading-[1.85] text-[#D7D7D7] mt-6 max-w-[500px]"
             >
-              {page.description.length > 120 ? page.description : `간다출장마사지는 ${activeRegionData.name} 전문 브랜드입니다. 시흥 전지역에서 출장마사지, 출장안마, 홈타이 서비스를 24시간 후불제로 제공합니다.`}
+              {page.description.length > 120 ? page.description : `간다출장마사지는 ${activeRegionData.name} 전문 브랜드입니다. 시흥 전지역에서 프리미엄 출장마사지 서비스를 24시간 후불제로 제공합니다.`}
             </motion.p>
 
             {/* Horizontal Trust Badges (3 items) */}
@@ -375,14 +391,14 @@ export default function App() {
               </button>
 
               <a 
-                href="tel:010-8451-4040"
+                href="tel:010-7497-2653"
                 className="w-full sm:w-[210px] h-[60px] rounded-full bg-transparent border border-[#C8A04D] text-[#C8A04D] font-bold text-[16px] flex items-center justify-center cursor-pointer whitespace-nowrap hover:bg-[#C8A04D]/10 hover:scale-[1.03] hover:-translate-y-[2px] transition-all duration-[250ms] ease-out hover:shadow-[0_6px_20px_rgba(200,160,77,0.25)]"
               >
                 전화 빠른 상담
               </a>
 
               <a 
-                href="https://open.kakao.com/o/sxxxxx"
+                href="https://open.kakao.com/o/se8MdBEi"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-[210px] h-[60px] rounded-full bg-transparent border border-[#C8A04D] text-[#C8A04D] font-bold text-[16px] flex items-center justify-center cursor-pointer whitespace-nowrap hover:bg-[#C8A04D]/10 hover:scale-[1.03] hover:-translate-y-[2px] transition-all duration-[250ms] ease-out hover:shadow-[0_6px_20px_rgba(200,160,77,0.25)]"
@@ -401,16 +417,24 @@ export default function App() {
           >
             {/* Extremely tight fit banner focusing on her face and torso with scroll parallax */}
             <div className="w-full h-full overflow-hidden relative flex items-center justify-center">
-              <motion.img 
-                src={brandModelImg} 
-                alt="시흥출장마사지 프리미엄 홈케어 간다" 
-                style={!isMobile ? { y: yParallax } : undefined}
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
-                onLoad={() => setIsImgLoaded(true)}
-                className={`w-full h-full object-cover origin-center object-[50%_25%] lg:object-[50%_8%] transition-opacity duration-700 ${isImgLoaded ? 'opacity-100' : 'opacity-0'}`}
-                referrerPolicy="no-referrer"
-              />
+              <picture className="w-full h-full block">
+                <source srcSet={brandModelImgAvif} type="image/avif" />
+                <source srcSet={brandModelImg} type="image/webp" />
+                <motion.img 
+                  src={brandModelImg} 
+                  alt="시흥출장마사지 프리미엄 홈케어 간다" 
+                  style={!isMobile ? { y: yParallax } : undefined}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  onLoad={() => setIsImgLoaded(true)}
+                  width={1039}
+                  height={1514}
+                  loading="eager"
+                  fetchPriority="high"
+                  className={`w-full h-full object-cover origin-center object-[50%_25%] lg:object-[50%_8%] transition-opacity duration-700 ${isImgLoaded ? 'opacity-100' : 'opacity-0'}`}
+                  referrerPolicy="no-referrer"
+                />
+              </picture>
             </div>
             
             {/* Left black gradient overlay (Desktop) */}
@@ -514,8 +538,30 @@ export default function App() {
       {/* 5. Course Guide Section */}
       <CourseSection />
 
+      {/* Mid-Page Call-To-Action (페이지 중간) */}
+      <div className="py-12 bg-[#090909] border-t border-b border-white/5 flex flex-col items-center justify-center text-center px-6">
+        <p className="text-[10px] text-[#C8A04D] tracking-[0.25em] font-sans font-bold uppercase mb-3">
+          CHOOSE YOUR COURSE AND BOOK INSTANTLY
+        </p>
+        <h3 className="text-lg md:text-xl font-serif text-white font-medium mb-5 break-keep max-w-xl leading-relaxed">
+          마음에 드는 스페셜 코스를 결정하셨나요? 지금 상담을 신청하시면 최단 시간 내 방문을 준비하겠습니다.
+        </h3>
+        <CtaButtons />
+      </div>
+
       {/* 6. Premium Customer Reviews */}
       <ReviewSection />
+
+      {/* Post-Reviews Call-To-Action (후기 아래) */}
+      <div className="py-12 bg-[#0d0d0d] border-t border-b border-white/5 flex flex-col items-center justify-center text-center px-6">
+        <p className="text-[10px] text-[#C8A04D] tracking-[0.25em] font-sans font-bold uppercase mb-3">
+          REAL SATISFACTION FROM DISCERNING CUSTOMERS
+        </p>
+        <h3 className="text-lg md:text-xl font-serif text-white font-medium mb-5 break-keep max-w-xl leading-relaxed">
+          수많은 단골 고객님들이 직접 증명하는 최고의 스파 테라피! 100% 후불제로 안심하고 경험해 보세요.
+        </h3>
+        <CtaButtons />
+      </div>
 
       {/* 5. Editorial Magazine Section */}
       <section className="py-[80px] lg:py-[120px] bg-[#111111] border-t border-white/5" id="editorial-insight-section">
@@ -544,14 +590,14 @@ export default function App() {
                 <span className="block md:hidden">
                   <span className="block">{activeRegionData.name}</span>
                   <span className="block mt-1 text-[#C8A04D] text-xl font-sans font-medium">프리미엄</span>
-                  <span className="block mt-1 text-[#C8A04D] text-xl font-sans font-medium">출장안마 · 홈타이 전문</span>
+                  <span className="block mt-1 text-[#C8A04D] text-xl font-sans font-medium">프리미엄 출장마사지 전문</span>
                 </span>
 
                 {/* Desktop layout: 2 lines */}
                 <span className="hidden md:block">
                   <span className="block">{activeRegionData.name}</span>
                   <span className="block mt-3 text-[#C8A04D] text-3xl font-sans font-medium tracking-wide">
-                    프리미엄 출장안마 · 홈타이 전문
+                    프리미엄 출장마사지 전문
                   </span>
                 </span>
               </h2>
@@ -572,7 +618,7 @@ export default function App() {
                   {activeRegionData.name}의 주거 단지뿐만 아니라 주요 숙박 거점까지 신속하게 방문하여, 정통 홈타이 테라피와 전문 스웨디시 기법을 결합한 최상의 힐링을 선보입니다.
                 </p>
                 <p className="leading-[1.9] text-neutral-300 max-w-[900px] text-sm md:text-base">
-                  다년간 다듬어온 정교한 수기 기법과 엄격하게 교육받은 전문 관리사의 세심한 손길로 출장안마의 차원을 한 단계 높였습니다.
+                  다년간 다듬어온 정교한 수기 기법과 엄격하게 교육받은 전문 관리사의 세심한 손길로 출장마사지의 차원을 한 단계 높였습니다.
                   선입금이나 예약금 없는 100% 현장 후불제 출장마사지 서비스로 신뢰할 수 있는 안심 웰니스 케어를 약속드립니다.
                 </p>
               </div>
@@ -611,13 +657,107 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <h3 className="text-lg font-serif font-bold text-white tracking-tight flex items-center space-x-2">
                   <span className="text-[#C8A04D] font-mono text-xs">04</span>
                   <span>주변 지역 유기적 연계 네트워크</span>
                 </h3>
                 <div className="space-y-4">
                   {formatParagraphs(page.nearbyText)}
+                </div>
+
+                {/* Highly Designed Semantic SEO Topic Cluster */}
+                <div className="bg-[#121212]/90 border border-[#C8A04D]/10 rounded-2xl p-6 sm:p-8 space-y-6 mt-6">
+                  <div>
+                    <h4 className="text-[11px] font-sans text-[#C8A04D] tracking-widest font-bold uppercase mb-2">
+                      WELLNESS CLUSTER NETWORK
+                    </h4>
+                    <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed break-keep">
+                      간다출장마사지는 시흥시 전역의 행정 구역을 긴밀히 잇는 프리미엄 홈 케어 배송 시스템을 완성하였습니다. 아래의 웰니스 벨트를 클릭하여 인근 지역 및 허브 정보 채널로 빠르고 스마트하게 이동해 보십시오.
+                    </p>
+                  </div>
+
+                  {/* 1. Master Hub (Upward link) */}
+                  <div className="space-y-2.5">
+                    <span className="text-xs text-[#C8A04D] font-sans font-bold flex items-center gap-1.5">
+                      <span className="inline-block w-1 h-1 rounded-full bg-[#C8A04D]" />
+                      시흥시 대표 메인 웰니스 허브
+                    </span>
+                    <div className="flex flex-wrap gap-2">
+                      <a
+                        href={getPathByRegionId("시흥출장마사지")}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigateToRegion("시흥출장마사지");
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }}
+                        className={`px-3 py-1.5 text-xs rounded-lg border font-bold transition-all duration-200 ${
+                          activeRegionId === "시흥출장마사지"
+                            ? "bg-[#C8A04D] text-[#111111] border-[#C8A04D]"
+                            : "bg-[#161616] border-white/10 text-[#C8A04D] hover:bg-[#C8A04D] hover:text-[#111111] hover:border-[#C8A04D]"
+                        }`}
+                      >
+                        시흥출장마사지
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* 2. Bidirectional Neighbor Links */}
+                  <div className="space-y-2.5">
+                    <span className="text-xs text-neutral-400 font-medium flex items-center gap-1.5">
+                      🔄 {activeRegionData.name} 인접 교차 연계 지역 (양방향 링크)
+                    </span>
+                    <div className="flex flex-wrap gap-2">
+                      {getNeighborsForRegion(activeRegionId).map((neighbor) => (
+                        <a
+                          key={neighbor.id}
+                          href={getPathByRegionId(neighbor.id)}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            navigateToRegion(neighbor.id);
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }}
+                          className="px-3 py-1.5 text-xs rounded-lg bg-[#181818] border border-white/5 text-neutral-300 hover:border-[#C8A04D] hover:text-[#C8A04D] transition-all duration-200 font-medium"
+                        >
+                          {neighbor.id}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* 3. Global Network Directory (Prevents Orphan Pages) */}
+                  <div className="space-y-2.5 pt-4 border-t border-white/5">
+                    <span className="text-xs text-neutral-400 font-medium flex items-center gap-1.5">
+                      🌐 시흥 전 지역 웰니스 네트워크 가이드
+                    </span>
+                    <div className="flex flex-wrap gap-x-2 gap-y-1.5 text-xs text-neutral-400 leading-relaxed">
+                      {REGIONS_LIST.map((r, idx) => {
+                        const isCurrent = r.id === activeRegionId;
+                        return (
+                          <span key={r.id} className="inline-flex items-center gap-2">
+                            <a
+                              href={getPathByRegionId(r.id)}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                navigateToRegion(r.id);
+                                window.scrollTo({ top: 0, behavior: "smooth" });
+                              }}
+                              className={`hover:text-[#C8A04D] transition-colors ${
+                                isCurrent
+                                  ? "text-[#C8A04D] font-bold underline"
+                                  : "text-neutral-500 font-light"
+                              }`}
+                            >
+                              {r.id}
+                            </a>
+                            {idx < REGIONS_LIST.length - 1 && (
+                              <span className="text-neutral-700 select-none">·</span>
+                            )}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -656,6 +796,17 @@ export default function App() {
       {/* 6. FAQ Section */}
       <FaqSection regionName={activeRegionData.name} />
 
+      {/* Post-FAQ Call-To-Action (FAQ 아래) */}
+      <div className="py-12 bg-[#090909] border-t border-b border-white/5 flex flex-col items-center justify-center text-center px-6">
+        <p className="text-[10px] text-[#C8A04D] tracking-[0.25em] font-sans font-bold uppercase mb-3">
+          STILL HAVE QUESTIONS?
+        </p>
+        <h3 className="text-lg md:text-xl font-serif text-white font-medium mb-5 break-keep max-w-xl leading-relaxed">
+          더 궁금한 점이 있으신가요? 24시간 열려 있는 간다 프리미엄 채널에서 즉시 궁금증을 풀어드리겠습니다.
+        </h3>
+        <CtaButtons />
+      </div>
+
       {/* 7. Contact/Reservation Section */}
       <CtaSection regionName={activeRegionData.name} />
 
@@ -676,21 +827,21 @@ export default function App() {
             onClick={() => handleScrollTo('contact-section')}
             className="flex-1 h-12 bg-[#C8A04D] hover:bg-[#B38D3C] text-[#111111] rounded-full font-sans font-bold text-xs tracking-wider flex items-center justify-center transition-all duration-300 active:scale-95 shadow-[0_0_15px_rgba(200,160,77,0.18)] cursor-pointer"
           >
-            예약문의
+            빠른 예약
           </button>
           <a 
-            href="tel:010-8451-4040"
+            href="tel:010-7497-2653"
             className="flex-1 h-12 border border-white/30 bg-transparent hover:bg-white/5 text-white rounded-full font-sans font-bold text-xs tracking-wider flex items-center justify-center transition-all duration-300 active:scale-95 cursor-pointer"
           >
-            전화하기
+            전화 상담
           </a>
           <a 
-            href="https://open.kakao.com/o/sxxxxx"
+            href="https://open.kakao.com/o/se8MdBEi"
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 h-12 bg-[#1A1A1A] border border-white/8 text-[#C8A04D] rounded-full font-sans font-bold text-xs tracking-wider flex items-center justify-center transition-all duration-300 active:scale-95 cursor-pointer"
           >
-            카카오톡
+            카톡 상담
           </a>
         </div>
       </motion.div>

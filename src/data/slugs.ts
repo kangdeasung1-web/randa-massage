@@ -16,8 +16,6 @@ export const CITIES_CONFIG: CityConfig[] = [
     slugPrefix: "siheung",
     regions: [
       { slug: "", regionId: "시흥출장마사지", name: "시흥출장마사지" },
-      { slug: "anma", regionId: "시흥출장안마", name: "시흥출장안마" },
-      { slug: "hometai", regionId: "시흥홈타이", name: "시흥홈타이" },
       { slug: "jeongwang", regionId: "정왕동출장마사지", name: "정왕동출장마사지" },
       { slug: "baegot", regionId: "배곧출장마사지", name: "배곧출장마사지" },
       { slug: "wolgot", regionId: "월곶출장마사지", name: "월곶출장마사지" },

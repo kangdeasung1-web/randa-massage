@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
-import { Phone, MessageSquare, Check } from 'lucide-react';
+import { Check } from 'lucide-react';
+import CtaButtons from './CtaButtons';
 
 interface CtaSectionProps {
   regionName: string;
@@ -62,27 +63,9 @@ export default function CtaSection({ regionName }: CtaSectionProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 max-w-md sm:max-w-none mx-auto w-full sm:w-auto"
+            className="w-full"
           >
-            {/* Phone Button */}
-            <a
-              href="tel:010-8451-4040"
-              className="w-full sm:w-auto h-[60px] px-10 rounded-full bg-[#C8A04D] hover:bg-[#D9B25E] text-[#111111] font-sans font-bold text-[14px] tracking-[0.15em] flex items-center justify-center gap-2.5 transition-all duration-[250ms] ease-out hover:scale-[1.03] hover:-translate-y-[2px] active:scale-[0.97] shadow-[0_4px_15px_rgba(200,160,77,0.15)] hover:shadow-[0_8px_25px_rgba(200,160,77,0.35)] cursor-pointer shrink-0"
-            >
-              <Phone className="w-4 h-4 fill-current" />
-              <span>전화 예약</span>
-            </a>
-
-            {/* Kakao Button */}
-            <a
-              href="https://open.kakao.com/o/sxxxxx"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto h-[60px] px-10 rounded-full bg-transparent border border-[#C8A04D] text-white hover:text-[#111111] hover:bg-[#C8A04D] font-sans font-bold text-[14px] tracking-[0.15em] flex items-center justify-center gap-2.5 transition-all duration-[250ms] ease-out hover:scale-[1.03] hover:-translate-y-[2px] active:scale-[0.97] hover:shadow-[0_6px_20px_rgba(200,160,77,0.25)] cursor-pointer shrink-0"
-            >
-              <MessageSquare className="w-4 h-4" />
-              <span>카카오톡 상담</span>
-            </a>
+            <CtaButtons className="pt-4" />
           </motion.div>
 
           {/* Bullet notices below buttons */}

@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "vite build",
+    "build:client": "vite build --outDir dist",
+    "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
+    "build": "npm run generate-sitemap && npm run build:client && npm run build:server && npx tsx scripts/prerender.ts && rm -rf dist/server",
+    "generate-sitemap": "tsx scripts/generateSitemap.ts",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit"

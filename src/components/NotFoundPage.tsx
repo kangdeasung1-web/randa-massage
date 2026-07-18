@@ -39,7 +39,7 @@ export default function NotFoundPage({ onGoHome }: NotFoundPageProps) {
           </button>
           
           <a
-            href="tel:010-8451-4040"
+            href="tel:010-7497-2653"
             className="w-full sm:w-auto px-8 py-4 border border-white/30 hover:border-white text-white text-sm font-medium tracking-wide rounded-full transition-all duration-300 flex items-center justify-center space-x-2 hover:bg-white/5"
           >
             <PhoneCall className="w-4 h-4" />

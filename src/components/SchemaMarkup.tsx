@@ -24,7 +24,7 @@ export default function SchemaMarkup({ page, currentRegionId, currentRegionName 
     "logo": `${origin}/logo.png`,
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+82-10-8451-4040",
+      "telephone": "+82-10-7497-2653",
       "contactType": "customer service",
       "areaServed": "KR",
       "availableLanguage": "Korean"
@@ -57,7 +57,7 @@ export default function SchemaMarkup({ page, currentRegionId, currentRegionName 
     "image": [
       `${origin}/logo.png`
     ],
-    "telephone": "010-8451-4040",
+    "telephone": "010-7497-2653",
     "priceRange": "₩70,000 - ₩180,000",
     "address": {
       "@type": "PostalAddress",
@@ -73,7 +73,7 @@ export default function SchemaMarkup({ page, currentRegionId, currentRegionName 
       "longitude": 126.8026
     },
     "url": currentUrl,
-    "telephone_alternative": "+82-10-8451-4040",
+    "telephone_alternative": "+82-10-7497-2653",
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",

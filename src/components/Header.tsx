@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Heart, ChevronDown, ChevronRight, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { getPathByRegionId } from '../data/slugs';
 import GoldLogo from './GoldLogo';
 
 interface HeaderProps {
@@ -71,9 +72,7 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
 
   // Helper to check if a region is active
   const isRegionActive = (regionId: string) => {
-    if (currentRegionId === regionId) return true;
-    if (regionId === "배곧출장마사지" && currentRegionId === "배got출장마사지") return true;
-    return false;
+    return currentRegionId === regionId;
   };
 
   // Menu items config as requested: 홈, 프리미엄 케어, 시흥출장마사지, FAQ, 예약문의
@@ -183,9 +182,13 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
                             {currentCityData.regions.map((region) => {
                               const isActive = isRegionActive(region.regionId);
                               return (
-                                <button
+                                <a
                                   key={region.regionId}
-                                  onClick={() => handleRegionClick(region.regionId)}
+                                  href={getPathByRegionId(region.regionId)}
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    handleRegionClick(region.regionId);
+                                  }}
                                   className="group/item w-full text-left py-2 px-3 rounded-[8px] text-xs font-sans transition-all duration-200 flex items-center justify-between hover:bg-[#C8A04D]/15 hover:text-white text-neutral-300 bg-transparent cursor-pointer"
                                   style={{
                                     backgroundColor: isActive ? '#C8A04D' : 'transparent',
@@ -202,7 +205,7 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
                                     <span>{region.name}</span>
                                   </div>
                                   <ChevronRight className={`w-3.5 h-3.5 shrink-0 transition-transform group-hover/item:translate-x-0.5 ${isActive ? 'text-[#111111]' : 'text-neutral-500 group-hover/item:text-white'}`} />
-                                </button>
+                                </a>
                               );
                             })}
                           </div>
@@ -298,9 +301,13 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
                             {currentCityData.regions.map((region) => {
                               const isActive = isRegionActive(region.regionId);
                               return (
-                                <button
+                                <a
                                   key={region.regionId}
-                                  onClick={() => handleRegionClick(region.regionId)}
+                                  href={getPathByRegionId(region.regionId)}
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    handleRegionClick(region.regionId);
+                                  }}
                                   className={`w-full text-left py-2 px-3 rounded-[8px] text-xs font-sans transition-all flex items-center justify-between ${
                                     isActive
                                       ? 'bg-[#C8A04D] text-[#111111] font-bold'
@@ -314,7 +321,7 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
                                     <span>{region.name}</span>
                                   </div>
                                   <ChevronRight className={`w-3.5 h-3.5 shrink-0 ${isActive ? 'text-[#111111]' : 'text-neutral-500'}`} />
-                                </button>
+                                </a>
                               );
                             })}
                           </motion.div>
