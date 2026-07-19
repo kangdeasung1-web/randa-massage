@@ -45,15 +45,16 @@ export function getNeighborsForRegion(regionId: string): RegionData[] {
 // Helper to calculate string similarity or generate deterministic text to fit 1,500 ~ 2,000 characters
 export function generateSEOPage(region: RegionData): GeneratedPage {
   const name = region.name;
-  const customData = CUSTOM_SEO_DATA[region.id] || CUSTOM_SEO_DATA[region.name];
+  const baseName = name.replace("출장마사지", "");
+  const nameAnma = name.replace("출장마사지", "출장안마");
 
-  let title = `${name} | 프리미엄 출장마사지 전문 간다`;
-  let description = `간다출장마사지는 ${name} 전문 브랜드입니다. 출장마사지 서비스를 정왕동, 배곧, 월곶, 오이도, 거북섬, 시화MTV 등 시흥 전지역에서 24시간 후불제로 제공합니다.`;
+  let title = `${name} | ${nameAnma} | 24시 후불제 | 간다출장마사지`;
+  let description = `${name} 전문 간다출장마사지. 24시 예약, 예약금 없는 후불제, ${baseName} 전 지역 신속 방문. 호텔·자택에서 편안하게 이용하는 프리미엄 홈케어 출장마사지.`;
+  
+  const customData = CUSTOM_SEO_DATA[region.id] || CUSTOM_SEO_DATA[region.name];
   let h1 = `${name} | 프리미엄 출장마사지 전문 간다`;
 
   if (customData) {
-    if (customData.title) title = customData.title;
-    if (customData.description) description = customData.description;
     if (customData.h1) h1 = customData.h1;
   }
 

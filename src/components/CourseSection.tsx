@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { Diamond, Sparkle, Crown } from 'lucide-react';
 
 interface CourseOption {
   duration: string;
@@ -91,21 +92,30 @@ export default function CourseSection() {
                 <div className="flex flex-col flex-grow">
                   {/* Custom Badges aligned perfectly in a standard height box */}
                   <div className="flex flex-col items-center mb-8 text-center">
-                    <div className="h-8 flex items-center justify-center mb-5">
+                    <div className="h-[76px] flex items-center justify-center mb-6">
                       {course.id === 'dry-care' && (
-                        <span className="inline-flex items-center px-2.5 py-0.5 text-[9px] font-sans font-bold tracking-[0.25em] text-[#9A9A9A] bg-white/5 border border-white/10 rounded-[2px] uppercase leading-none">
-                          Standard
-                        </span>
+                        <div className="flex flex-col items-center space-y-2.5">
+                          <Diamond className="w-[30px] h-[30px] text-[#C8A04D]" strokeWidth={1.5} fill="none" />
+                          <span className="text-[10px] font-sans font-semibold text-[#C8A04D] uppercase select-none tracking-[4px] pl-[4px]">
+                            ESSENTIAL
+                          </span>
+                        </div>
                       )}
                       {course.id === 'swedish-healing' && (
-                        <span className="inline-flex items-center px-2.5 py-0.5 text-[9px] font-sans font-bold tracking-[0.25em] text-[#C8A04D] bg-[#C8A04D]/10 border border-[#C8A04D]/25 rounded-[2px] uppercase leading-none">
-                          Popular
-                        </span>
+                        <div className="flex flex-col items-center space-y-2.5">
+                          <Sparkle className="w-[30px] h-[30px] text-[#C8A04D]" strokeWidth={1.5} fill="none" />
+                          <span className="text-[10px] font-sans font-semibold text-[#C8A04D] uppercase select-none tracking-[4px] pl-[4px]">
+                            SIGNATURE
+                          </span>
+                        </div>
                       )}
                       {course.id === 'premium-care' && (
-                        <span className="inline-flex items-center px-2.5 py-0.5 text-[9px] font-sans font-bold tracking-[0.25em] text-[#111111] bg-[#C8A04D] rounded-[2px] uppercase leading-none font-bold">
-                          Premium Care
-                        </span>
+                        <div className="flex flex-col items-center space-y-2.5">
+                          <Crown className="w-[30px] h-[30px] text-[#C8A04D]" strokeWidth={1.5} fill="none" />
+                          <span className="text-[10px] font-sans font-semibold text-[#C8A04D] uppercase select-none tracking-[4px] pl-[4px]">
+                            BLACK LABEL
+                          </span>
+                        </div>
                       )}
                     </div>
 

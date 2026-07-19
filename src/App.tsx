@@ -229,6 +229,9 @@ export default function App({ initialPath }: { initialPath?: string }) {
       setMetaTag('og:description', page.description, true);
       setMetaTag('og:url', window.location.href, true);
       setMetaTag('og:image', `${window.location.origin}/logo.png`, true);
+      setMetaTag('twitter:card', 'summary_large_image', false);
+      setMetaTag('twitter:title', page.title, false);
+      setMetaTag('twitter:description', page.description, false);
 
       let canonicalLink = document.querySelector('link[rel="canonical"]');
       if (!canonicalLink) {
@@ -334,7 +337,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-[17px] leading-[1.85] text-[#D7D7D7] mt-6 max-w-[500px]"
             >
-              {page.description.length > 120 ? page.description : `간다출장마사지는 ${activeRegionData.name} 전문 브랜드입니다. 시흥 전지역에서 프리미엄 출장마사지 서비스를 24시간 후불제로 제공합니다.`}
+              간다출장마사지는 {activeRegionData.name}와 {activeRegionData.name.replace("출장마사지", "출장안마")} 서비스를 24시간 후불제로 제공합니다. 예약금 없는 후불제로 호텔·자택 어디서나 편안한 프리미엄 홈케어를 이용하실 수 있습니다.
             </motion.p>
 
             {/* Horizontal Trust Badges (3 items) */}
