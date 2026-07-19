@@ -420,7 +420,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
                 height="1400"
                 loading="eager"
                 fetchPriority="high"
-                className="w-full h-full object-cover object-top relative z-10"
+                className="w-full h-full object-cover object-top"
               />
             </div>
             
