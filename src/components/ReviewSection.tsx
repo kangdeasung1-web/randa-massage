@@ -27,25 +27,25 @@ export default function ReviewSection() {
   ];
 
   return (
-    <section className="py-[80px] lg:py-[120px] bg-[#0c0c0c] border-t border-white/5 relative overflow-hidden" id="customer-reviews-section">
+    <section className="py-16 md:py-24 bg-[#0c0c0c] border-t border-white/5 relative overflow-hidden" id="customer-reviews-section">
       <div className="max-w-[1440px] mx-auto px-6 md:px-14">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-          <span className="text-[14px] text-[#C8A04D] font-sans font-semibold tracking-[0.25em] uppercase block">
-            REAL CUSTOMER REVIEW
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <span className="text-xs text-[#C8A04D] font-sans font-semibold tracking-[0.2em] uppercase block">
+            소중한 고객 만족 후기
           </span>
-          <h2 className="text-3xl md:text-[44px] lg:text-[48px] font-bold text-white tracking-tight leading-tight">
-            고객이 다시 찾는<br />간다출장마사지
+          <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
+            고객이 다시 찾는 간다출장마사지
           </h2>
-          <p className="text-[17px] leading-[1.85] text-[#B8B8B8] mt-2">
+          <p className="text-sm md:text-base text-neutral-400">
             실제 이용 고객들의 솔직하고 만족스러운 후기를 소개합니다.
           </p>
-          <div className="w-12 h-[1px] bg-[#C8A04D]/60 mx-auto mt-4" />
+          <div className="w-10 h-[1px] bg-[#C8A04D]/40 mx-auto mt-4" />
         </div>
 
         {/* Reviews Grid & Mobile Slider */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto items-stretch">
           {reviews.map((review, idx) => {
             return (
               <motion.div
@@ -54,28 +54,28 @@ export default function ReviewSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.6, delay: idx * 0.15 }}
-                className="bg-[#181818] border border-[#C8A04D]/18 hover:border-[#C8A04D] rounded-[18px] p-8 md:p-9 flex flex-col justify-between transition-all duration-[350ms] ease-out hover:-translate-y-[6px] shadow-none group/review-card h-full min-h-[280px]"
+                className="bg-[#181818] border border-neutral-800 hover:border-[#C8A04D]/40 rounded-[20px] p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-[4px] shadow-sm hover:shadow-md group/review-card h-full min-h-[240px]"
               >
-                <div className="space-y-6">
+                <div className="space-y-4">
                   {/* Star Rating */}
                   <div className="flex items-center space-x-1">
                     {[...Array(review.stars)].map((_, i) => (
-                      <Star key={i} className="w-4.5 h-4.5 fill-[#C8A04D] text-[#C8A04D] transition-transform duration-300 group-hover/review-card:scale-110" />
+                      <Star key={i} className="w-4 h-4 fill-[#C8A04D]/90 text-[#C8A04D]/90 transition-transform duration-300 group-hover/review-card:scale-110" />
                     ))}
                   </div>
 
                   {/* Review Text */}
-                  <p className="text-[#DDDDDD] font-sans text-[17px] leading-[1.85] break-keep font-light">
+                  <p className="text-[#DDDDDD] font-sans text-sm sm:text-base leading-relaxed break-keep font-light">
                     "{review.text}"
                   </p>
                 </div>
 
                 {/* Author Info */}
-                <div className="mt-8 pt-5 border-t border-white/5 flex items-center justify-between shrink-0">
-                  <span className="text-[13px] text-white font-sans font-medium">
+                <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between shrink-0">
+                  <span className="text-xs sm:text-sm text-white font-sans font-medium">
                     {review.author}
                   </span>
-                  <span className="text-[11px] text-[#C8A04D] font-mono tracking-wider">
+                  <span className="text-[11px] text-[#C8A04D] font-medium">
                     {review.location}
                   </span>
                 </div>
@@ -85,8 +85,8 @@ export default function ReviewSection() {
         </div>
 
         {/* Footer Note */}
-        <div className="mt-14 text-center">
-          <p className="text-[11px] text-[#6A6A6A] font-sans">
+        <div className="mt-10 text-center">
+          <p className="text-[11px] text-neutral-500 font-sans">
             ※ 고객 개인정보 보호 및 식별성 방지를 위해 일부 내용(이름)은 안전하게 편집되었습니다.
           </p>
         </div>

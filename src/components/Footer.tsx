@@ -50,7 +50,7 @@ export default function Footer({ currentRegionId, onNavigate }: FooterProps) {
   };
 
   return (
-    <footer className="bg-[#080808] border-t border-[#C8A04D]/18 pt-[100px] pb-12 mt-24 text-neutral-300" id="site-footer">
+    <footer className="bg-[#080808] border-t border-neutral-850 pt-16 pb-12 mt-16 text-neutral-300" id="site-footer">
       <div className="max-w-[1440px] mx-auto px-6 md:px-14">
         
         {/* Main Footer Grid */}
@@ -59,7 +59,7 @@ export default function Footer({ currentRegionId, onNavigate }: FooterProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 pb-16"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12"
         >
           {/* Column 1: Brand & Contact Info */}
           <div className="lg:col-span-4 space-y-6">
@@ -67,49 +67,49 @@ export default function Footer({ currentRegionId, onNavigate }: FooterProps) {
               <div className="flex items-center space-x-1">
                 <GoldLogo isSmall />
               </div>
-              <p className="text-[13px] text-[#9A9A9A] font-sans font-light leading-relaxed">
+              <p className="text-xs text-neutral-400 font-sans font-light leading-relaxed">
                 시흥출장마사지 전문 프리미엄 홈케어 서비스
               </p>
             </div>
             
-            <div className="space-y-3 pt-2">
+            <div className="space-y-2 pt-2">
               <div className="flex items-center space-x-3 group">
-                <Phone className="w-4 h-4 text-[#C8A04D] shrink-0" />
-                <span className="text-[13px] font-mono text-[#D5D5D5]">전화번호: </span>
-                <a href="tel:010-7497-2653" className="text-[13px] font-sans font-bold text-white hover:text-[#C8A04D] transition-colors">
+                <Phone className="w-4 h-4 text-[#C8A04D]/80 group-hover:text-[#C8A04D] shrink-0" />
+                <span className="text-xs text-neutral-400 font-sans">전화번호: </span>
+                <a href="tel:010-7497-2653" className="text-xs font-sans font-bold text-white hover:text-[#C8A04D] transition-colors">
                   010-7497-2653
                 </a>
               </div>
               
               <div className="flex items-center space-x-3">
-                <MessageSquare className="w-4 h-4 text-[#C8A04D] shrink-0" />
-                <span className="text-[13px] font-sans text-[#D5D5D5]">카카오톡: </span>
-                <a href="https://open.kakao.com/o/se8MdBEi" target="_blank" rel="noopener noreferrer" className="text-[13px] font-sans font-medium text-white hover:text-[#C8A04D] transition-colors">
+                <MessageSquare className="w-4 h-4 text-[#C8A04D]/80 shrink-0" />
+                <span className="text-xs text-neutral-400 font-sans">카카오톡: </span>
+                <a href="https://open.kakao.com/o/se8MdBEi" target="_blank" rel="noopener noreferrer" className="text-xs font-sans font-medium text-white hover:text-[#C8A04D] transition-colors">
                   간다출장상담센터
                 </a>
               </div>
 
               <div className="flex items-center space-x-3">
-                <Clock className="w-4 h-4 text-[#C8A04D] shrink-0" />
-                <span className="text-[13px] font-sans text-[#D5D5D5]">운영시간: </span>
-                <span className="text-[13px] font-sans font-semibold text-white">
+                <Clock className="w-4 h-4 text-[#C8A04D]/80 shrink-0" />
+                <span className="text-xs text-neutral-400 font-sans">운영시간: </span>
+                <span className="text-xs font-sans font-semibold text-white">
                   24시간 연중무휴 (24/7)
                 </span>
               </div>
             </div>
 
-            <p className="text-[11px] text-[#555555] leading-relaxed font-sans max-w-sm pt-4">
+            <p className="text-[11px] text-neutral-500 leading-relaxed font-sans max-w-sm pt-2">
               저희 간다 브랜드는 시흥출장마사지, 출장안마, 출장마사지 및 홈타이 서비스를 대표하는 공인 플랫폼으로서, 음주 만취자 및 선입금 사기 방지를 준수합니다.
             </p>
           </div>
 
           {/* Column 2: Service Regions */}
-          <div className="lg:col-span-3 space-y-6">
-            <span className="text-[13px] text-[#C8A04D] font-sans font-bold tracking-[0.2em] uppercase block">
-              SERVICE REGION
+          <div className="lg:col-span-3 space-y-4">
+            <span className="text-xs text-[#C8A04D] font-sans font-bold tracking-wider block">
+              서비스 지역
             </span>
             
-            <div className="grid grid-cols-2 gap-x-4 gap-y-2.5">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2">
               {serviceRegions.map((region) => {
                 const isActive = region.id === currentRegionId;
                 return (
@@ -120,13 +120,13 @@ export default function Footer({ currentRegionId, onNavigate }: FooterProps) {
                       e.preventDefault();
                       handleRegionClick(region.id);
                     }}
-                    className={`text-left text-[13px] font-sans transition-all duration-200 cursor-pointer flex items-center space-x-1.5 ${
+                    className={`text-left text-xs font-sans transition-all duration-200 cursor-pointer flex items-center space-x-1.5 ${
                       isActive 
                         ? 'text-[#C8A04D] font-semibold' 
-                        : 'text-[#D5D5D5] hover:text-[#C8A04D] font-light'
+                        : 'text-neutral-400 hover:text-[#C8A04D] font-light'
                     }`}
                   >
-                    <span className={`w-1 h-1 rounded-full ${isActive ? 'bg-[#C8A04D]' : 'bg-[#C8A04D]/30'}`} />
+                    <span className={`w-1 h-1 rounded-full ${isActive ? 'bg-[#C8A04D]' : 'bg-neutral-800'}`} />
                     <span>{region.name}</span>
                   </a>
                 );
@@ -135,18 +135,18 @@ export default function Footer({ currentRegionId, onNavigate }: FooterProps) {
           </div>
 
           {/* Column 3: Quick Links */}
-          <div className="lg:col-span-2 space-y-6">
-            <span className="text-[13px] text-[#C8A04D] font-sans font-bold tracking-[0.2em] uppercase block">
-              NAVIGATION
+          <div className="lg:col-span-2 space-y-4">
+            <span className="text-xs text-[#C8A04D] font-sans font-bold tracking-wider block">
+              빠른 이동
             </span>
             
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {quickLinks.map((link, idx) => (
                 <li key={idx} className="w-fit">
                   <a
                     href={link.href}
                     onClick={(e) => handleScroll(e, link.href)}
-                    className="relative text-[13px] font-sans font-light text-[#D5D5D5] hover:text-[#C8A04D] transition-colors duration-300 block pb-0.5 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:scale-x-0 after:origin-bottom-right hover:after:scale-x-100 hover:after:origin-bottom-left after:bg-[#C8A04D] after:transition-transform after:duration-300"
+                    className="relative text-xs font-sans font-light text-neutral-400 hover:text-[#C8A04D] transition-colors duration-200 block pb-0.5"
                   >
                     {link.label}
                   </a>
@@ -156,30 +156,30 @@ export default function Footer({ currentRegionId, onNavigate }: FooterProps) {
           </div>
 
           {/* Column 4: Customer Guide */}
-          <div className="lg:col-span-3 space-y-6">
-            <span className="text-[13px] text-[#C8A04D] font-sans font-bold tracking-[0.2em] uppercase block">
-              CUSTOMER GUIDE
+          <div className="lg:col-span-3 space-y-4">
+            <span className="text-xs text-[#C8A04D] font-sans font-bold tracking-wider block">
+              이용 안내
             </span>
             
-            <ul className="space-y-3 text-[13px] font-sans font-light text-[#D5D5D5]">
+            <ul className="space-y-2 text-xs font-sans font-light text-neutral-400">
               <li className="flex items-center space-x-2">
-                <span className="w-1 h-1 bg-[#C8A04D]" />
+                <span className="w-1 h-1 bg-[#C8A04D]/60" />
                 <span>24시간 실시간 상담 가능</span>
               </li>
               <li className="flex items-center space-x-2">
-                <span className="w-1 h-1 bg-[#C8A04D]" />
+                <span className="w-1 h-1 bg-[#C8A04D]/60" />
                 <span>100% 현장 안전 후불제</span>
               </li>
               <li className="flex items-center space-x-2">
-                <span className="w-1 h-1 bg-[#C8A04D]" />
+                <span className="w-1 h-1 bg-[#C8A04D]/60" />
                 <span>호텔 및 모텔 방문 가능</span>
               </li>
               <li className="flex items-center space-x-2">
-                <span className="w-1 h-1 bg-[#C8A04D]" />
+                <span className="w-1 h-1 bg-[#C8A04D]/60" />
                 <span>자택 및 오피스텔 방문 가능</span>
               </li>
               <li className="flex items-center space-x-2">
-                <span className="w-1 h-1 bg-[#C8A04D]" />
+                <span className="w-1 h-1 bg-[#C8A04D]/60" />
                 <a href="#site-footer" className="hover:text-[#C8A04D] transition-colors">예약 및 이용안내 규정</a>
               </li>
             </ul>
