@@ -25,7 +25,7 @@ export default function Breadcrumb({ currentRegionId, currentRegionName, onNavig
   };
 
   // Base domain for Schema.org (using origin dynamically)
-  const origin = typeof window !== 'undefined' ? window.location.origin : 'https://ganda-massage.com';
+  const origin = 'https://ganda-massage.com';
 
   return (
     <nav 

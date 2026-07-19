@@ -41,22 +41,7 @@ async function buildPages() {
     
     const appHtml = await render(url);
 
-    // Remove framer-motion SSR styles that hide content initially
-    let cleanAppHtml = appHtml.replace(/style="([^"]*)"/g, (match, styles) => {
-      let cleaned = styles
-        .replace(/(^|;)opacity:\s*0;?/g, '$1')
-        .replace(/(^|;)transform:\s*(scale|translate|none)[^;]*;?/g, '$1')
-        .replace(/;+/g, ';')
-        .replace(/^;/, '')
-        .replace(/;$/, '');
-      
-      if (cleaned.trim() === '') {
-        return ''; // completely remove the style attribute
-      }
-      return `style="${cleaned}"`;
-    });
-
-    let html = template.replace('<!--app-html-->', cleanAppHtml);
+    let html = template.replace('<!--app-html-->', appHtml);
 
     if (pageData) {
       const origin = 'https://ganda-massage.com';

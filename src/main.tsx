@@ -4,8 +4,9 @@ import App from './App.tsx';
 import './index.css';
 
 const rootElement = document.getElementById('root')!;
+const hasHtml = rootElement.innerHTML.trim() !== '' && !rootElement.innerHTML.includes('<!--app-html-->');
 
-if (rootElement.hasChildNodes()) {
+if (hasHtml) {
   hydrateRoot(
     rootElement,
     <StrictMode>

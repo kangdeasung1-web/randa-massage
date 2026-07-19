@@ -36,9 +36,6 @@ import {
   Heart
 } from 'lucide-react';
 
-import brandModelImg from './assets/images/ganda-hero-model.webp';
-import brandModelImgAvif from './assets/images/ganda-hero-model.avif';
-
 const MASTER_FAQS = [
   {
     q: "시흥출장마사지 예약금을 먼저 내야 하나요?",
@@ -166,7 +163,6 @@ export default function App({ initialPath }: { initialPath?: string }) {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [routeError, setRouteError] = useState(getInitialRouteError());
   const [isMobile, setIsMobile] = useState(false);
-  const [isImgLoaded, setIsImgLoaded] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 1024);
@@ -416,36 +412,27 @@ export default function App({ initialPath }: { initialPath?: string }) {
             className="order-2 relative h-[520px] lg:h-full lg:min-h-[690px] w-full overflow-hidden rounded-[18px] border border-[#C8A04D]/18 bg-[#050505]"
           >
             {/* Extremely tight fit banner focusing on her face and torso with scroll parallax */}
-            <div className="w-full h-full overflow-hidden relative flex items-center justify-center">
-              <picture className="w-full h-full block">
-                <source srcSet={brandModelImgAvif} type="image/avif" />
-                <source srcSet={brandModelImg} type="image/webp" />
-                <motion.img 
-                  src={brandModelImg} 
-                  alt="시흥출장마사지 프리미엄 홈케어 간다" 
-                  style={!isMobile ? { y: yParallax } : undefined}
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.35, ease: "easeOut" }}
-                  onLoad={() => setIsImgLoaded(true)}
-                  width={1039}
-                  height={1514}
-                  loading="eager"
-                  fetchPriority="high"
-                  className={`w-full h-full object-cover origin-center object-[50%_25%] lg:object-[50%_8%] transition-opacity duration-700 ${isImgLoaded ? 'opacity-100' : 'opacity-0'}`}
-                  referrerPolicy="no-referrer"
-                />
-              </picture>
+            <div className="w-full h-full overflow-hidden relative flex items-center justify-center bg-[#111111]">
+              <img
+                src="/images/ganda-hero-woman.webp"
+                alt="시흥출장마사지 프리미엄 홈케어 간다"
+                width="1200"
+                height="1400"
+                loading="eager"
+                fetchPriority="high"
+                className="w-full h-full object-cover object-top relative z-10"
+              />
             </div>
             
             {/* Left black gradient overlay (Desktop) */}
             <div 
               className="absolute inset-0 z-10 pointer-events-none hidden lg:block" 
-              style={{ background: 'linear-gradient(90deg, #050505 0%, rgba(5,5,5,0.92) 10%, rgba(5,5,5,0.2) 35%, transparent 55%)' }} 
+              style={{ background: 'linear-gradient(90deg, transparent 0%, transparent 100%)' }} 
             />
             {/* Bottom black gradient overlay (Mobile) */}
             <div 
               className="absolute inset-0 z-10 pointer-events-none lg:hidden" 
-              style={{ background: 'linear-gradient(0deg, #050505 0%, rgba(5,5,5,0.90) 25%, rgba(5,5,5,0.1) 60%, transparent 100%)' }} 
+              style={{ background: 'linear-gradient(0deg, transparent 0%, transparent 100%)' }} 
             />
           </motion.div>
 

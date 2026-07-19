@@ -9,9 +9,9 @@ interface SchemaMarkupProps {
 }
 
 export default function SchemaMarkup({ page, currentRegionId, currentRegionName }: SchemaMarkupProps) {
-  const origin = typeof window !== 'undefined' ? window.location.origin : 'https://ganda-massage.com';
+  const origin = 'https://ganda-massage.com';
   const isMain = currentRegionId === "시흥출장마사지";
-  const currentUrl = typeof window !== 'undefined' ? window.location.href : `${origin}${getPathByRegionId(currentRegionId)}`;
+  const currentUrl = `${origin}${getPathByRegionId(currentRegionId)}`;
 
   // 1. Organization Schema
   const organizationSchema = {
