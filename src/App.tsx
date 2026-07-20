@@ -257,7 +257,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
 
   if (routeError) {
     return (
-      <div className="min-h-screen bg-[#111111] text-white flex flex-col font-sans antialiased">
+      <div className="min-h-screen bg-[#121212] text-white flex flex-col font-sans antialiased">
         <Header currentRegionId={activeRegionId} currentRegionName={activeRegionData.name} onNavigate={navigateToRegion} />
         <NotFoundPage onGoHome={() => navigateToRegion("시흥출장마사지")} />
         <Footer currentRegionId={activeRegionId} onNavigate={navigateToRegion} />
@@ -275,7 +275,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="min-h-screen bg-[#111111] text-white flex flex-col font-sans antialiased"
+      className="min-h-screen bg-[#121212] text-white flex flex-col font-sans antialiased"
     >
       <SchemaMarkup 
         page={page} 
@@ -289,7 +289,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
         onNavigate={navigateToRegion} 
       />
 
-      <div className="bg-[#111111] border-b border-white/5">
+      <div className="bg-[#0B0B0B] border-b border-[#2C2C2C]">
         <Breadcrumb 
           currentRegionId={activeRegionId} 
           currentRegionName={activeRegionData.name} 
@@ -299,7 +299,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
 
       {/* 2. Redesigned Premium Hero Section - 1440px Horizontal Premium Layout */}
       <section 
-        className="w-full lg:h-[740px] flex items-center overflow-hidden relative bg-[#050505] py-16 lg:py-0" 
+        className="w-full lg:h-[740px] flex items-center overflow-hidden relative bg-[#0B0B0B] py-16 lg:py-0" 
         id="hero-banner"
       >
         <div className="w-full max-w-[1440px] mx-auto px-0 lg:px-14 h-full grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
@@ -315,7 +315,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
               transition={{ duration: 0.6 }}
               className="mb-4 mx-auto lg:mx-0"
             >
-              <span className="text-[#C8A04D] font-sans font-semibold tracking-wider text-xs uppercase leading-none">
+              <span className="text-[#C1121F] font-sans font-semibold tracking-wider text-xs uppercase leading-none">
                 GANDA HOME CARE
               </span>
             </motion.div>
@@ -324,20 +324,20 @@ export default function App({ initialPath }: { initialPath?: string }) {
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-              className="w-full max-w-full mx-auto lg:mx-0 text-center lg:text-left text-3xl lg:text-5xl font-sans font-bold leading-[1.25] tracking-tight text-white break-keep"
+              className="w-full max-w-full mx-auto lg:mx-0 text-center lg:text-left text-3xl lg:text-5xl font-sans font-bold leading-[1.25] tracking-tight text-[#F8F8F8] break-keep"
               style={{ wordBreak: 'keep-all', overflowWrap: 'normal' }}
               id="main-h1-header"
             >
               <span className="block">{activeRegionData.name}</span>
               <span className="block mt-1 lg:mt-2">당신만의</span>
-              <span className="text-[#C8A04D] block mt-1 lg:mt-2">24시 홈케어</span>
+              <span className="text-[#C1121F] block mt-1 lg:mt-2">24시 홈케어</span>
             </motion.h1>
 
             <motion.p 
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-center lg:text-left text-neutral-300 text-sm md:text-base leading-[1.7] mt-6 w-full max-w-[340px] lg:max-w-[500px] mx-auto lg:mx-0 break-keep font-light"
+              className="text-center lg:text-left text-[#A8A8A8] text-sm md:text-base leading-[1.7] mt-6 w-full max-w-[340px] lg:max-w-[500px] mx-auto lg:mx-0 break-keep font-light"
             >
               {activeRegionData.name}와 {activeRegionData.name.replace("출장마사지", "출장안마")}를<br />
               24시간 운영합니다.
@@ -352,31 +352,31 @@ export default function App({ initialPath }: { initialPath?: string }) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row items-center sm:items-stretch justify-center lg:justify-start gap-6 sm:gap-0 mt-8 py-5 border-y border-neutral-800 w-full max-w-[600px] mx-auto lg:mx-0"
+              className="flex flex-col sm:flex-row items-center sm:items-stretch justify-center lg:justify-start gap-6 sm:gap-0 mt-8 py-5 border-y border-[#2C2C2C] w-full max-w-[600px] mx-auto lg:mx-0"
             >
               <div className="flex flex-col sm:flex-row flex-1 items-center sm:items-start space-y-2 sm:space-y-0 sm:space-x-3 sm:pr-4">
-                <ShieldCheck className="w-5 h-5 text-[#C8A04D] shrink-0 sm:mt-0.5" />
+                <ShieldCheck className="w-5 h-5 text-[#C1121F] shrink-0 sm:mt-0.5" />
                 <div className="text-center sm:text-left">
-                  <h4 className="text-sm font-bold text-white leading-none">예약금 없는 후불제</h4>
-                  <p className="text-xs text-neutral-400 mt-1.5 whitespace-nowrap">안심하고 이용하세요</p>
+                  <h4 className="text-sm font-bold text-[#F8F8F8] leading-none">예약금 없는 후불제</h4>
+                  <p className="text-xs text-[#A8A8A8] mt-1.5 whitespace-nowrap">안심하고 이용하세요</p>
                 </div>
               </div>
-              <div className="hidden sm:block w-[1px] bg-neutral-800 self-stretch my-1" />
+              <div className="hidden sm:block w-[1px] bg-[#2C2C2C] self-stretch my-1" />
               
               <div className="flex flex-col sm:flex-row flex-1 items-center sm:items-start space-y-2 sm:space-y-0 sm:space-x-3 sm:px-6">
-                <Clock3 className="w-5 h-5 text-[#C8A04D] shrink-0 sm:mt-0.5" />
+                <Clock3 className="w-5 h-5 text-[#C1121F] shrink-0 sm:mt-0.5" />
                 <div className="text-center sm:text-left">
-                  <h4 className="text-sm font-bold text-white leading-none">24시간 상담</h4>
-                  <p className="text-xs text-neutral-400 mt-1.5 whitespace-nowrap">언제든지 편안하게</p>
+                  <h4 className="text-sm font-bold text-[#F8F8F8] leading-none">24시간 상담</h4>
+                  <p className="text-xs text-[#A8A8A8] mt-1.5 whitespace-nowrap">언제든지 편안하게</p>
                 </div>
               </div>
-              <div className="hidden sm:block w-[1px] bg-neutral-800 self-stretch my-1" />
+              <div className="hidden sm:block w-[1px] bg-[#2C2C2C] self-stretch my-1" />
               
               <div className="flex flex-col sm:flex-row flex-1 items-center sm:items-start space-y-2 sm:space-y-0 sm:space-x-3 sm:pl-6">
-                <MapPin className="w-5 h-5 text-[#C8A04D] shrink-0 sm:mt-0.5" />
+                <MapPin className="w-5 h-5 text-[#C1121F] shrink-0 sm:mt-0.5" />
                 <div className="text-center sm:text-left">
-                  <h4 className="text-sm font-bold text-white leading-none">{activeRegionData.name.replace("출장마사지", "") || "시흥"} 전지역 방문</h4>
-                  <p className="text-xs text-neutral-400 mt-1.5 whitespace-nowrap">신속하고 친절하게</p>
+                  <h4 className="text-sm font-bold text-[#F8F8F8] leading-none">{activeRegionData.name.replace("출장마사지", "") || "시흥"} 전지역 방문</h4>
+                  <p className="text-xs text-[#A8A8A8] mt-1.5 whitespace-nowrap">신속하고 친절하게</p>
                 </div>
               </div>
             </motion.div>
@@ -386,12 +386,12 @@ export default function App({ initialPath }: { initialPath?: string }) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-[12px] mt-8 w-full max-w-[340px] sm:max-w-none mx-auto lg:mx-0 select-none" 
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-[16px] mt-8 w-full max-w-[340px] sm:max-w-none mx-auto lg:mx-0 select-none" 
               id="hero-cta-group"
             >
               <a 
                 href="tel:010-7497-2653"
-                className="w-full sm:w-[210px] h-[58px] rounded-full bg-[#050505] border border-[#C8A04D] text-[#C8A04D] font-bold text-sm flex items-center justify-center cursor-pointer whitespace-nowrap hover:bg-[#C8A04D] hover:text-[#111111] hover:scale-[1.02] hover:-translate-y-[1px] transition-all duration-200"
+                className="w-full sm:w-[210px] h-[60px] px-6 rounded-[16px] bg-transparent border-[1.5px] border-[#C1121F] text-[#FFFFFF] font-bold text-base flex items-center justify-center cursor-pointer whitespace-nowrap hover:bg-[#C1121F] hover:border-[#C1121F] hover:text-[#FFFFFF] transition-all duration-200"
               >
                 전화 상담
               </a>
@@ -400,7 +400,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
                 href="https://open.kakao.com/o/se8MdBEi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-[210px] h-[58px] rounded-full bg-[#050505] border border-[#C8A04D] text-[#C8A04D] font-bold text-sm flex items-center justify-center cursor-pointer whitespace-nowrap hover:bg-[#C8A04D] hover:text-[#111111] hover:scale-[1.02] hover:-translate-y-[1px] transition-all duration-200"
+                className="w-full sm:w-[210px] h-[60px] px-6 rounded-[16px] bg-[#C1121F] border-[1.5px] border-[#C1121F] text-[#FFFFFF] font-bold text-base flex items-center justify-center cursor-pointer whitespace-nowrap hover:bg-[#D62839] hover:border-[#D62839] hover:text-[#FFFFFF] transition-all duration-200"
               >
                 카카오 상담
               </a>
@@ -412,10 +412,10 @@ export default function App({ initialPath }: { initialPath?: string }) {
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
-            className="order-2 relative h-[520px] lg:h-full lg:min-h-[690px] w-[calc(100%-32px)] lg:w-full mx-auto lg:mx-0 overflow-hidden rounded-[20px] border border-neutral-800 bg-[#050505]"
+            className="order-2 relative h-[520px] lg:h-full lg:min-h-[690px] w-[calc(100%-32px)] lg:w-full mx-auto lg:mx-0 overflow-hidden rounded-[20px] border border-[#2C2C2C] bg-[#0B0B0B]"
           >
             {/* Extremely tight fit banner focusing on her face and torso with scroll parallax */}
-            <div className="w-full h-full overflow-hidden relative flex items-center justify-center bg-[#111111]">
+            <div className="w-full h-full overflow-hidden relative flex items-center justify-center bg-[#121212]">
               <img
                 src="/images/ganda-hero-woman.webp"
                 alt="시흥출장마사지 프리미엄 홈케어 간다"
@@ -449,74 +449,74 @@ export default function App({ initialPath }: { initialPath?: string }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="w-full bg-[#0a0a0a] border-t border-white/5 py-16 md:py-24" 
+        className="w-full bg-[#121212] border-t border-[#2C2C2C] py-16 md:py-24" 
         id="hero-bottom-trust"
       >
         <div className="max-w-[1440px] mx-auto px-6 md:px-14">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-stretch">
             
             {/* Column 1 */}
-            <div className="bg-[#161616] border border-neutral-800 hover:border-[#C8A04D]/40 rounded-[20px] p-6 sm:p-8 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-[4px] relative group/trust-card h-full justify-between shadow-sm overflow-hidden min-h-[220px] md:min-h-[245px]">
+            <div className="bg-[#181818] border border-[#2C2C2C] hover:border-[#C1121F] rounded-[20px] p-6 sm:p-8 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-[4px] relative group/trust-card h-full justify-between shadow-sm overflow-hidden min-h-[220px] md:min-h-[245px]">
               <div className="flex flex-col items-center w-full">
-                <div className="w-12 h-12 rounded-full border border-neutral-800 flex items-center justify-center text-neutral-400 bg-transparent group-hover/trust-card:text-[#C8A04D] group-hover/trust-card:border-[#C8A04D]/30 group-hover/trust-card:bg-[#C8A04D]/5 transition-all duration-300 mb-5 shrink-0">
+                <div className="w-12 h-12 rounded-full border border-[#2C2C2C] flex items-center justify-center text-[#A8A8A8] bg-transparent group-hover/trust-card:text-[#C1121F] group-hover/trust-card:border-[#C1121F] group-hover/trust-card:bg-[rgba(193,18,31,0.05)] transition-all duration-300 mb-5 shrink-0">
                   <Award className="w-6 h-6 transition-transform duration-300 group-hover/trust-card:scale-105" />
                 </div>
-                <span className="text-base sm:text-lg font-bold text-white tracking-tight mb-2 leading-none block">
+                <span className="text-base sm:text-lg font-bold text-[#F8F8F8] tracking-tight mb-2 leading-none block">
                   프리미엄 관리사
                 </span>
-                <p className="text-xs sm:text-sm text-neutral-405 leading-relaxed font-sans break-keep max-w-[220px] mx-auto">
+                <p className="text-xs sm:text-sm text-[#A8A8A8] leading-relaxed font-sans break-keep max-w-[220px] mx-auto group-hover/trust-card:text-[#F8F8F8] transition-colors">
                   전문 교육을 이수한<br className="hidden sm:block" />프리미엄 관리사가 방문합니다.
                 </p>
               </div>
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-neutral-800 w-8 group-hover/trust-card:w-full group-hover/trust-card:bg-[#C8A04D]/40 transition-all duration-300 ease-out" />
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-[#2C2C2C] w-8 group-hover/trust-card:w-full group-hover/trust-card:bg-[#C1121F] transition-all duration-300 ease-out" />
             </div>
 
             {/* Column 2 */}
-            <div className="bg-[#161616] border border-neutral-800 hover:border-[#C8A04D]/40 rounded-[20px] p-6 sm:p-8 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-[4px] relative group/trust-card h-full justify-between shadow-sm overflow-hidden min-h-[220px] md:min-h-[245px]">
+            <div className="bg-[#181818] border border-[#2C2C2C] hover:border-[#C1121F] rounded-[20px] p-6 sm:p-8 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-[4px] relative group/trust-card h-full justify-between shadow-sm overflow-hidden min-h-[220px] md:min-h-[245px]">
               <div className="flex flex-col items-center w-full">
-                <div className="w-12 h-12 rounded-full border border-neutral-800 flex items-center justify-center text-neutral-400 bg-transparent group-hover/trust-card:text-[#C8A04D] group-hover/trust-card:border-[#C8A04D]/30 group-hover/trust-card:bg-[#C8A04D]/5 transition-all duration-300 mb-5 shrink-0">
+                <div className="w-12 h-12 rounded-full border border-[#2C2C2C] flex items-center justify-center text-[#A8A8A8] bg-transparent group-hover/trust-card:text-[#C1121F] group-hover/trust-card:border-[#C1121F] group-hover/trust-card:bg-[rgba(193,18,31,0.05)] transition-all duration-300 mb-5 shrink-0">
                   <Heart className="w-6 h-6 transition-transform duration-300 group-hover/trust-card:scale-105" />
                 </div>
-                <span className="text-base sm:text-lg font-bold text-white tracking-tight mb-2 leading-none block">
+                <span className="text-base sm:text-lg font-bold text-[#F8F8F8] tracking-tight mb-2 leading-none block">
                   맞춤 케어
                 </span>
-                <p className="text-xs sm:text-sm text-neutral-405 leading-relaxed font-sans break-keep max-w-[220px] mx-auto">
+                <p className="text-xs sm:text-sm text-[#A8A8A8] leading-relaxed font-sans break-keep max-w-[220px] mx-auto group-hover/trust-card:text-[#F8F8F8] transition-colors">
                   고객님의 컨디션에 맞춘<br className="hidden sm:block" />1:1 맞춤 케어를 제공합니다.
                 </p>
               </div>
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-neutral-800 w-8 group-hover/trust-card:w-full group-hover/trust-card:bg-[#C8A04D]/40 transition-all duration-300 ease-out" />
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-[#2C2C2C] w-8 group-hover/trust-card:w-full group-hover/trust-card:bg-[#C1121F] transition-all duration-300 ease-out" />
             </div>
 
             {/* Column 3 */}
-            <div className="bg-[#161616] border border-neutral-800 hover:border-[#C8A04D]/40 rounded-[20px] p-6 sm:p-8 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-[4px] relative group/trust-card h-full justify-between shadow-sm overflow-hidden min-h-[220px] md:min-h-[245px]">
+            <div className="bg-[#181818] border border-[#2C2C2C] hover:border-[#C1121F] rounded-[20px] p-6 sm:p-8 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-[4px] relative group/trust-card h-full justify-between shadow-sm overflow-hidden min-h-[220px] md:min-h-[245px]">
               <div className="flex flex-col items-center w-full">
-                <div className="w-12 h-12 rounded-full border border-neutral-800 flex items-center justify-center text-neutral-400 bg-transparent group-hover/trust-card:text-[#C8A04D] group-hover/trust-card:border-[#C8A04D]/30 group-hover/trust-card:bg-[#C8A04D]/5 transition-all duration-300 mb-5 shrink-0">
+                <div className="w-12 h-12 rounded-full border border-[#2C2C2C] flex items-center justify-center text-[#A8A8A8] bg-transparent group-hover/trust-card:text-[#C1121F] group-hover/trust-card:border-[#C1121F] group-hover/trust-card:bg-[rgba(193,18,31,0.05)] transition-all duration-300 mb-5 shrink-0">
                   <Sparkles className="w-6 h-6 transition-transform duration-300 group-hover/trust-card:scale-105" />
                 </div>
-                <span className="text-base sm:text-lg font-bold text-white tracking-tight mb-2 leading-none block">
+                <span className="text-base sm:text-lg font-bold text-[#F8F8F8] tracking-tight mb-2 leading-none block">
                   힐링 & 휴식
                 </span>
-                <p className="text-xs sm:text-sm text-neutral-405 leading-relaxed font-sans break-keep max-w-[220px] mx-auto">
+                <p className="text-xs sm:text-sm text-[#A8A8A8] leading-relaxed font-sans break-keep max-w-[220px] mx-auto group-hover/trust-card:text-[#F8F8F8] transition-colors">
                   피로 회복과 편안한 휴식을 위한<br className="hidden sm:block" />프리미엄 힐링 케어
                 </p>
               </div>
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-neutral-800 w-8 group-hover/trust-card:w-full group-hover/trust-card:bg-[#C8A04D]/40 transition-all duration-300 ease-out" />
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-[#2C2C2C] w-8 group-hover/trust-card:w-full group-hover/trust-card:bg-[#C1121F] transition-all duration-300 ease-out" />
             </div>
 
             {/* Column 4 */}
-            <div className="bg-[#161616] border border-neutral-800 hover:border-[#C8A04D]/40 rounded-[20px] p-6 sm:p-8 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-[4px] relative group/trust-card h-full justify-between shadow-sm overflow-hidden min-h-[220px] md:min-h-[245px]">
+            <div className="bg-[#181818] border border-[#2C2C2C] hover:border-[#C1121F] rounded-[20px] p-6 sm:p-8 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-[4px] relative group/trust-card h-full justify-between shadow-sm overflow-hidden min-h-[220px] md:min-h-[245px]">
               <div className="flex flex-col items-center w-full">
-                <div className="w-12 h-12 rounded-full border border-neutral-800 flex items-center justify-center text-neutral-400 bg-transparent group-hover/trust-card:text-[#C8A04D] group-hover/trust-card:border-[#C8A04D]/30 group-hover/trust-card:bg-[#C8A04D]/5 transition-all duration-300 mb-5 shrink-0">
+                <div className="w-12 h-12 rounded-full border border-[#2C2C2C] flex items-center justify-center text-[#A8A8A8] bg-transparent group-hover/trust-card:text-[#C1121F] group-hover/trust-card:border-[#C1121F] group-hover/trust-card:bg-[rgba(193,18,31,0.05)] transition-all duration-300 mb-5 shrink-0">
                   <ShieldCheck className="w-6 h-6 transition-transform duration-300 group-hover/trust-card:scale-105" />
                 </div>
-                <span className="text-base sm:text-lg font-bold text-white tracking-tight mb-2 leading-none block">
+                <span className="text-base sm:text-lg font-bold text-[#F8F8F8] tracking-tight mb-2 leading-none block">
                   안심 서비스
                 </span>
-                <p className="text-xs sm:text-sm text-neutral-405 leading-relaxed font-sans break-keep max-w-[220px] mx-auto">
+                <p className="text-xs sm:text-sm text-[#A8A8A8] leading-relaxed font-sans break-keep max-w-[220px] mx-auto group-hover/trust-card:text-[#F8F8F8] transition-colors">
                   100% 후불제<br className="hidden sm:block" />예약금 없는 안전한 이용
                 </p>
               </div>
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-neutral-800 w-8 group-hover/trust-card:w-full group-hover/trust-card:bg-[#C8A04D]/40 transition-all duration-300 ease-out" />
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-[#2C2C2C] w-8 group-hover/trust-card:w-full group-hover/trust-card:bg-[#C1121F] transition-all duration-300 ease-out" />
             </div>
 
           </div>
@@ -533,21 +533,21 @@ export default function App({ initialPath }: { initialPath?: string }) {
       <ReviewSection />
 
       {/* 5. Editorial Magazine Section */}
-      <section className="pt-16 md:pt-24 pb-8 md:pb-10 bg-[#111111] border-t border-white/5" id="editorial-insight-section">
+      <section className="pt-16 md:pt-24 pb-8 md:pb-10 bg-[#0B0B0B] border-t border-[#2C2C2C]" id="editorial-insight-section">
         <div className="max-w-5xl mx-auto px-6">
           <article className="space-y-12">
-            <div className="border-b border-white/8 pb-6 flex items-center justify-between">
-              <span className="text-xs font-sans text-[#C8A04D] tracking-wide font-bold uppercase block">
+            <div className="border-b border-[#2C2C2C] pb-6 flex items-center justify-between">
+              <span className="text-xs font-sans text-[#C1121F] tracking-wide font-bold uppercase block">
                 간다 웰니스 스페셜 가이드
               </span>
-              <span className="text-xs text-neutral-500 font-mono tracking-wider">
+              <span className="text-xs text-[#A8A8A8] font-mono tracking-wider">
                 ADMINISTRATIVE FOCUS: {activeRegionData.name}
               </span>
             </div>
 
             <div className="space-y-6">
               <h2 
-                className="text-2xl md:text-4xl font-sans font-bold text-white tracking-tight leading-tight"
+                className="text-2xl md:text-4xl font-sans font-bold text-[#F8F8F8] tracking-tight leading-tight"
                 style={{
                   wordBreak: 'keep-all',
                   overflowWrap: 'normal',
@@ -558,43 +558,43 @@ export default function App({ initialPath }: { initialPath?: string }) {
                 {/* Mobile layout: 3 lines */}
                 <span className="block md:hidden">
                   <span className="block">{activeRegionData.name}</span>
-                  <span className="block mt-1 text-[#C8A04D] text-lg font-sans font-semibold">프리미엄</span>
-                  <span className="block mt-1 text-[#C8A04D] text-lg font-sans font-semibold">프리미엄 출장마사지 전문</span>
+                  <span className="block mt-1 text-[#C1121F] text-lg font-sans font-semibold">프리미엄</span>
+                  <span className="block mt-1 text-[#C1121F] text-lg font-sans font-semibold">프리미엄 출장마사지 전문</span>
                 </span>
 
                 {/* Desktop layout: 2 lines */}
                 <span className="hidden md:block">
                   <span className="block">{activeRegionData.name}</span>
-                  <span className="block mt-3 text-[#C8A04D] text-2xl font-sans font-semibold tracking-wide">
+                  <span className="block mt-3 text-[#C1121F] text-2xl font-sans font-semibold tracking-wide">
                     프리미엄 출장마사지 전문
                   </span>
                 </span>
               </h2>
 
-              {/* Thin gold line: width 80px, height 2px */}
-              <div className="w-[80px] h-[2px] bg-[#C8A04D]/60" />
+              {/* Thin red line: width 80px, height 2px */}
+              <div className="w-[80px] h-[2px] bg-[#C1121F]" />
             </div>
 
-            <div className="text-sm md:text-base leading-relaxed text-neutral-300 space-y-10 font-sans">
+            <div className="text-sm md:text-base leading-relaxed text-[#A8A8A8] space-y-10 font-sans">
               <div className="space-y-6">
-                <p className="text-white font-semibold text-base md:text-lg leading-relaxed max-w-[900px]">
+                <p className="text-[#F8F8F8] font-semibold text-base md:text-lg leading-relaxed max-w-[900px]">
                   간다출장마사지는 {activeRegionData.name} 전문 프리미엄 홈케어 브랜드입니다.
                   바쁜 일상 속에서 누적된 스트레스와 깊은 고단함을 해소해 드리기 위해,
                   고객님이 계신 가장 안락한 사적 공간으로 직접 찾아가는 명품 테라피 서비스를 제공합니다.
                 </p>
-                <p className="leading-relaxed text-neutral-300 max-w-[900px] text-sm md:text-base">
+                <p className="leading-relaxed text-[#A8A8A8] max-w-[900px] text-sm md:text-base">
                   지친 하루의 끝에서 번거롭게 숍을 방문할 필요 없이, 전화 한 통으로 24시간출장마사지를 집이나 호텔출장 등 원하시는 장소에서 편안하게 이용하실 수 있습니다.
                   {activeRegionData.name}의 주거 단지뿐만 아니라 주요 숙박 거점까지 신속하게 방문하여, 정통 홈타이 테라피와 전문 스웨디시 기법을 결합한 최상의 힐링을 선보입니다.
                 </p>
-                <p className="leading-relaxed text-neutral-300 max-w-[900px] text-sm md:text-base">
+                <p className="leading-relaxed text-[#A8A8A8] max-w-[900px] text-sm md:text-base">
                   다년간 다듬어온 정교한 수기 기법과 엄격하게 교육받은 전문 관리사의 세심한 손길로 출장마사지의 차원을 한 단계 높였습니다.
                   선입금이나 예약금 없는 100% 현장 후불제 출장마사지 서비스로 신뢰할 수 있는 안심 웰니스 케어를 약속드립니다.
                 </p>
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-base sm:text-lg font-sans font-bold text-white tracking-tight flex items-center space-x-2">
-                  <span className="text-[#C8A04D] font-mono text-xs">01</span>
+                <h3 className="text-base sm:text-lg font-sans font-bold text-[#F8F8F8] tracking-tight flex items-center space-x-2">
+                  <span className="text-[#C1121F] font-mono text-xs">01</span>
                   <span>지역 친화형 프리미엄 케어 및 거점 안내</span>
                 </h3>
                 <div className="space-y-4">
@@ -603,8 +603,8 @@ export default function App({ initialPath }: { initialPath?: string }) {
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-base sm:text-lg font-sans font-bold text-white tracking-tight flex items-center space-x-2">
-                  <span className="text-[#C8A04D] font-mono text-xs">02</span>
+                <h3 className="text-base sm:text-lg font-sans font-bold text-[#F8F8F8] tracking-tight flex items-center space-x-2">
+                  <span className="text-[#C1121F] font-mono text-xs">02</span>
                   <span>안심 신속 방문 가이드 및 후불 약속</span>
                 </h3>
                 <div className="space-y-4">
@@ -613,37 +613,18 @@ export default function App({ initialPath }: { initialPath?: string }) {
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-base sm:text-lg font-sans font-bold text-white tracking-tight flex items-center space-x-2">
-                  <span className="text-[#C8A04D] font-mono text-xs">03</span>
+                <h3 className="text-base sm:text-lg font-sans font-bold text-[#F8F8F8] tracking-tight flex items-center space-x-2">
+                  <span className="text-[#C1121F] font-mono text-xs">03</span>
                   <span>현대인을 위한 맞춤형 테라피 추천 코스</span>
                 </h3>
                 <div className="space-y-4">
                   {formatParagraphs(page.recommendations)}
                 </div>
-                <div className="text-xs text-[#C8A04D] font-sans font-bold tracking-wider pt-2 flex items-center space-x-2">
-                  <span className="inline-block w-1 h-1 rounded-full bg-[#C8A04D]" />
+                <div className="text-xs text-[#C1121F] font-sans font-bold tracking-wider pt-2 flex items-center space-x-2">
+                  <span className="inline-block w-1 h-1 rounded-full bg-[#C1121F]" />
                   <span>추천 집중 프로그램 : {activeRegionData.recommendCourse}</span>
                 </div>
               </div>
-
-              {/* Major Landmarks Section (Premium Designed Box) */}
-              <div className="py-8 mt-10 mb-2 border-y border-white/10 text-center max-w-[900px] mx-auto space-y-4" id="major-landmarks-container">
-                <div className="flex items-center justify-center space-x-2 text-[#C8A04D] font-sans font-bold text-sm tracking-wider">
-                  <MapPin className="w-4 h-4 text-[#C8A04D]" />
-                  <span>📍 주요 방문지역</span>
-                </div>
-                <div className="text-neutral-300 text-sm md:text-base font-sans leading-loose max-w-2xl mx-auto px-4">
-                  {activeRegionData.landmarks.map((landmark, idx) => (
-                    <span key={idx} className="inline-block">
-                      <span className="hover:text-white transition-colors duration-200 font-medium">{landmark}</span>
-                      {idx < activeRegionData.landmarks.length - 1 && (
-                        <span className="text-[#C8A04D]/60 mx-2 font-light">·</span>
-                      )}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
 
             </div>
           </article>
@@ -653,15 +634,48 @@ export default function App({ initialPath }: { initialPath?: string }) {
       {/* 6. FAQ Section */}
       <FaqSection regionName={activeRegionData.name} />
 
+      {/* 7. Premium Area Map */}
+      <section className="py-16 md:py-24 bg-[#181818] border-t border-[#2C2C2C]" id="premium-area-map">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-14">
+          <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
+            <span className="text-xs text-[#C1121F] font-sans font-semibold tracking-wider block uppercase">
+              Area Map
+            </span>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#F8F8F8] tracking-tight">
+              서비스 가능 지역
+            </h2>
+            <p className="text-sm md:text-base text-[#A8A8A8]">
+              서울 · 경기 · 인천 전지역 방문 가능
+            </p>
+            <div className="w-8 h-[1px] bg-[#C1121F] mx-auto mt-4" />
+          </div>
+          
+          <div className="max-w-4xl mx-auto bg-[#181818] p-6 rounded-[24px] shadow-[0_10px_40px_rgba(0,0,0,0.5)] border border-[#2C2C2C]">
+            <div className="w-full aspect-video rounded-[16px] overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d202570.62768594246!2d126.68536735234567!3d37.40422998393529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b6f6f9fb1978b%3A0xc3af3bb2337d4f9!2sSiheung-si%2C%20Gyeonggi-do!5e0!3m2!1sen!2skr!4v1714457718000!5m2!1sen!2skr"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Premium Service Area Map"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 8. 주변 지역 안내 (Accordion SEO links block) */}
-      <section className="py-6 bg-[#090909] border-t border-white/5" id="surrounding-regions-network">
+      <section className="py-6 bg-[#0B0B0B] border-t border-[#2C2C2C]" id="surrounding-regions-network">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <div className="text-[11px] font-sans font-semibold text-[#C8A04D]/80 tracking-widest uppercase mb-2">
+          <div className="text-[11px] font-sans font-semibold text-[#C1121F] tracking-widest uppercase mb-2">
             주변 지역 안내
           </div>
           
           {/* Visible / Collapsed list (Primary 11 regions) */}
-          <div className="flex flex-wrap justify-center gap-x-2.5 gap-y-1 text-[11px] text-neutral-500 leading-relaxed font-sans">
+          <div className="flex flex-wrap justify-center gap-x-2.5 gap-y-1 text-[11px] text-[#A8A8A8] leading-relaxed font-sans">
             {[
               "시흥출장마사지",
               "정왕동출장마사지",
@@ -688,14 +702,14 @@ export default function App({ initialPath }: { initialPath?: string }) {
                       navigateToRegion(r.id);
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
-                    className={`transition-colors duration-200 hover:text-[#C8A04D] ${
-                      isCurrent ? "text-[#C8A04D] font-bold underline" : "text-neutral-500 font-light"
+                    className={`transition-colors duration-200 hover:text-[#E63946] ${
+                      isCurrent ? "text-[#E63946] font-bold underline" : "text-[#A8A8A8] font-light"
                     }`}
                   >
                     {displayName}
                   </a>
                   {idx < arr.length - 1 && (
-                    <span className="text-neutral-700/60 select-none font-light">·</span>
+                    <span className="text-[#2C2C2C] select-none font-light">·</span>
                   )}
                 </span>
               );
@@ -705,7 +719,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
           {/* Toggle Button */}
           <button
             onClick={() => setIsRegionsExpanded(!isRegionsExpanded)}
-            className="mt-2.5 inline-flex items-center gap-1 text-[10px] font-sans font-bold text-neutral-400 hover:text-[#C8A04D] transition-colors duration-200 cursor-pointer"
+            className="mt-2.5 inline-flex items-center gap-1 text-[10px] font-sans font-bold text-[#A8A8A8] hover:text-[#E63946] transition-colors duration-200 cursor-pointer"
           >
             {isRegionsExpanded ? "[전체 지역 닫기 ▲]" : "[전체 지역 보기 ▼]"}
           </button>
@@ -716,7 +730,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
               isRegionsExpanded ? "max-h-[200px] opacity-100 mt-2" : "max-h-0 opacity-0 pointer-events-none"
             }`}
           >
-            <div className="flex flex-wrap justify-center gap-x-2.5 gap-y-1 text-[11px] text-neutral-500 leading-relaxed font-sans pt-2 border-t border-white/5">
+            <div className="flex flex-wrap justify-center gap-x-2.5 gap-y-1 text-[11px] text-[#A8A8A8] leading-relaxed font-sans pt-2 border-t border-[#2C2C2C]">
               {[
                 "대야동출장마사지",
                 "장곡동출장마사지",
@@ -739,14 +753,14 @@ export default function App({ initialPath }: { initialPath?: string }) {
                         navigateToRegion(r.id);
                         window.scrollTo({ top: 0, behavior: "smooth" });
                       }}
-                      className={`transition-colors duration-200 hover:text-[#C8A04D] ${
-                        isCurrent ? "text-[#C8A04D] font-bold underline" : "text-neutral-500 font-light"
+                      className={`transition-colors duration-200 hover:text-[#E63946] ${
+                        isCurrent ? "text-[#E63946] font-bold underline" : "text-[#A8A8A8] font-light"
                       }`}
                     >
                       {r.id}
                     </a>
                     {idx < arr.length - 1 && (
-                      <span className="text-neutral-700/60 select-none font-light">·</span>
+                      <span className="text-[#2C2C2C] select-none font-light">·</span>
                     )}
                   </span>
                 );
@@ -768,10 +782,10 @@ export default function App({ initialPath }: { initialPath?: string }) {
         className="fixed bottom-6 left-6 right-6 z-50 lg:hidden"
         id="mobile-floating-cta"
       >
-        <div className="bg-[#1A1A1A]/95 backdrop-blur-lg border border-white/10 rounded-full p-2.5 flex items-center justify-between shadow-2xl space-x-4">
+        <div className="bg-[#181818]/95 backdrop-blur-lg border border-[#2C2C2C] rounded-[24px] p-2.5 flex items-center justify-between shadow-2xl gap-[16px]">
           <a 
             href="tel:010-7497-2653"
-            className="flex-1 h-[48px] bg-[#C8A04D] hover:bg-[#B38D3C] text-[#111111] rounded-full font-sans font-bold text-xs tracking-wider flex items-center justify-center transition-all duration-300 active:scale-95 cursor-pointer shadow-md"
+            className="flex-1 h-[60px] bg-transparent border-[1.5px] border-[#C1121F] text-[#FFFFFF] hover:bg-[#C1121F] hover:border-[#C1121F] hover:text-[#FFFFFF] rounded-[16px] font-sans font-bold text-base flex items-center justify-center transition-all duration-300 active:scale-95 cursor-pointer shadow-md px-6"
           >
             전화 상담
           </a>
@@ -779,7 +793,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
             href="https://open.kakao.com/o/se8MdBEi"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 h-[48px] bg-[#FEE500] hover:bg-[#E2CC00] text-[#191919] rounded-full font-sans font-bold text-xs tracking-wider flex items-center justify-center transition-all duration-300 active:scale-95 cursor-pointer shadow-md"
+            className="flex-1 h-[60px] bg-[#C1121F] border-[1.5px] border-[#C1121F] hover:bg-[#D62839] hover:border-[#D62839] text-[#FFFFFF] hover:text-[#FFFFFF] rounded-[16px] font-sans font-bold text-base flex items-center justify-center transition-all duration-300 active:scale-95 cursor-pointer shadow-md px-6"
           >
             카카오 상담
           </a>

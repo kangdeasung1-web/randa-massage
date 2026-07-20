@@ -1,38 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", "Noto Sans KR", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", Georgia, Cambria, serif;
   
-  --color-brand-bg: #111111;
-  --color-brand-primary: #FFFFFF;
-  --color-brand-gold: #C8A04D;
-  --color-brand-gray: #D0D0D0;
-  --color-brand-light: #1A1A1A;
-  --color-brand-border: rgba(255, 255, 255, 0.08);
+  --color-primary: #C1121F;
+  --color-primary-hover: #D62839;
+  --color-accent: #E63946;
+  --color-primary-dark: #8F0F18;
+  --color-bg: #0A0A0A;
+  --color-section: #141414;
+  --color-card: #181818;
+  --color-border: #2C2C2C;
+  --color-text: #FFFFFF;
+  --color-text-muted: #A8A8A8;
 }
 
 /* Custom global rules for luxurious Apple/Airbnb styling */
 html {
   scroll-behavior: smooth;
 }
-
 ::selection {
-  background-color: #C8A04D;
-  color: #111111;
+  background-color: var(--color-primary);
+  color: var(--color-text);
 }
-
 body {
-  background-color: #111111;
-  color: #D0D0D0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
   font-family: var(--font-sans);
   line-height: 1.8; /* 180% line height */
   -webkit-font-smoothing: antialiased;
 }
-
 h1, h2, h3, h4 {
-  color: #FFFFFF;
+  color: var(--color-text);
   line-height: 1.4;
 }
 
@@ -42,10 +43,10 @@ h1, h2, h3, h4 {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #111111;
+  background: var(--color-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #2a2a2a;
+  background: var(--color-border);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {

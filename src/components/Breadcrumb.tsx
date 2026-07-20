@@ -30,24 +30,24 @@ export default function Breadcrumb({ currentRegionId, currentRegionName, onNavig
   return (
     <nav 
       aria-label="Breadcrumb" 
-      className="max-w-7xl mx-auto px-6 py-4 flex items-center space-x-2 text-xs font-sans tracking-wide text-neutral-400"
+      className="max-w-7xl mx-auto px-6 py-4 flex items-center space-x-2 text-xs font-sans tracking-wide text-[#A8A8A8]"
       id="seo-breadcrumb"
     >
       {/* Home node */}
       <a 
         href="/" 
         onClick={handleHomeClick}
-        className="hover:text-white transition-colors flex items-center space-x-1 font-semibold"
+        className="hover:text-[#E63946] transition-colors duration-250 flex items-center space-x-1 font-semibold"
       >
         <Home className="w-3.5 h-3.5" />
         <span>홈</span>
       </a>
 
-      <ChevronRight className="w-3 h-3 text-neutral-600 shrink-0" />
+      <ChevronRight className="w-3 h-3 text-[#2C2C2C] shrink-0" />
 
       {/* Second node: City Core */}
       {isMain ? (
-        <span className="text-[#C8A04D] font-bold" aria-current="page">
+        <span className="text-[#C1121F] font-bold" aria-current="page">
           시흥출장마사지
         </span>
       ) : (
@@ -55,12 +55,12 @@ export default function Breadcrumb({ currentRegionId, currentRegionName, onNavig
           <a 
             href={getPathByRegionId("시흥출장마사지")} 
             onClick={handleMainClick}
-            className="hover:text-white transition-colors font-semibold"
+            className="hover:text-[#E63946] transition-colors duration-250 font-semibold"
           >
             시흥출장마사지
           </a>
-          <ChevronRight className="w-3 h-3 text-neutral-600 shrink-0" />
-          <span className="text-[#C8A04D] font-bold truncate max-w-[180px] sm:max-w-none" aria-current="page">
+          <ChevronRight className="w-3 h-3 text-[#2C2C2C] shrink-0" />
+          <span className="text-[#C1121F] font-bold truncate max-w-[180px] sm:max-w-none" aria-current="page">
             {currentRegionName}
           </span>
         </>

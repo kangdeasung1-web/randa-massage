@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Heart, ChevronDown, ChevronRight, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { getPathByRegionId } from '../data/slugs';
-import GoldLogo from './GoldLogo';
+import BrandLogo from './BrandLogo';
 
 interface HeaderProps {
   currentRegionId: string;
@@ -86,7 +86,7 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
       sectionId: 'hero-banner'
     },
     { 
-      label: '프리미엄 케어', 
+      label: '코스·가격', 
       action: () => handleScrollTo('premium-courses-section'),
       sectionId: 'premium-courses-section'
     },
@@ -113,16 +113,16 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
   return (
     <>
       <header 
-        className={`sticky top-0 z-50 w-full h-[100px] bg-[#050505] border-b border-[#C8A04D]/18 backdrop-blur-md transition-shadow duration-300 ${
+        className={`sticky top-0 z-50 w-full h-[100px] bg-[#090909] border-b border-[#292929] backdrop-blur-md transition-shadow duration-300 ${
           isScrolled ? 'shadow-[0_4px_20px_rgba(0,0,0,0.5)]' : 'shadow-none'
         }`} 
         id="app-header"
       >
-        <div className="max-w-[1440px] mx-auto px-6 md:px-14 h-full flex items-center justify-between">
+        <div className="mx-auto h-full flex items-center w-full max-w-[1600px] px-[18px] lg:px-0 lg:w-[calc(100%-80px)]">
           
           {/* Left: Minimal Logo & Brand */}
           <div 
-            className="flex-1 flex items-center justify-start cursor-pointer group"
+            className="shrink-0 flex items-center cursor-pointer group"
             onClick={() => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
               setIsDropdownOpen(false);
@@ -131,12 +131,12 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
             id="logo-container"
           >
             <div className="w-[220px] xs:w-[240px] lg:w-[280px] h-[75px] flex items-center scale-[0.88] xs:scale-[1.0] lg:scale-[1.15] origin-left shrink-0">
-              <GoldLogo />
+              <BrandLogo />
             </div>
           </div>
 
           {/* Center: Navigation Links (Desktop) */}
-          <nav className="hidden lg:flex items-center justify-center space-x-[64px] flex-initial" id="desktop-nav-menu">
+          <nav className="hidden lg:flex items-center justify-between flex-1 max-w-[820px] ml-[70px]" style={{ gap: 'clamp(48px, 5vw, 88px)' }} id="desktop-nav-menu">
             {menuItems.map((item, idx) => {
               if (item.isDropdownTrigger) {
                 return (
@@ -148,12 +148,12 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
                   >
                     <button
                       onClick={(e) => item.action(e)}
-                      className="text-[17px] font-sans font-semibold text-white hover:text-[#C8A04D] transition-colors cursor-pointer flex items-center space-x-1 group relative py-1"
+                      className={`text-[17px] font-sans font-semibold transition-colors cursor-pointer flex items-center space-x-1 group relative py-1 ${isDropdownOpen ? 'text-[#E63946]' : 'text-[#F5F5F5] hover:text-[#E63946]'}`}
                     >
                       <span>{item.label}</span>
-                      <ChevronDown className="w-4 h-4 ml-1 transition-transform duration-200 text-[#C8A04D] group-hover:rotate-180" />
-                      {/* Active or Hover gold dot indicator */}
-                      <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#C8A04D] opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180 ${isDropdownOpen ? 'text-[#E63946] rotate-180' : 'text-[#F5F5F5] group-hover:text-[#E63946]'}`} />
+                      {/* Active or Hover red dot indicator */}
+                      <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#E63946] opacity-0 group-hover:opacity-100 transition-opacity" />
                     </button>
 
                     {/* Desktop Dropdown Menu (340px - 380px Width) */}
@@ -164,13 +164,13 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 5 }}
                           transition={{ duration: 0.15, ease: "easeOut" }}
-                          className="absolute top-[58px] left-1/2 -translate-x-1/2 w-[350px] bg-[#0A0A0A] border border-[#C8A04D]/18 rounded-[18px] shadow-[0_4px_30px_rgba(200,160,77,0.15)] z-50 overflow-hidden text-white py-4 flex flex-col"
+                          className="absolute top-[58px] left-1/2 -translate-x-1/2 w-[350px] bg-[#181818] border border-[#2C2C2C] rounded-[20px] shadow-[0_4px_30px_rgba(0,0,0,0.3)] z-50 overflow-hidden text-[#F5F5F5] py-4 flex flex-col"
                           id="nav-dropdown-menu"
                         >
                           {/* Menu Header */}
-                          <div className="px-5 pb-3 border-b border-white/5 flex flex-col text-left">
-                            <span className="font-sans font-bold text-[13px] tracking-tight text-white">{currentCityData.cityName}</span>
-                            <span className="text-[9px] font-sans font-bold text-[#C8A04D] tracking-wider uppercase mt-0.5">{currentCityData.subtext}</span>
+                          <div className="px-5 pb-3 border-b border-[#2C2C2C] flex flex-col text-left">
+                            <span className="font-sans font-bold text-[13px] tracking-tight text-[#F5F5F5]">{currentCityData.cityName}</span>
+                            <span className="text-[9px] font-sans font-bold text-[#C1121F] tracking-wider uppercase mt-0.5">{currentCityData.subtext}</span>
                           </div>
 
                           {/* Menu List - Vertical scrollable list */}
@@ -185,30 +185,29 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
                                     e.preventDefault();
                                     handleRegionClick(region.regionId);
                                   }}
-                                  className="group/item w-full text-left py-2 px-3 rounded-[8px] text-xs font-sans transition-all duration-200 flex items-center justify-between hover:bg-[#C8A04D]/15 hover:text-white text-neutral-300 bg-transparent cursor-pointer"
-                                  style={{
-                                    backgroundColor: isActive ? '#C8A04D' : 'transparent',
-                                    color: isActive ? '#111111' : '',
-                                    fontWeight: isActive ? 'bold' : 'normal',
-                                  }}
+                                  className={`group/item w-full text-left py-2 px-3 rounded-[8px] text-xs font-sans transition-all duration-200 flex items-center justify-between cursor-pointer ${
+                                    isActive 
+                                      ? 'bg-[rgba(230,57,70,0.1)] text-[#E63946] font-bold' 
+                                      : 'hover:bg-[rgba(230,57,70,0.05)] hover:text-[#E63946] text-[#A8A8A8] bg-transparent'
+                                  }`}
                                 >
                                   <div className="flex items-center space-x-2">
                                     {isActive ? (
-                                      <span className="w-1 h-1 rounded-full bg-[#111111] shrink-0" />
+                                      <span className="w-1 h-1 rounded-full bg-[#E63946] shrink-0" />
                                     ) : (
                                       <span className="w-1 h-1 rounded-full bg-transparent shrink-0" />
                                     )}
                                     <span>{region.name}</span>
                                   </div>
-                                  <ChevronRight className={`w-3.5 h-3.5 shrink-0 transition-transform group-hover/item:translate-x-0.5 ${isActive ? 'text-[#111111]' : 'text-neutral-500 group-hover/item:text-white'}`} />
+                                  <ChevronRight className={`w-3.5 h-3.5 shrink-0 transition-transform group-hover/item:translate-x-0.5 ${isActive ? 'text-[#E63946]' : 'text-[#A8A8A8] group-hover/item:text-[#E63946]'}`} />
                                 </a>
                               );
                             })}
                           </div>
 
                           {/* Menu Footer */}
-                          <div className="px-5 pt-3 border-t border-white/5 flex items-center space-x-2 text-[10px] text-[#9A9A9A]">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+                          <div className="px-5 pt-3 border-t border-[#2C2C2C] flex items-center space-x-2 text-[10px] text-[#A8A8A8]">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#E63946] shrink-0" />
                             <span className="font-sans font-semibold">시흥 전지역 24시간 예약 가능</span>
                           </div>
                         </motion.div>
@@ -222,11 +221,11 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
                 <button
                   key={idx}
                   onClick={item.action}
-                  className="text-[17px] font-sans font-semibold text-white hover:text-[#C8A04D] tracking-normal transition-colors cursor-pointer group relative py-1"
+                  className="text-[17px] font-sans font-semibold text-[#F5F5F5] hover:text-[#E63946] tracking-normal transition-colors cursor-pointer group relative py-1"
                 >
                   <span>{item.label}</span>
-                  {/* Hover or Active Golden Underline */}
-                  <span className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-[#C8A04D] scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-250" />
+                  {/* Hover or Active Red Underline */}
+                  <span className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-[#E63946] scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-250" />
                 </button>
               );
             })}
@@ -237,10 +236,10 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
           </div>
 
           {/* Hamburger Menu Icon (Mobile) */}
-          <div className="lg:hidden flex items-center">
+          <div className="lg:hidden flex flex-1 justify-end items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-white hover:text-[#C8A04D] transition-colors focus:outline-none"
+              className="p-2 text-[#F5F5F5] hover:text-[#E63946] transition-colors focus:outline-none ml-auto"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -258,20 +257,20 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="fixed inset-0 top-[76px] z-40 w-full bg-[#111111] flex flex-col justify-between p-6 border-t border-white/8 lg:hidden overflow-y-auto"
+            className="fixed inset-0 top-[100px] z-40 w-full bg-[#090909] flex flex-col justify-between p-6 border-t border-[#292929] lg:hidden overflow-y-auto"
             id="mobile-drawer-menu"
           >
             <div className="flex flex-col space-y-4 mt-2">
               {menuItems.map((item, idx) => {
                 if (item.isDropdownTrigger) {
                   return (
-                    <div key={idx} className="border-b border-white/5 pb-2">
+                    <div key={idx} className="border-b border-[#292929] pb-2">
                       <button
                         onClick={() => setIsMobileAccordionOpen(!isMobileAccordionOpen)}
-                        className="w-full text-left py-2 text-lg font-sans font-semibold text-white hover:text-[#C8A04D] transition-colors flex items-center justify-between"
+                        className="w-full text-left py-2 text-lg font-sans font-semibold text-[#F5F5F5] hover:text-[#E63946] transition-colors flex items-center justify-between"
                       >
                         <span>{item.label}</span>
-                        <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isMobileAccordionOpen ? 'rotate-180 text-[#C8A04D]' : 'text-neutral-500'}`} />
+                        <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isMobileAccordionOpen ? 'rotate-180 text-[#E63946]' : 'text-[#A8A8A8]'}`} />
                       </button>
 
                       {/* Mobile Accordion Container */}
@@ -284,7 +283,7 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
                             transition={{ duration: 0.25 }}
                             className="overflow-hidden pl-2 pt-2 space-y-1 max-h-[300px] overflow-y-auto custom-scrollbar"
                           >
-                            <div className="pb-2 text-[10px] text-[#C8A04D] font-bold tracking-wider uppercase">
+                            <div className="pb-2 text-[10px] text-[#C1121F] font-bold tracking-wider uppercase">
                               시흥 프리미엄 서비스 구역
                             </div>
                             
@@ -300,17 +299,17 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
                                   }}
                                   className={`w-full text-left py-2 px-3 rounded-[8px] text-xs font-sans transition-all flex items-center justify-between ${
                                     isActive
-                                      ? 'bg-[#C8A04D] text-[#111111] font-bold'
-                                      : 'hover:bg-[#C8A04D]/15 hover:text-white text-neutral-300'
+                                      ? 'bg-[rgba(230,57,70,0.1)] text-[#E63946] font-bold'
+                                      : 'hover:bg-[rgba(230,57,70,0.05)] hover:text-[#E63946] text-[#A8A8A8]'
                                   }`}
                                 >
                                   <div className="flex items-center space-x-2">
                                     {isActive && (
-                                      <span className="w-1 h-1 rounded-full bg-[#111111] shrink-0" />
+                                      <span className="w-1 h-1 rounded-full bg-[#E63946] shrink-0" />
                                     )}
                                     <span>{region.name}</span>
                                   </div>
-                                  <ChevronRight className={`w-3.5 h-3.5 shrink-0 ${isActive ? 'text-[#111111]' : 'text-neutral-500'}`} />
+                                  <ChevronRight className={`w-3.5 h-3.5 shrink-0 ${isActive ? 'text-[#E63946]' : 'text-[#A8A8A8]'}`} />
                                 </a>
                               );
                             })}
@@ -331,7 +330,7 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
                       setIsMobileMenuOpen(false);
                       item.action();
                     }}
-                    className="text-left text-lg font-sans font-semibold text-white hover:text-[#C8A04D] transition-colors border-b border-white/5 pb-2"
+                    className="text-left text-lg font-sans font-semibold text-[#F5F5F5] hover:text-[#E63946] transition-colors border-b border-[#292929] pb-2"
                   >
                     {item.label}
                   </motion.button>
@@ -340,9 +339,9 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
             </div>
 
             {/* Mobile Drawer Footer with Booking CTA removed */}
-            <div className="pt-6 pb-4 flex items-center justify-center space-x-2 border-t border-white/5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
-              <span className="text-[10px] text-neutral-400 tracking-tight font-sans">시흥 전지역 24시간 예약 가능</span>
+            <div className="pt-6 pb-4 flex items-center justify-center space-x-2 border-t border-[#292929]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#E63946] shrink-0" />
+              <span className="text-[10px] text-[#A8A8A8] tracking-tight font-sans">시흥 전지역 24시간 예약 가능</span>
             </div>
           </motion.div>
         )}
