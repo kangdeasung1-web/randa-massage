@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Activity, Droplet, Sparkles } from 'lucide-react';
+import { Activity, Droplet, Sparkles, Award } from 'lucide-react';
 
 interface CourseOption {
   duration: string;
@@ -58,7 +58,10 @@ export default function CourseSection() {
           <span className="text-xs text-[#C1121F] font-sans font-semibold tracking-wider block">
             엄선된 맞춤형 코스
           </span>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#FFFFFF] tracking-tight">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#FFFFFF] tracking-tight flex items-center justify-center gap-3">
+            <span className="premium-icon-wrapper">
+              <Award className="premium-icon" />
+            </span>
             프리미엄 케어 프로그램
           </h2>
           <div className="w-8 h-[1px] bg-[#C1121F] mx-auto mt-3" />
@@ -82,17 +85,17 @@ export default function CourseSection() {
                   <span className="px-2.5 py-0.5 rounded-full bg-[rgba(193,18,31,0.12)] text-[#E63946] text-[10px] font-sans font-bold tracking-wider border border-[rgba(193,18,31,0.35)]">
                     {course.badge}
                   </span>
-                  <div className="text-[#E63946] bg-[rgba(193,18,31,0.05)] p-2 rounded-xl border border-[rgba(193,18,31,0.35)]">
+                  <span className="premium-icon-wrapper">
                     {course.id === 'dry-care' && (
-                      <Activity className="w-4 h-4 stroke-[1.5]" />
+                      <Activity className="premium-icon" />
                     )}
                     {course.id === 'swedish-healing' && (
-                      <Droplet className="w-4 h-4 stroke-[1.5]" />
+                      <Droplet className="premium-icon" />
                     )}
                     {course.id === 'premium-care' && (
-                      <Sparkles className="w-4 h-4 stroke-[1.5]" />
+                      <Sparkles className="premium-icon" />
                     )}
-                  </div>
+                  </span>
                 </div>
 
                 {/* Course Name (Korean First, Largest) */}

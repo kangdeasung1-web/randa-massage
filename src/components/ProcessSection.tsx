@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, CheckCircle } from 'lucide-react';
 
 interface ProcessSectionProps {
   regionName: string;
@@ -38,7 +38,10 @@ export default function ProcessSection({ regionName }: ProcessSectionProps) {
           <span className="text-xs text-[#C1121F] font-sans font-semibold tracking-[0.2em] uppercase block">
             간편하고 안전한 홈케어
           </span>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8F8F8] tracking-tight">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#F8F8F8] tracking-tight flex items-center justify-center gap-3">
+            <span className="premium-icon-wrapper">
+              <CheckCircle className="premium-icon" />
+            </span>
             이용 절차 안내
           </h2>
           <p className="text-sm md:text-base text-[#A8A8A8]">

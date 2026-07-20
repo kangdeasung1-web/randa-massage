@@ -91,7 +91,7 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
       sectionId: 'premium-courses-section'
     },
     { 
-      label: '시흥출장마사지 ▼', 
+      label: '시흥출장마사지', 
       isDropdownTrigger: true, 
       action: (e?: React.MouseEvent) => {
         if (e) {
@@ -136,7 +136,7 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
           </div>
 
           {/* Center: Navigation Links (Desktop) */}
-          <nav className="hidden lg:flex items-center justify-between flex-1 max-w-[820px] ml-[70px]" style={{ gap: 'clamp(48px, 5vw, 88px)' }} id="desktop-nav-menu">
+          <nav className="hidden lg:flex items-center justify-start gap-[72px] ml-[120px]" id="desktop-nav-menu">
             {menuItems.map((item, idx) => {
               if (item.isDropdownTrigger) {
                 return (

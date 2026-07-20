@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Star } from 'lucide-react';
+import { Star, Heart } from 'lucide-react';
 
 export default function ReviewSection() {
   const reviews = [
@@ -35,7 +35,10 @@ export default function ReviewSection() {
           <span className="text-xs text-[#C1121F] font-sans font-semibold tracking-[0.2em] uppercase block">
             소중한 고객 만족 후기
           </span>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8F8F8] tracking-tight leading-tight">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#F8F8F8] tracking-tight leading-tight flex items-center justify-center gap-3">
+            <span className="premium-icon-wrapper">
+              <Heart className="premium-icon" />
+            </span>
             고객이 다시 찾는 간다출장마사지
           </h2>
           <p className="text-sm md:text-base text-[#A8A8A8]">

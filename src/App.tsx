@@ -380,7 +380,9 @@ export default function App({ initialPath }: { initialPath?: string }) {
               className="flex flex-col sm:flex-row items-center sm:items-stretch justify-center lg:justify-start gap-6 sm:gap-0 mt-8 py-5 border-y border-[#2C2C2C] w-full max-w-[600px] mx-auto lg:mx-0"
             >
               <div className="flex flex-col sm:flex-row flex-1 items-center sm:items-start space-y-2 sm:space-y-0 sm:space-x-3 sm:pr-4">
-                <ShieldCheck className="w-5 h-5 text-[#C1121F] shrink-0 sm:mt-0.5" />
+                <span className="premium-icon-wrapper shrink-0">
+                  <ShieldCheck className="premium-icon" />
+                </span>
                 <div className="text-center sm:text-left">
                   <h4 className="text-sm font-bold text-[#F8F8F8] leading-none">예약금 없는 후불제</h4>
                   <p className="text-xs text-[#A8A8A8] mt-1.5 whitespace-nowrap">안심하고 이용하세요</p>
@@ -389,7 +391,9 @@ export default function App({ initialPath }: { initialPath?: string }) {
               <div className="hidden sm:block w-[1px] bg-[#2C2C2C] self-stretch my-1" />
               
               <div className="flex flex-col sm:flex-row flex-1 items-center sm:items-start space-y-2 sm:space-y-0 sm:space-x-3 sm:px-6">
-                <Clock3 className="w-5 h-5 text-[#C1121F] shrink-0 sm:mt-0.5" />
+                <span className="premium-icon-wrapper shrink-0">
+                  <Clock3 className="premium-icon" />
+                </span>
                 <div className="text-center sm:text-left">
                   <h4 className="text-sm font-bold text-[#F8F8F8] leading-none">24시간 상담</h4>
                   <p className="text-xs text-[#A8A8A8] mt-1.5 whitespace-nowrap">언제든지 편안하게</p>
@@ -398,7 +402,9 @@ export default function App({ initialPath }: { initialPath?: string }) {
               <div className="hidden sm:block w-[1px] bg-[#2C2C2C] self-stretch my-1" />
               
               <div className="flex flex-col sm:flex-row flex-1 items-center sm:items-start space-y-2 sm:space-y-0 sm:space-x-3 sm:pl-6">
-                <MapPin className="w-5 h-5 text-[#C1121F] shrink-0 sm:mt-0.5" />
+                <span className="premium-icon-wrapper shrink-0">
+                  <MapPin className="premium-icon" />
+                </span>
                 <div className="text-center sm:text-left">
                   <h4 className="text-sm font-bold text-[#F8F8F8] leading-none">{activeRegionData.name.replace("출장마사지", "") || "시흥"} 전지역 방문</h4>
                   <p className="text-xs text-[#A8A8A8] mt-1.5 whitespace-nowrap">신속하고 친절하게</p>
@@ -412,7 +418,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
-            className="order-2 relative h-[520px] lg:h-full lg:min-h-[690px] w-[calc(100%-32px)] lg:w-full mx-auto lg:mx-0 overflow-hidden rounded-[20px] border border-[#2C2C2C] bg-[#0B0B0B]"
+            className="order-2 relative h-[520px] lg:h-full lg:min-h-[690px] w-[calc(100%-32px)] lg:w-full mx-auto lg:mx-0 overflow-hidden rounded-[20px] border border-[#2C2C2C] bg-[#0B0B0B] group hover:border-[#E63946] hover:shadow-[0_8px_30px_rgba(193,18,31,0.18)] hover:-translate-y-1 transition-all duration-300"
           >
             {/* Extremely tight fit banner focusing on her face and torso with scroll parallax */}
             <div className="w-full h-full overflow-hidden relative flex items-center justify-center bg-[#121212]">
@@ -423,7 +429,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
                 height="1400"
                 loading="eager"
                 fetchPriority="high"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500 ease-out"
                 style={{ objectPosition: 'center top' }}
               />
             </div>
@@ -641,7 +647,10 @@ export default function App({ initialPath }: { initialPath?: string }) {
             <span className="text-xs text-[#C1121F] font-sans font-semibold tracking-wider block uppercase">
               Area Map
             </span>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#F8F8F8] tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#F8F8F8] tracking-tight flex items-center justify-center gap-3">
+              <span className="premium-map-pin-wrapper">
+                <MapPin className="premium-icon" />
+              </span>
               주요 방문지역
             </h2>
             <div className="w-8 h-[1px] bg-[#C1121F] mx-auto mt-4 mb-8" />

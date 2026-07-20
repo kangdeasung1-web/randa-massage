@@ -73,28 +73,40 @@ export default function Footer({ currentRegionId, onNavigate }: FooterProps) {
             </div>
             
             <div className="space-y-2 pt-2">
-              <div className="flex items-center space-x-3 group">
-                <Phone className="w-4 h-4 text-[#C1121F] group-hover:text-[#D62839] shrink-0" />
-                <span className="text-xs text-[#A8A8A8] font-sans">전화번호: </span>
-                <a href="tel:010-7497-2653" className="text-xs font-sans font-bold text-[#F8F8F8] hover:text-[#E63946] transition-colors">
-                  010-7497-2653
-                </a>
+              <div className="flex items-center space-x-4 group">
+                <span className="premium-icon-wrapper shrink-0 scale-[0.6] origin-left">
+                  <Phone className="premium-icon" />
+                </span>
+                <div>
+                  <span className="text-xs text-[#A8A8A8] font-sans">전화번호: </span>
+                  <a href="tel:010-7497-2653" className="text-xs font-sans font-bold text-[#F8F8F8] hover:text-[#E63946] transition-colors">
+                    010-7497-2653
+                  </a>
+                </div>
               </div>
               
-              <div className="flex items-center space-x-3">
-                <MessageSquare className="w-4 h-4 text-[#C1121F] shrink-0" />
-                <span className="text-xs text-[#A8A8A8] font-sans">카카오톡: </span>
-                <a href="https://open.kakao.com/o/se8MdBEi" target="_blank" rel="noopener noreferrer" className="text-xs font-sans font-medium text-[#F8F8F8] hover:text-[#E63946] transition-colors">
-                  간다출장상담센터
-                </a>
+              <div className="flex items-center space-x-4">
+                <span className="premium-icon-wrapper shrink-0 scale-[0.6] origin-left">
+                  <MessageSquare className="premium-icon" />
+                </span>
+                <div>
+                  <span className="text-xs text-[#A8A8A8] font-sans">카카오톡: </span>
+                  <a href="https://open.kakao.com/o/se8MdBEi" target="_blank" rel="noopener noreferrer" className="text-xs font-sans font-medium text-[#F8F8F8] hover:text-[#E63946] transition-colors">
+                    간다출장상담센터
+                  </a>
+                </div>
               </div>
 
-              <div className="flex items-center space-x-3">
-                <Clock className="w-4 h-4 text-[#C1121F] shrink-0" />
-                <span className="text-xs text-[#A8A8A8] font-sans">운영시간: </span>
-                <span className="text-xs font-sans font-semibold text-[#F8F8F8]">
-                  24시간 연중무휴 (24/7)
+              <div className="flex items-center space-x-4">
+                <span className="premium-icon-wrapper shrink-0 scale-[0.6] origin-left">
+                  <Clock className="premium-icon" />
                 </span>
+                <div>
+                  <span className="text-xs text-[#A8A8A8] font-sans">운영시간: </span>
+                  <span className="text-xs font-sans font-semibold text-[#F8F8F8]">
+                    24시간 연중무휴 (24/7)
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -223,19 +235,19 @@ export default function Footer({ currentRegionId, onNavigate }: FooterProps) {
           <div className="flex items-center space-x-4">
             <a 
               href="tel:010-7497-2653" 
-              className="w-10 h-10 rounded-full border border-[#2C2C2C] flex items-center justify-center text-[#A8A8A8] hover:text-[#E63946] hover:border-[#E63946] transition-all duration-300 hover:scale-105"
+              className="premium-icon-wrapper"
               title="전화 연결"
             >
-              <Phone className="w-4 h-4 fill-current" />
+              <Phone className="premium-icon" />
             </a>
             <a 
               href="https://open.kakao.com/o/se8MdBEi" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="w-10 h-10 rounded-full border border-[#2C2C2C] flex items-center justify-center text-[#A8A8A8] hover:text-[#E63946] hover:border-[#E63946] transition-all duration-300 hover:scale-105"
+              className="premium-icon-wrapper"
               title="카카오톡 상담"
             >
-              <MessageSquare className="w-4 h-4" />
+              <MessageSquare className="premium-icon" />
             </a>
           </div>
         </div>

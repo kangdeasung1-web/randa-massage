@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Plus, Minus } from 'lucide-react';
+import { Plus, Minus, HelpCircle } from 'lucide-react';
 import { SHARED_FAQS } from '../data/sharedFaqs';
 
 interface FaqSectionProps {
@@ -25,7 +25,10 @@ export default function FaqSection({ regionName }: FaqSectionProps) {
           <span className="text-xs text-[#C1121F] font-sans font-semibold tracking-[0.2em] uppercase block">
             질문과 답변
           </span>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8F8F8] tracking-tight leading-tight">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#F8F8F8] tracking-tight leading-tight flex items-center justify-center gap-3">
+            <span className="premium-icon-wrapper">
+              <HelpCircle className="premium-icon" />
+            </span>
             자주 묻는 질문
           </h2>
           <p className="text-sm md:text-base text-[#A8A8A8]">
