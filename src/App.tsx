@@ -299,14 +299,48 @@ export default function App({ initialPath }: { initialPath?: string }) {
 
       {/* 2. Redesigned Premium Hero Section - 1440px Horizontal Premium Layout */}
       <section 
-        className="w-full lg:h-[740px] flex items-center overflow-hidden relative bg-[#0B0B0B] py-16 lg:py-0" 
+        className="w-full relative bg-[#0B0B0B] py-8 lg:py-0 overflow-hidden" 
         id="hero-banner"
       >
-        <div className="w-full max-w-[1440px] mx-auto px-0 lg:px-14 h-full grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
+        <div className="w-full max-w-[1440px] mx-auto px-4 lg:px-14 h-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
           
-          {/* Left Column: Text & CTAs */}
+          {/* Right Column: Premium Model Image Banner - Displayed on top for mobile */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
+            className="order-1 lg:order-2 relative h-[380px] xs:h-[440px] sm:h-[480px] lg:h-[690px] w-full max-w-[480px] lg:max-w-none mx-auto overflow-hidden rounded-[20px] border border-[#2C2C2C] bg-[#0B0B0B] group hover:border-[#E63946] hover:shadow-[0_8px_30px_rgba(193,18,31,0.18)] hover:-translate-y-1 transition-all duration-300"
+          >
+            {/* Extremely tight fit banner focusing on her face and torso */}
+            <div className="w-full h-full overflow-hidden relative flex items-center justify-center bg-[#121212]">
+              <img
+                src="/images/ganda-hero-woman.webp"
+                alt={`${activeRegionData.name} 출장마사지 - 24시 홈타이, 타이마사지`}
+                width="1200"
+                height="1400"
+                loading="eager"
+                fetchPriority="high"
+                className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500 ease-out select-none filter brightness-105 saturate-105"
+                style={{ objectPosition: 'center 12%' }}
+                id="ganda-hero-woman"
+              />
+            </div>
+            
+            {/* Left black gradient overlay (Desktop) */}
+            <div 
+              className="absolute inset-0 z-10 pointer-events-none hidden lg:block" 
+              style={{ background: 'linear-gradient(90deg, transparent 0%, transparent 100%)' }} 
+            />
+            {/* Bottom black gradient overlay (Mobile) */}
+            <div 
+              className="absolute inset-0 z-10 pointer-events-none lg:hidden" 
+              style={{ background: 'linear-gradient(0deg, transparent 0%, transparent 100%)' }} 
+            />
+          </motion.div>
+
+          {/* Left Column: Text & CTAs - Placed below image on mobile */}
           <div 
-            className="flex flex-col items-center justify-center text-center lg:items-start lg:text-left lg:justify-center order-1 h-full w-full px-[20px] lg:px-0 box-border" 
+            className="flex flex-col items-center justify-center text-center lg:items-start lg:text-left lg:justify-center order-2 lg:order-1 h-full w-full px-[20px] lg:px-0 box-border" 
             id="hero-text-content"
           >
             <motion.div
@@ -412,39 +446,6 @@ export default function App({ initialPath }: { initialPath?: string }) {
               </div>
             </motion.div>
           </div>
-
-          {/* Right Column: Premium Model Image Banner */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
-            className="order-2 relative h-[520px] lg:h-full lg:min-h-[690px] w-[calc(100%-32px)] lg:w-full mx-auto lg:mx-0 overflow-hidden rounded-[20px] border border-[#2C2C2C] bg-[#0B0B0B] group hover:border-[#E63946] hover:shadow-[0_8px_30px_rgba(193,18,31,0.18)] hover:-translate-y-1 transition-all duration-300"
-          >
-            {/* Extremely tight fit banner focusing on her face and torso with scroll parallax */}
-            <div className="w-full h-full overflow-hidden relative flex items-center justify-center bg-[#121212]">
-              <img
-                src="/images/ganda-hero-woman.webp"
-                alt="시흥출장마사지 프리미엄 홈케어 간다"
-                width="1200"
-                height="1400"
-                loading="eager"
-                fetchPriority="high"
-                className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500 ease-out"
-                style={{ objectPosition: 'center top' }}
-              />
-            </div>
-            
-            {/* Left black gradient overlay (Desktop) */}
-            <div 
-              className="absolute inset-0 z-10 pointer-events-none hidden lg:block" 
-              style={{ background: 'linear-gradient(90deg, transparent 0%, transparent 100%)' }} 
-            />
-            {/* Bottom black gradient overlay (Mobile) */}
-            <div 
-              className="absolute inset-0 z-10 pointer-events-none lg:hidden" 
-              style={{ background: 'linear-gradient(0deg, transparent 0%, transparent 100%)' }} 
-            />
-          </motion.div>
 
         </div>
       </section>
