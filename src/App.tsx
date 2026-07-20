@@ -347,11 +347,36 @@ export default function App({ initialPath }: { initialPath?: string }) {
               편하게 이용할 수 있습니다.
             </motion.p>
 
+            {/* CTA Group Buttons */}
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-[16px] mt-8 w-full max-w-[340px] sm:max-w-none mx-auto lg:mx-0 select-none" 
+              id="hero-cta-group"
+            >
+              <a 
+                href="tel:010-7497-2653"
+                className="w-full sm:w-[210px] h-[60px] px-6 rounded-[16px] bg-transparent border-[1.5px] border-[#C1121F] text-[#FFFFFF] font-bold text-base flex items-center justify-center cursor-pointer whitespace-nowrap hover:bg-[#C1121F] hover:border-[#C1121F] hover:text-[#FFFFFF] transition-all duration-200"
+              >
+                전화 상담
+              </a>
+
+              <a 
+                href="https://open.kakao.com/o/se8MdBEi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-[210px] h-[60px] px-6 rounded-[16px] bg-[#C1121F] border-[1.5px] border-[#C1121F] text-[#FFFFFF] font-bold text-base flex items-center justify-center cursor-pointer whitespace-nowrap hover:bg-[#D62839] hover:border-[#D62839] hover:text-[#FFFFFF] transition-all duration-200"
+              >
+                카카오 상담
+              </a>
+            </motion.div>
+
             {/* Horizontal Trust Badges (3 items) */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-col sm:flex-row items-center sm:items-stretch justify-center lg:justify-start gap-6 sm:gap-0 mt-8 py-5 border-y border-[#2C2C2C] w-full max-w-[600px] mx-auto lg:mx-0"
             >
               <div className="flex flex-col sm:flex-row flex-1 items-center sm:items-start space-y-2 sm:space-y-0 sm:space-x-3 sm:pr-4">
@@ -380,35 +405,10 @@ export default function App({ initialPath }: { initialPath?: string }) {
                 </div>
               </div>
             </motion.div>
-
-            {/* CTA Group Buttons */}
-            <motion.div 
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-[16px] mt-8 w-full max-w-[340px] sm:max-w-none mx-auto lg:mx-0 select-none" 
-              id="hero-cta-group"
-            >
-              <a 
-                href="tel:010-7497-2653"
-                className="w-full sm:w-[210px] h-[60px] px-6 rounded-[16px] bg-transparent border-[1.5px] border-[#C1121F] text-[#FFFFFF] font-bold text-base flex items-center justify-center cursor-pointer whitespace-nowrap hover:bg-[#C1121F] hover:border-[#C1121F] hover:text-[#FFFFFF] transition-all duration-200"
-              >
-                전화 상담
-              </a>
-
-              <a 
-                href="https://open.kakao.com/o/se8MdBEi"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-[210px] h-[60px] px-6 rounded-[16px] bg-[#C1121F] border-[1.5px] border-[#C1121F] text-[#FFFFFF] font-bold text-base flex items-center justify-center cursor-pointer whitespace-nowrap hover:bg-[#D62839] hover:border-[#D62839] hover:text-[#FFFFFF] transition-all duration-200"
-              >
-                카카오 상담
-              </a>
-            </motion.div>
           </div>
 
           {/* Right Column: Premium Model Image Banner */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
@@ -635,19 +635,63 @@ export default function App({ initialPath }: { initialPath?: string }) {
       <FaqSection regionName={activeRegionData.name} />
 
       {/* 7. Premium Area Map */}
-      <section className="py-16 md:py-24 bg-[#181818] border-t border-[#2C2C2C]" id="premium-area-map">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-14">
-          <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
+      <section className="bg-[#181818] border-t border-[#2C2C2C]" id="premium-area-map">
+        <div className="max-w-[1200px] mx-auto px-[20px] md:px-[24px] py-[64px]">
+          <div className="text-center max-w-2xl mx-auto mb-10 space-y-2 flex flex-col items-center">
             <span className="text-xs text-[#C1121F] font-sans font-semibold tracking-wider block uppercase">
               Area Map
             </span>
             <h2 className="text-2xl md:text-3xl font-bold text-[#F8F8F8] tracking-tight">
-              서비스 가능 지역
+              주요 방문지역
             </h2>
-            <p className="text-sm md:text-base text-[#A8A8A8]">
-              서울 · 경기 · 인천 전지역 방문 가능
-            </p>
-            <div className="w-8 h-[1px] bg-[#C1121F] mx-auto mt-4" />
+            <div className="w-8 h-[1px] bg-[#C1121F] mx-auto mt-4 mb-8" />
+            
+            <button
+              onClick={() => setIsRegionsExpanded(!isRegionsExpanded)}
+              className="h-[52px] px-[28px] rounded-[14px] bg-transparent border border-[#C1121F] text-[#FFFFFF] font-sans font-bold text-base hover:bg-[#C1121F] hover:text-[#FFFFFF] transition-colors duration-300 w-full max-w-[320px] md:max-w-none md:w-auto"
+            >
+              {isRegionsExpanded ? "[지역 목록 닫기 ▲]" : "[전체 지역 보기 ▼]"}
+            </button>
+          </div>
+          
+          <div
+            style={{
+              transition: 'max-height 0.35s ease, opacity 0.25s ease, transform 0.25s ease',
+              maxHeight: isRegionsExpanded ? '2000px' : '0px',
+              opacity: isRegionsExpanded ? 1 : 0,
+              transform: isRegionsExpanded ? 'translateY(0)' : 'translateY(-8px)',
+              overflow: 'hidden'
+            }}
+          >
+            <div className={`mb-12 bg-[#141414] rounded-[20px] py-[24px] px-[28px] border ${isRegionsExpanded ? 'border-[#C1121F]' : 'border-[#2C2C2C] hover:border-[#C1121F]'} transition-colors duration-300`}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-[14px] gap-x-[18px]">
+                {[
+                  "시흥출장마사지", "정왕동출장마사지", "배곧출장마사지", "월곶출장마사지",
+                  "오이도출장마사지", "거북섬출장마사지", "시화MTV출장마사지", "능곡동출장마사지",
+                  "은행동출장마사지", "목감출장마사지", "신천동출장마사지", "대야동출장마사지",
+                  "장곡동출장마사지", "하중동출장마사지", "하상동출장마사지", "연성동출장마사지",
+                  "군자동출장마사지", "매화동출장마사지", "시화출장마사지"
+                ].map((regionId) => {
+                  const r = REGIONS_LIST.find(reg => reg.id === regionId);
+                  if (!r) return null;
+                  const displayName = r.id === "능곡동출장마사지" ? "능곡출장마사지" : r.id;
+                  return (
+                    <a
+                      key={r.id}
+                      href={getPathByRegionId(r.id)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigateToRegion(r.id);
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }}
+                      className="block bg-[#181818] border border-[#2C2C2C] rounded-[12px] py-[14px] px-[16px] text-center text-[#D0D0D0] hover:border-[#C1121F] hover:text-[#E63946] hover:bg-[rgba(193,18,31,0.08)] transition-colors duration-200 font-sans text-[15px]"
+                    >
+                      {displayName}
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
           </div>
           
           <div className="max-w-4xl mx-auto bg-[#181818] p-6 rounded-[24px] shadow-[0_10px_40px_rgba(0,0,0,0.5)] border border-[#2C2C2C]">
@@ -662,109 +706,6 @@ export default function App({ initialPath }: { initialPath?: string }) {
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Premium Service Area Map"
               ></iframe>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. 주변 지역 안내 (Accordion SEO links block) */}
-      <section className="py-6 bg-[#0B0B0B] border-t border-[#2C2C2C]" id="surrounding-regions-network">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <div className="text-[11px] font-sans font-semibold text-[#C1121F] tracking-widest uppercase mb-2">
-            주변 지역 안내
-          </div>
-          
-          {/* Visible / Collapsed list (Primary 11 regions) */}
-          <div className="flex flex-wrap justify-center gap-x-2.5 gap-y-1 text-[11px] text-[#A8A8A8] leading-relaxed font-sans">
-            {[
-              "시흥출장마사지",
-              "정왕동출장마사지",
-              "배곧출장마사지",
-              "월곶출장마사지",
-              "오이도출장마사지",
-              "거북섬출장마사지",
-              "시화MTV출장마사지",
-              "능곡동출장마사지",
-              "은행동출장마사지",
-              "목감출장마사지",
-              "신천동출장마사지"
-            ].map((regionId, idx, arr) => {
-              const r = REGIONS_LIST.find(reg => reg.id === regionId);
-              if (!r) return null;
-              const isCurrent = r.id === activeRegionId;
-              const displayName = r.id === "능곡동출장마사지" ? "능곡출장마사지" : r.id;
-              return (
-                <span key={r.id} className="inline-flex items-center gap-2.5">
-                  <a
-                    href={getPathByRegionId(r.id)}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      navigateToRegion(r.id);
-                      window.scrollTo({ top: 0, behavior: "smooth" });
-                    }}
-                    className={`transition-colors duration-200 hover:text-[#E63946] ${
-                      isCurrent ? "text-[#E63946] font-bold underline" : "text-[#A8A8A8] font-light"
-                    }`}
-                  >
-                    {displayName}
-                  </a>
-                  {idx < arr.length - 1 && (
-                    <span className="text-[#2C2C2C] select-none font-light">·</span>
-                  )}
-                </span>
-              );
-            })}
-          </div>
-
-          {/* Toggle Button */}
-          <button
-            onClick={() => setIsRegionsExpanded(!isRegionsExpanded)}
-            className="mt-2.5 inline-flex items-center gap-1 text-[10px] font-sans font-bold text-[#A8A8A8] hover:text-[#E63946] transition-colors duration-200 cursor-pointer"
-          >
-            {isRegionsExpanded ? "[전체 지역 닫기 ▲]" : "[전체 지역 보기 ▼]"}
-          </button>
-
-          {/* Collapsible Remaining Regions (8 regions for SEO & complete network) */}
-          <div
-            className={`transition-all duration-300 ease-in-out overflow-hidden ${
-              isRegionsExpanded ? "max-h-[200px] opacity-100 mt-2" : "max-h-0 opacity-0 pointer-events-none"
-            }`}
-          >
-            <div className="flex flex-wrap justify-center gap-x-2.5 gap-y-1 text-[11px] text-[#A8A8A8] leading-relaxed font-sans pt-2 border-t border-[#2C2C2C]">
-              {[
-                "대야동출장마사지",
-                "장곡동출장마사지",
-                "하중동출장마사지",
-                "하상동출장마사지",
-                "연성동출장마사지",
-                "군자동출장마사지",
-                "매화동출장마사지",
-                "시화출장마사지"
-              ].map((regionId, idx, arr) => {
-                const r = REGIONS_LIST.find(reg => reg.id === regionId);
-                if (!r) return null;
-                const isCurrent = r.id === activeRegionId;
-                return (
-                  <span key={r.id} className="inline-flex items-center gap-2.5">
-                    <a
-                      href={getPathByRegionId(r.id)}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        navigateToRegion(r.id);
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                      }}
-                      className={`transition-colors duration-200 hover:text-[#E63946] ${
-                        isCurrent ? "text-[#E63946] font-bold underline" : "text-[#A8A8A8] font-light"
-                      }`}
-                    >
-                      {r.id}
-                    </a>
-                    {idx < arr.length - 1 && (
-                      <span className="text-[#2C2C2C] select-none font-light">·</span>
-                    )}
-                  </span>
-                );
-              })}
             </div>
           </div>
         </div>
