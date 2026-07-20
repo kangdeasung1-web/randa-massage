@@ -117,6 +117,19 @@ const MASTER_FAQS = [
   }
 ];
 
+const MAJOR_REGIONS_MAP = [
+  { label: "정왕동", regionId: "정왕동출장마사지" },
+  { label: "배곧신도시", regionId: "배곧출장마사지" },
+  { label: "월곶동", regionId: "월곶출장마사지" },
+  { label: "오이도", regionId: "오이도출장마사지" },
+  { label: "거북섬", regionId: "거북섬출장마사지" },
+  { label: "시화MTV", regionId: "시화MTV출장마사지" },
+  { label: "목감동", regionId: "목감출장마사지" },
+  { label: "은행동", regionId: "은행동출장마사지" },
+  { label: "대야동", regionId: "대야동출장마사지" },
+  { label: "신천동", regionId: "신천동출장마사지" }
+];
+
 const formatParagraphs = (text: string) => {
   if (!text) return null;
   // Split by period followed by space
@@ -686,13 +699,19 @@ export default function App({ initialPath }: { initialPath?: string }) {
                     핵심 서비스 주요 거점
                   </span>
                   <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-5 gap-2">
-                    {["정왕동", "배곧신도시", "월곶동", "오이도", "거북섬", "시화MTV", "목감동", "은행동", "대야동", "신천동"].map((item, idx) => (
-                      <span 
+                    {MAJOR_REGIONS_MAP.map((item, idx) => (
+                      <a 
                         key={idx}
-                        className="h-[38px] flex items-center justify-center rounded-[10px] bg-white/[0.02] border border-white/[0.06] text-xs font-sans font-medium text-[#D0D0D0] hover:text-[#E63946] hover:border-[#E63946]/30 hover:bg-[#E63946]/5 hover:shadow-[0_4px_12px_rgba(230,57,70,0.12)] hover:scale-[1.03] transition-all duration-300 cursor-default"
+                        href={getPathByRegionId(item.regionId)}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigateToRegion(item.regionId);
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }}
+                        className="h-[38px] flex items-center justify-center rounded-[10px] bg-white/[0.02] border border-white/[0.06] text-xs font-sans font-medium text-[#D0D0D0] hover:text-[#E63946] hover:border-[#E63946]/30 hover:bg-[#E63946]/5 hover:shadow-[0_4px_12px_rgba(230,57,70,0.12)] hover:scale-[1.03] transition-all duration-300 cursor-pointer"
                       >
-                        {item}
-                      </span>
+                        {item.label}
+                      </a>
                     ))}
                   </div>
                 </div>
