@@ -75,7 +75,7 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
     return currentRegionId === regionId;
   };
 
-  // Menu items config as requested: 홈, 프리미엄 케어, 시흥출장마사지, FAQ, 예약문의
+  // Menu items config as requested: 홈, 프리미엄 케어, 시흥출장마사지, FAQ
   const menuItems = [
     { 
       label: '홈', 
@@ -106,11 +106,6 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
       action: () => handleScrollTo('premium-faqs-section'),
       sectionId: 'premium-faqs-section'
     },
-    { 
-      label: '예약문의', 
-      action: () => handleScrollTo('contact-section'),
-      sectionId: 'contact-section'
-    },
   ];
 
   const currentCityData = CITIES_DATA[0];
@@ -127,7 +122,7 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
           
           {/* Left: Minimal Logo & Brand */}
           <div 
-            className="flex items-center cursor-pointer group"
+            className="flex-1 flex items-center justify-start cursor-pointer group"
             onClick={() => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
               setIsDropdownOpen(false);
@@ -141,7 +136,7 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
           </div>
 
           {/* Center: Navigation Links (Desktop) */}
-          <nav className="hidden lg:flex items-center space-x-[52px]" id="desktop-nav-menu">
+          <nav className="hidden lg:flex items-center justify-center space-x-[64px] flex-initial" id="desktop-nav-menu">
             {menuItems.map((item, idx) => {
               if (item.isDropdownTrigger) {
                 return (
@@ -156,6 +151,7 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
                       className="text-[17px] font-sans font-semibold text-white hover:text-[#C8A04D] transition-colors cursor-pointer flex items-center space-x-1 group relative py-1"
                     >
                       <span>{item.label}</span>
+                      <ChevronDown className="w-4 h-4 ml-1 transition-transform duration-200 text-[#C8A04D] group-hover:rotate-180" />
                       {/* Active or Hover gold dot indicator */}
                       <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#C8A04D] opacity-0 group-hover:opacity-100 transition-opacity" />
                     </button>
@@ -236,14 +232,8 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
             })}
           </nav>
 
-          {/* Right: Golden/Black Booking Button (Desktop) */}
-          <div className="hidden lg:flex items-center" id="desktop-cta-container">
-            <button
-              onClick={() => handleScrollTo('contact-section')}
-              className="w-[165px] h-[60px] border border-[#C8A04D] bg-transparent text-[#C8A04D] hover:bg-[#C8A04D] hover:text-[#111111] font-sans font-bold text-[15px] rounded-full transition-all duration-[250ms] ease-out cursor-pointer hover:scale-[1.03] hover:-translate-y-[2px] hover:shadow-[0_6px_20px_rgba(200,160,77,0.25)]"
-            >
-              실시간 예약
-            </button>
+          {/* Right: Empty container since Header CTA is deleted */}
+          <div className="hidden lg:flex flex-1 justify-end items-center" id="desktop-cta-container">
           </div>
 
           {/* Hamburger Menu Icon (Mobile) */}
@@ -349,19 +339,10 @@ export default function Header({ currentRegionId, currentRegionName, onNavigate 
               })}
             </div>
 
-            {/* Mobile Drawer Footer with Booking CTA */}
-            <div className="space-y-4 pt-6 pb-4">
-              <button
-                onClick={() => handleScrollTo('contact-section')}
-                className="w-full bg-[#C8A04D] hover:bg-[#B38D3C] text-[#111111] font-sans font-bold text-sm py-4 rounded-full text-center transition-all cursor-pointer flex items-center justify-center space-x-2 shadow-[0_0_15px_rgba(200,160,77,0.18)]"
-              >
-                <Phone className="w-4 h-4 fill-none stroke-current" />
-                <span>실시간 빠른 예약 문의</span>
-              </button>
-              <div className="text-center flex items-center justify-center space-x-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
-                <span className="text-[10px] text-neutral-400 tracking-tight font-sans">시흥 전지역 24시간 예약 가능</span>
-              </div>
+            {/* Mobile Drawer Footer with Booking CTA removed */}
+            <div className="pt-6 pb-4 flex items-center justify-center space-x-2 border-t border-white/5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+              <span className="text-[10px] text-neutral-400 tracking-tight font-sans">시흥 전지역 24시간 예약 가능</span>
             </div>
           </motion.div>
         )}

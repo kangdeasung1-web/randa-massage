@@ -17,7 +17,7 @@ export default function FaqSection({ regionName }: FaqSectionProps) {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-[#0c0c0c] border-t border-white/5 relative overflow-hidden" id="premium-faqs-section">
+    <section className="pt-12 pb-16 md:pt-14 md:pb-24 bg-[#0c0c0c] border-t border-white/5 relative overflow-hidden" id="premium-faqs-section">
       <div className="max-w-[1440px] mx-auto px-6 md:px-14">
         
         {/* Section Header */}

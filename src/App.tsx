@@ -6,8 +6,6 @@ import CourseSection from './components/CourseSection';
 import ProcessSection from './components/ProcessSection';
 import ReviewSection from './components/ReviewSection';
 import FaqSection from './components/FaqSection';
-import CtaSection from './components/CtaSection';
-import CtaButtons from './components/CtaButtons';
 import Breadcrumb from './components/Breadcrumb';
 import SchemaMarkup from './components/SchemaMarkup';
 import NotFoundPage from './components/NotFoundPage';
@@ -163,6 +161,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [routeError, setRouteError] = useState(getInitialRouteError());
   const [isMobile, setIsMobile] = useState(false);
+  const [isRegionsExpanded, setIsRegionsExpanded] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 1024);
@@ -303,15 +302,18 @@ export default function App({ initialPath }: { initialPath?: string }) {
         className="w-full lg:h-[740px] flex items-center overflow-hidden relative bg-[#050505] py-16 lg:py-0" 
         id="hero-banner"
       >
-        <div className="w-full max-w-[1440px] mx-auto px-6 md:px-14 h-full grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
+        <div className="w-full max-w-[1440px] mx-auto px-0 lg:px-14 h-full grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
           
           {/* Left Column: Text & CTAs */}
-          <div className="flex flex-col justify-center text-left order-1 h-full" id="hero-text-content">
+          <div 
+            className="flex flex-col items-center justify-center text-center lg:items-start lg:text-left lg:justify-center order-1 h-full w-full px-[20px] lg:px-0 box-border" 
+            id="hero-text-content"
+          >
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="mb-4"
+              className="mb-4 mx-auto lg:mx-0"
             >
               <span className="text-[#C8A04D] font-sans font-semibold tracking-wider text-xs uppercase leading-none">
                 GANDA HOME CARE
@@ -322,7 +324,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-              className="text-3xl lg:text-5xl font-sans font-bold leading-[1.2] tracking-tight text-white break-keep"
+              className="w-full max-w-full mx-auto lg:mx-0 text-center lg:text-left text-3xl lg:text-5xl font-sans font-bold leading-[1.25] tracking-tight text-white break-keep"
               style={{ wordBreak: 'keep-all', overflowWrap: 'normal' }}
               id="main-h1-header"
             >
@@ -335,7 +337,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-neutral-300 text-sm md:text-base leading-relaxed mt-6 max-w-[500px] break-keep font-light"
+              className="text-center lg:text-left text-neutral-300 text-sm md:text-base leading-[1.7] mt-6 w-full max-w-[340px] lg:max-w-[500px] mx-auto lg:mx-0 break-keep font-light"
             >
               {activeRegionData.name}와 {activeRegionData.name.replace("출장마사지", "출장안마")}를<br />
               24시간 운영합니다.
@@ -350,29 +352,29 @@ export default function App({ initialPath }: { initialPath?: string }) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row items-stretch gap-4 sm:gap-0 mt-8 py-5 border-y border-neutral-800 max-w-[600px]"
+              className="flex flex-col sm:flex-row items-center sm:items-stretch justify-center lg:justify-start gap-6 sm:gap-0 mt-8 py-5 border-y border-neutral-800 w-full max-w-[600px] mx-auto lg:mx-0"
             >
-              <div className="flex-1 flex items-start space-x-3 pr-4">
-                <ShieldCheck className="w-5 h-5 text-[#C8A04D] shrink-0 mt-0.5" />
-                <div>
+              <div className="flex flex-col sm:flex-row flex-1 items-center sm:items-start space-y-2 sm:space-y-0 sm:space-x-3 sm:pr-4">
+                <ShieldCheck className="w-5 h-5 text-[#C8A04D] shrink-0 sm:mt-0.5" />
+                <div className="text-center sm:text-left">
                   <h4 className="text-sm font-bold text-white leading-none">예약금 없는 후불제</h4>
                   <p className="text-xs text-neutral-400 mt-1.5 whitespace-nowrap">안심하고 이용하세요</p>
                 </div>
               </div>
               <div className="hidden sm:block w-[1px] bg-neutral-800 self-stretch my-1" />
               
-              <div className="flex-1 flex items-start space-x-3 sm:px-6">
-                <Clock3 className="w-5 h-5 text-[#C8A04D] shrink-0 mt-0.5" />
-                <div>
+              <div className="flex flex-col sm:flex-row flex-1 items-center sm:items-start space-y-2 sm:space-y-0 sm:space-x-3 sm:px-6">
+                <Clock3 className="w-5 h-5 text-[#C8A04D] shrink-0 sm:mt-0.5" />
+                <div className="text-center sm:text-left">
                   <h4 className="text-sm font-bold text-white leading-none">24시간 상담</h4>
                   <p className="text-xs text-neutral-400 mt-1.5 whitespace-nowrap">언제든지 편안하게</p>
                 </div>
               </div>
               <div className="hidden sm:block w-[1px] bg-neutral-800 self-stretch my-1" />
               
-              <div className="flex-1 flex items-start space-x-3 sm:pl-6">
-                <MapPin className="w-5 h-5 text-[#C8A04D] shrink-0 mt-0.5" />
-                <div>
+              <div className="flex flex-col sm:flex-row flex-1 items-center sm:items-start space-y-2 sm:space-y-0 sm:space-x-3 sm:pl-6">
+                <MapPin className="w-5 h-5 text-[#C8A04D] shrink-0 sm:mt-0.5" />
+                <div className="text-center sm:text-left">
                   <h4 className="text-sm font-bold text-white leading-none">{activeRegionData.name.replace("출장마사지", "") || "시흥"} 전지역 방문</h4>
                   <p className="text-xs text-neutral-400 mt-1.5 whitespace-nowrap">신속하고 친절하게</p>
                 </div>
@@ -384,16 +386,9 @@ export default function App({ initialPath }: { initialPath?: string }) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-col sm:flex-row items-center gap-3 mt-8 w-full select-none" 
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-[12px] mt-8 w-full max-w-[340px] sm:max-w-none mx-auto lg:mx-0 select-none" 
               id="hero-cta-group"
             >
-              <button 
-                onClick={() => handleScrollTo('contact-section')}
-                className="w-full sm:w-[210px] h-[58px] rounded-full bg-[#C8A04D] text-[#111111] font-bold text-sm flex items-center justify-center cursor-pointer whitespace-nowrap hover:scale-[1.02] hover:-translate-y-[1px] transition-all duration-200 shadow-sm"
-              >
-                실시간 예약
-              </button>
-
               <a 
                 href="tel:010-7497-2653"
                 className="w-full sm:w-[210px] h-[58px] rounded-full bg-[#050505] border border-[#C8A04D] text-[#C8A04D] font-bold text-sm flex items-center justify-center cursor-pointer whitespace-nowrap hover:bg-[#C8A04D] hover:text-[#111111] hover:scale-[1.02] hover:-translate-y-[1px] transition-all duration-200"
@@ -417,7 +412,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
-            className="order-2 relative h-[520px] lg:h-full lg:min-h-[690px] w-full overflow-hidden rounded-[20px] border border-neutral-800 bg-[#050505]"
+            className="order-2 relative h-[520px] lg:h-full lg:min-h-[690px] w-[calc(100%-32px)] lg:w-full mx-auto lg:mx-0 overflow-hidden rounded-[20px] border border-neutral-800 bg-[#050505]"
           >
             {/* Extremely tight fit banner focusing on her face and torso with scroll parallax */}
             <div className="w-full h-full overflow-hidden relative flex items-center justify-center bg-[#111111]">
@@ -534,33 +529,11 @@ export default function App({ initialPath }: { initialPath?: string }) {
       {/* 5. Course Guide Section */}
       <CourseSection />
 
-      {/* Mid-Page Call-To-Action (페이지 중간) */}
-      <div className="py-12 bg-[#090909] border-t border-b border-white/5 flex flex-col items-center justify-center text-center px-6">
-        <p className="text-xs text-[#C8A04D] tracking-wider font-sans font-bold uppercase mb-3">
-          쉽고 편안한 실시간 예약안내
-        </p>
-        <h3 className="text-base md:text-lg font-sans text-white font-medium mb-5 break-keep max-w-xl leading-relaxed">
-          마음에 드는 스페셜 코스를 결정하셨나요? 지금 상담을 신청하시면 최단 시간 내 방문을 준비하겠습니다.
-        </h3>
-        <CtaButtons />
-      </div>
-
       {/* 6. Premium Customer Reviews */}
       <ReviewSection />
 
-      {/* Post-Reviews Call-To-Action (후기 아래) */}
-      <div className="py-12 bg-[#0d0d0d] border-t border-b border-white/5 flex flex-col items-center justify-center text-center px-6">
-        <p className="text-xs text-[#C8A04D] tracking-wider font-sans font-bold uppercase mb-3">
-          고객 만족 1위, 신뢰의 간다출장마사지
-        </p>
-        <h3 className="text-base md:text-lg font-sans text-white font-medium mb-5 break-keep max-w-xl leading-relaxed">
-          수많은 단골 고객님들이 직접 증명하는 최고의 스파 테라피! 100% 후불제로 안심하고 경험해 보세요.
-        </h3>
-        <CtaButtons />
-      </div>
-
       {/* 5. Editorial Magazine Section */}
-      <section className="py-16 md:py-24 bg-[#111111] border-t border-white/5" id="editorial-insight-section">
+      <section className="pt-16 md:pt-24 pb-8 md:pb-10 bg-[#111111] border-t border-white/5" id="editorial-insight-section">
         <div className="max-w-5xl mx-auto px-6">
           <article className="space-y-12">
             <div className="border-b border-white/8 pb-6 flex items-center justify-between">
@@ -653,112 +626,8 @@ export default function App({ initialPath }: { initialPath?: string }) {
                 </div>
               </div>
 
-              <div className="space-y-6">
-                <h3 className="text-base sm:text-lg font-sans font-bold text-white tracking-tight flex items-center space-x-2">
-                  <span className="text-[#C8A04D] font-mono text-xs">04</span>
-                  <span>주변 지역 유기적 연계 네트워크</span>
-                </h3>
-                <div className="space-y-4">
-                  {formatParagraphs(page.nearbyText)}
-                </div>
-
-                {/* Highly Designed Semantic SEO Topic Cluster */}
-                <div className="bg-[#121212]/90 border border-neutral-850 rounded-[20px] p-6 sm:p-8 space-y-6 mt-6">
-                  <div>
-                    <h4 className="text-xs font-sans text-[#C8A04D] tracking-wider font-bold uppercase mb-2">
-                      인근 지역 신속 배차 네트워크
-                    </h4>
-                    <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed break-keep">
-                      간다출장마사지는 시흥시 전역의 행정 구역을 긴밀히 잇는 프리미엄 홈 케어 시스템을 완성하였습니다. 아래의 웰니스 벨트를 클릭하여 인근 지역 및 허브 정보 채널로 빠르고 스마트하게 이동해 보십시오.
-                    </p>
-                  </div>
-
-                  {/* 1. Master Hub (Upward link) */}
-                  <div className="space-y-2.5">
-                    <span className="text-xs text-[#C8A04D] font-sans font-bold flex items-center gap-1.5">
-                      <span className="inline-block w-1 h-1 rounded-full bg-[#C8A04D]" />
-                      시흥시 대표 메인 웰니스 허브
-                    </span>
-                    <div className="flex flex-wrap gap-2">
-                      <a
-                        href={getPathByRegionId("시흥출장마사지")}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          navigateToRegion("시흥출장마사지");
-                          window.scrollTo({ top: 0, behavior: "smooth" });
-                        }}
-                        className={`px-3 py-1.5 text-xs rounded-lg border font-bold transition-all duration-200 ${
-                          activeRegionId === "시흥출장마사지"
-                            ? "bg-[#C8A04D] text-[#111111] border-[#C8A04D]"
-                            : "bg-[#161616] border-white/10 text-[#C8A04D] hover:bg-[#C8A04D] hover:text-[#111111] hover:border-[#C8A04D]"
-                        }`}
-                      >
-                        시흥출장마사지
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* 2. Bidirectional Neighbor Links */}
-                  <div className="space-y-2.5">
-                    <span className="text-xs text-neutral-400 font-medium flex items-center gap-1.5">
-                      🔄 {activeRegionData.name} 인접 교차 연계 지역 (양방향 링크)
-                    </span>
-                    <div className="flex flex-wrap gap-2">
-                      {getNeighborsForRegion(activeRegionId).map((neighbor) => (
-                        <a
-                          key={neighbor.id}
-                          href={getPathByRegionId(neighbor.id)}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            navigateToRegion(neighbor.id);
-                            window.scrollTo({ top: 0, behavior: "smooth" });
-                          }}
-                          className="px-3 py-1.5 text-xs rounded-lg bg-[#181818] border border-white/5 text-neutral-300 hover:border-[#C8A04D] hover:text-[#C8A04D] transition-all duration-200 font-medium"
-                        >
-                          {neighbor.id}
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* 3. Global Network Directory (Prevents Orphan Pages) */}
-                  <div className="space-y-2.5 pt-4 border-t border-white/5">
-                    <span className="text-xs text-neutral-400 font-medium flex items-center gap-1.5">
-                      🌐 시흥 전 지역 웰니스 네트워크 가이드
-                    </span>
-                    <div className="flex flex-wrap gap-x-2 gap-y-1.5 text-xs text-neutral-400 leading-relaxed">
-                      {REGIONS_LIST.map((r, idx) => {
-                        const isCurrent = r.id === activeRegionId;
-                        return (
-                          <span key={r.id} className="inline-flex items-center gap-2">
-                            <a
-                              href={getPathByRegionId(r.id)}
-                              onClick={(e) => {
-                                e.preventDefault();
-                                navigateToRegion(r.id);
-                                window.scrollTo({ top: 0, behavior: "smooth" });
-                              }}
-                              className={`hover:text-[#C8A04D] transition-colors ${
-                                isCurrent
-                                  ? "text-[#C8A04D] font-bold underline"
-                                  : "text-neutral-500 font-light"
-                              }`}
-                            >
-                              {r.id}
-                            </a>
-                            {idx < REGIONS_LIST.length - 1 && (
-                              <span className="text-neutral-700 select-none">·</span>
-                            )}
-                          </span>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
               {/* Major Landmarks Section (Premium Designed Box) */}
-              <div className="py-8 my-16 border-y border-white/10 text-center max-w-[900px] mx-auto space-y-4" id="major-landmarks-container">
+              <div className="py-8 mt-10 mb-2 border-y border-white/10 text-center max-w-[900px] mx-auto space-y-4" id="major-landmarks-container">
                 <div className="flex items-center justify-center space-x-2 text-[#C8A04D] font-sans font-bold text-sm tracking-wider">
                   <MapPin className="w-4 h-4 text-[#C8A04D]" />
                   <span>📍 주요 방문지역</span>
@@ -775,15 +644,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
                 </div>
               </div>
 
-              <div className="space-y-4 pt-6 border-t border-white/8">
-                <h3 className="text-base sm:text-lg font-sans font-bold text-white tracking-tight flex items-center space-x-2">
-                  <span className="text-[#C8A04D] font-mono text-xs">05</span>
-                  <span>프리미엄 소통 가이드 및 마무리 안내</span>
-                </h3>
-                <div className="space-y-4 italic leading-[1.9] text-[#C8A04D]">
-                  {formatParagraphs(page.cta)}
-                </div>
-              </div>
+
             </div>
           </article>
         </div>
@@ -792,42 +653,125 @@ export default function App({ initialPath }: { initialPath?: string }) {
       {/* 6. FAQ Section */}
       <FaqSection regionName={activeRegionData.name} />
 
-      {/* Post-FAQ Call-To-Action (FAQ 아래) */}
-      <div className="py-12 bg-[#090909] border-t border-b border-white/5 flex flex-col items-center justify-center text-center px-6">
-        <p className="text-xs text-[#C8A04D] tracking-wider font-sans font-bold uppercase mb-3">
-          궁금한 점이 더 있으신가요?
-        </p>
-        <h3 className="text-base md:text-lg font-sans text-white font-medium mb-5 break-keep max-w-xl leading-relaxed">
-          더 궁금한 점이 있으신가요? 24시간 열려 있는 간다 프리미엄 채널에서 즉시 궁금증을 풀어드리겠습니다.
-        </h3>
-        <CtaButtons />
-      </div>
+      {/* 8. 주변 지역 안내 (Accordion SEO links block) */}
+      <section className="py-6 bg-[#090909] border-t border-white/5" id="surrounding-regions-network">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <div className="text-[11px] font-sans font-semibold text-[#C8A04D]/80 tracking-widest uppercase mb-2">
+            주변 지역 안내
+          </div>
+          
+          {/* Visible / Collapsed list (Primary 11 regions) */}
+          <div className="flex flex-wrap justify-center gap-x-2.5 gap-y-1 text-[11px] text-neutral-500 leading-relaxed font-sans">
+            {[
+              "시흥출장마사지",
+              "정왕동출장마사지",
+              "배곧출장마사지",
+              "월곶출장마사지",
+              "오이도출장마사지",
+              "거북섬출장마사지",
+              "시화MTV출장마사지",
+              "능곡동출장마사지",
+              "은행동출장마사지",
+              "목감출장마사지",
+              "신천동출장마사지"
+            ].map((regionId, idx, arr) => {
+              const r = REGIONS_LIST.find(reg => reg.id === regionId);
+              if (!r) return null;
+              const isCurrent = r.id === activeRegionId;
+              const displayName = r.id === "능곡동출장마사지" ? "능곡출장마사지" : r.id;
+              return (
+                <span key={r.id} className="inline-flex items-center gap-2.5">
+                  <a
+                    href={getPathByRegionId(r.id)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      navigateToRegion(r.id);
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                    className={`transition-colors duration-200 hover:text-[#C8A04D] ${
+                      isCurrent ? "text-[#C8A04D] font-bold underline" : "text-neutral-500 font-light"
+                    }`}
+                  >
+                    {displayName}
+                  </a>
+                  {idx < arr.length - 1 && (
+                    <span className="text-neutral-700/60 select-none font-light">·</span>
+                  )}
+                </span>
+              );
+            })}
+          </div>
 
-      {/* 7. Contact/Reservation Section */}
-      <CtaSection regionName={activeRegionData.name} />
+          {/* Toggle Button */}
+          <button
+            onClick={() => setIsRegionsExpanded(!isRegionsExpanded)}
+            className="mt-2.5 inline-flex items-center gap-1 text-[10px] font-sans font-bold text-neutral-400 hover:text-[#C8A04D] transition-colors duration-200 cursor-pointer"
+          >
+            {isRegionsExpanded ? "[전체 지역 닫기 ▲]" : "[전체 지역 보기 ▼]"}
+          </button>
+
+          {/* Collapsible Remaining Regions (8 regions for SEO & complete network) */}
+          <div
+            className={`transition-all duration-300 ease-in-out overflow-hidden ${
+              isRegionsExpanded ? "max-h-[200px] opacity-100 mt-2" : "max-h-0 opacity-0 pointer-events-none"
+            }`}
+          >
+            <div className="flex flex-wrap justify-center gap-x-2.5 gap-y-1 text-[11px] text-neutral-500 leading-relaxed font-sans pt-2 border-t border-white/5">
+              {[
+                "대야동출장마사지",
+                "장곡동출장마사지",
+                "하중동출장마사지",
+                "하상동출장마사지",
+                "연성동출장마사지",
+                "군자동출장마사지",
+                "매화동출장마사지",
+                "시화출장마사지"
+              ].map((regionId, idx, arr) => {
+                const r = REGIONS_LIST.find(reg => reg.id === regionId);
+                if (!r) return null;
+                const isCurrent = r.id === activeRegionId;
+                return (
+                  <span key={r.id} className="inline-flex items-center gap-2.5">
+                    <a
+                      href={getPathByRegionId(r.id)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigateToRegion(r.id);
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }}
+                      className={`transition-colors duration-200 hover:text-[#C8A04D] ${
+                        isCurrent ? "text-[#C8A04D] font-bold underline" : "text-neutral-500 font-light"
+                      }`}
+                    >
+                      {r.id}
+                    </a>
+                    {idx < arr.length - 1 && (
+                      <span className="text-neutral-700/60 select-none font-light">·</span>
+                    )}
+                  </span>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
 
       <Footer 
-        currentRegionId={activeRegionId} 
-        onNavigate={navigateToRegion} 
+         currentRegionId={activeRegionId} 
+         onNavigate={navigateToRegion} 
       />
 
-      {/* Floating Action Buttons for Mobile */}
+      {/* Floating Action Consultation Buttons for Mobile (Reservation buttons removed) */}
       <motion.div 
         initial={{ y: 100 }}
         animate={{ y: 0 }}
         className="fixed bottom-6 left-6 right-6 z-50 lg:hidden"
         id="mobile-floating-cta"
       >
-        <div className="bg-[#1A1A1A]/90 backdrop-blur-lg border border-white/10 rounded-full p-2 flex items-center shadow-2xl space-x-2">
-          <button 
-            onClick={() => handleScrollTo('contact-section')}
-            className="flex-1 h-[54px] bg-[#C8A04D] hover:bg-[#B38D3C] text-[#111111] rounded-full font-sans font-bold text-xs tracking-wider flex items-center justify-center transition-all duration-300 active:scale-95 shadow-md cursor-pointer"
-          >
-            빠른 예약
-          </button>
+        <div className="bg-[#1A1A1A]/95 backdrop-blur-lg border border-white/10 rounded-full p-2.5 flex items-center justify-between shadow-2xl space-x-4">
           <a 
             href="tel:010-7497-2653"
-            className="flex-1 h-[54px] border border-white/30 bg-transparent hover:bg-white/5 text-white rounded-full font-sans font-bold text-xs tracking-wider flex items-center justify-center transition-all duration-300 active:scale-95 cursor-pointer"
+            className="flex-1 h-[48px] bg-[#C8A04D] hover:bg-[#B38D3C] text-[#111111] rounded-full font-sans font-bold text-xs tracking-wider flex items-center justify-center transition-all duration-300 active:scale-95 cursor-pointer shadow-md"
           >
             전화 상담
           </a>
@@ -835,9 +779,9 @@ export default function App({ initialPath }: { initialPath?: string }) {
             href="https://open.kakao.com/o/se8MdBEi"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 h-[54px] bg-[#1A1A1A] border border-white/8 text-[#C8A04D] rounded-full font-sans font-bold text-xs tracking-wider flex items-center justify-center transition-all duration-300 active:scale-95 cursor-pointer"
+            className="flex-1 h-[48px] bg-[#FEE500] hover:bg-[#E2CC00] text-[#191919] rounded-full font-sans font-bold text-xs tracking-wider flex items-center justify-center transition-all duration-300 active:scale-95 cursor-pointer shadow-md"
           >
-            카톡 상담
+            카카오 상담
           </a>
         </div>
       </motion.div>
