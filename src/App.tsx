@@ -227,7 +227,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
       setMetaTag('og:title', page.title, true);
       setMetaTag('og:description', page.description, true);
       setMetaTag('og:url', window.location.href, true);
-      setMetaTag('og:image', `${window.location.origin}/logo.png`, true);
+      setMetaTag('og:image', `${window.location.origin}/favicon-192x192.png`, true);
       setMetaTag('twitter:card', 'summary_large_image', false);
       setMetaTag('twitter:title', page.title, false);
       setMetaTag('twitter:description', page.description, false);

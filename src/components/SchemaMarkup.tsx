@@ -9,7 +9,7 @@ interface SchemaMarkupProps {
 }
 
 export default function SchemaMarkup({ page, currentRegionId, currentRegionName }: SchemaMarkupProps) {
-  const origin = 'https://ganda-massage.com';
+  const origin = 'https://gandamassage.com';
   const isMain = currentRegionId === "시흥출장마사지";
   const currentUrl = `${origin}${getPathByRegionId(currentRegionId)}`;
 
@@ -17,18 +17,10 @@ export default function SchemaMarkup({ page, currentRegionId, currentRegionName 
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": `${origin}/#organization`,
     "name": "간다출장마사지",
-    "alternateName": "GANDA Massage",
-    "url": origin,
-    "logo": `${origin}/logo.png`,
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+82-10-7497-2653",
-      "contactType": "customer service",
-      "areaServed": "KR",
-      "availableLanguage": "Korean"
-    }
+    "alternateName": "간다",
+    "url": "https://gandamassage.com/",
+    "logo": "https://gandamassage.com/favicon-192x192.png"
   };
 
   // 2. WebSite Schema
@@ -55,7 +47,7 @@ export default function SchemaMarkup({ page, currentRegionId, currentRegionName 
     "@id": `${currentUrl}#localbusiness`,
     "name": `간다출장마사지 ${currentRegionName}`,
     "image": [
-      `${origin}/logo.png`
+      `${origin}/favicon-192x192.png`
     ],
     "telephone": "010-7497-2653",
     "priceRange": "₩70,000 - ₩180,000",
