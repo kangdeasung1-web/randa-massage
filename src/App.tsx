@@ -641,39 +641,114 @@ export default function App({ initialPath }: { initialPath?: string }) {
       <FaqSection regionName={activeRegionData.name} />
 
       {/* 7. Premium Area Map */}
-      <section className="bg-[#181818] border-t border-[#2C2C2C]" id="premium-area-map">
-        <div className="max-w-[1200px] mx-auto px-[20px] md:px-[24px] py-[64px]">
-          <div className="text-center max-w-2xl mx-auto mb-10 space-y-2 flex flex-col items-center">
-            <span className="text-xs text-[#C1121F] font-sans font-semibold tracking-wider block uppercase">
-              Area Map
-            </span>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#F8F8F8] tracking-tight flex items-center justify-center gap-3">
-              <span className="premium-map-pin-wrapper">
-                <MapPin className="premium-icon" />
-              </span>
-              주요 방문지역
-            </h2>
-            <div className="w-8 h-[1px] bg-[#C1121F] mx-auto mt-4 mb-8" />
-            
-            <button
-              onClick={() => setIsRegionsExpanded(!isRegionsExpanded)}
-              className="h-[52px] px-[28px] rounded-[14px] bg-transparent border border-[#C1121F] text-[#FFFFFF] font-sans font-bold text-base hover:bg-[#C1121F] hover:text-[#FFFFFF] transition-colors duration-300 w-full max-w-[320px] md:max-w-none md:w-auto"
-            >
-              {isRegionsExpanded ? "[지역 목록 닫기 ▲]" : "[전체 지역 보기 ▼]"}
-            </button>
-          </div>
+      <section className="bg-[#121212] border-t border-[#232323] relative overflow-hidden" id="premium-area-map">
+        {/* Subtle background red glow behind the section */}
+        <div className="absolute right-0 bottom-0 w-[450px] h-[450px] bg-[#E63946]/5 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute left-1/3 top-12 w-[300px] h-[300px] bg-[#E63946]/3 rounded-full blur-[100px] pointer-events-none" />
+
+        <div className="max-w-[1200px] mx-auto px-[20px] md:px-[24px] py-[72px] relative z-10">
           
+          {/* Bento-grid horizontal layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            
+            {/* Left Column: Premium Brand Text & Fast Tags (col-span-5) */}
+            <div className="lg:col-span-5 flex flex-col justify-between p-8 md:p-10 bg-[#181818]/80 backdrop-blur-md rounded-[24px] border border-white/[0.06] shadow-[0_20px_50px_rgba(0,0,0,0.6)] relative overflow-hidden group">
+              {/* Decorative internal glass highlights */}
+              <div className="absolute -top-24 -left-24 w-48 h-48 bg-[#E63946]/10 rounded-full blur-[80px] pointer-events-none group-hover:bg-[#E63946]/15 transition-colors duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent pointer-events-none" />
+              
+              <div className="space-y-6 relative z-10">
+                <div>
+                  <span className="text-xs text-[#E63946] font-sans font-semibold tracking-[0.25em] uppercase block mb-2">
+                    Area Map
+                  </span>
+                  <h2 className="text-2xl md:text-3.5xl font-bold text-[#F8F8F8] tracking-tight flex items-center gap-3">
+                    <span className="premium-map-pin-wrapper shrink-0 shadow-[0_0_20px_rgba(230,57,70,0.25)]">
+                      <MapPin className="premium-icon" />
+                    </span>
+                    주요 방문지역
+                  </h2>
+                </div>
+
+                <div className="space-y-2.5">
+                  <h3 className="text-lg md:text-xl font-bold text-[#F8F8F8] tracking-tight leading-snug break-keep">
+                    시흥 전지역 및 인근 지역 <span className="text-[#E63946]">30분 내</span> 신속 방문
+                  </h3>
+                  <p className="text-xs md:text-sm text-[#A8A8A8] leading-relaxed break-keep font-light">
+                    고객이 계신 자택, 호텔, 오피스텔 등 원하는 장소로 30분 내 신속하게 방문해 편안한 케어를 제공합니다. 예약금 없이 현장 후불제로 부담 없이 이용하실 수 있습니다.
+                  </p>
+                </div>
+
+                {/* Grid Density: Quick visual reference chips of major regions */}
+                <div className="pt-2">
+                  <span className="text-[11px] font-sans font-bold text-[#C1121F] tracking-wider uppercase block mb-2.5">
+                    핵심 서비스 주요 거점
+                  </span>
+                  <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-5 gap-2">
+                    {["정왕동", "배곧신도시", "월곶동", "오이도", "거북섬", "시화MTV", "목감동", "은행동", "대야동", "신천동"].map((item, idx) => (
+                      <span 
+                        key={idx}
+                        className="h-[38px] flex items-center justify-center rounded-[10px] bg-white/[0.02] border border-white/[0.06] text-xs font-sans font-medium text-[#D0D0D0] hover:text-[#E63946] hover:border-[#E63946]/30 hover:bg-[#E63946]/5 hover:shadow-[0_4px_12px_rgba(230,57,70,0.12)] hover:scale-[1.03] transition-all duration-300 cursor-default"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Toggle expansion button nested in the card for perfect alignment */}
+              <div className="pt-5 mt-5 border-t border-white/[0.05] relative z-10">
+                <button
+                  onClick={() => setIsRegionsExpanded(!isRegionsExpanded)}
+                  className="w-full h-[52px] rounded-[14px] bg-gradient-to-r from-[#C1121F] to-[#E63946] text-[#FFFFFF] font-sans font-bold text-sm tracking-wide hover:shadow-[0_12px_30px_rgba(193,18,31,0.25)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <span>{isRegionsExpanded ? "전체 지역 목록 닫기 ▲" : "시흥시 전체 세부 지역 보기 ▼"}</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Right Column: Premium High-End Map frame (col-span-7) */}
+            <div className="lg:col-span-7 h-[350px] lg:h-auto rounded-[24px] overflow-hidden border border-white/[0.06] shadow-[0_20px_50px_rgba(0,0,0,0.6)] relative group">
+              <div className="absolute inset-0 border border-transparent group-hover:border-[#E63946]/25 rounded-[24px] pointer-events-none transition-colors duration-500 z-10" />
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d202570.62768594246!2d126.68536735234567!3d37.40422998393529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b6f6f9fb1978b%3A0xc3af3bb2337d4f9!2sSiheung-si%2C%20Gyeonggi-do!5e0!3m2!1sen!2skr!4v1714457718000!5m2!1sen!2skr"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Premium Service Area Map"
+                className="w-full h-full object-cover filter brightness-[0.85] contrast-[1.05]"
+              ></iframe>
+            </div>
+
+          </div>
+
+          {/* Expanded detailed region list wrapper */}
           <div
             style={{
-              transition: 'max-height 0.35s ease, opacity 0.25s ease, transform 0.25s ease',
+              transition: 'max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, transform 0.3s ease',
               maxHeight: isRegionsExpanded ? '2000px' : '0px',
               opacity: isRegionsExpanded ? 1 : 0,
-              transform: isRegionsExpanded ? 'translateY(0)' : 'translateY(-8px)',
+              transform: isRegionsExpanded ? 'translateY(0)' : 'translateY(-12px)',
               overflow: 'hidden'
             }}
+            className="relative z-20"
           >
-            <div className={`mb-12 bg-[#141414] rounded-[20px] py-[24px] px-[28px] border ${isRegionsExpanded ? 'border-[#C1121F]' : 'border-[#2C2C2C] hover:border-[#C1121F]'} transition-colors duration-300`}>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-[14px] gap-x-[18px]">
+            <div className="mt-8 bg-[#181818]/90 backdrop-blur-md rounded-[24px] py-8 px-8 border border-[#E63946]/30 shadow-[0_15px_45px_rgba(193,18,31,0.15)]">
+              <div className="mb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.06] pb-4">
+                <div>
+                  <h4 className="text-[#F8F8F8] font-bold text-base font-sans">시흥시 전체 서비스 동·지역명</h4>
+                  <p className="text-xs text-[#A8A8A8] mt-0.5">원하시는 동을 선택하시면 해당 지역 전용 테라피 가이드로 이동합니다.</p>
+                </div>
+                <span className="text-[10px] text-[#E63946] font-sans font-bold tracking-widest uppercase bg-[#E63946]/10 px-2.5 py-1 rounded-full border border-[#E63946]/20 self-start sm:self-auto">
+                  24시간 신속배차 진행
+                </span>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
                 {[
                   "시흥출장마사지", "정왕동출장마사지", "배곧출장마사지", "월곶출장마사지",
                   "오이도출장마사지", "거북섬출장마사지", "시화MTV출장마사지", "능곡동출장마사지",
@@ -693,7 +768,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
                         navigateToRegion(r.id);
                         window.scrollTo({ top: 0, behavior: "smooth" });
                       }}
-                      className="block bg-[#181818] border border-[#2C2C2C] rounded-[12px] py-[14px] px-[16px] text-center text-[#D0D0D0] hover:border-[#C1121F] hover:text-[#E63946] hover:bg-[rgba(193,18,31,0.08)] transition-colors duration-200 font-sans text-[15px]"
+                      className="block bg-[#121212] border border-white/[0.05] rounded-[12px] py-3.5 px-4 text-center text-[#D0D0D0] hover:border-[#E63946] hover:text-[#E63946] hover:bg-[#E63946]/5 hover:shadow-[0_4px_15px_rgba(193,18,31,0.15)] transition-all duration-300 font-sans text-sm font-medium"
                     >
                       {displayName}
                     </a>
@@ -702,21 +777,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
               </div>
             </div>
           </div>
-          
-          <div className="max-w-4xl mx-auto bg-[#181818] p-6 rounded-[24px] shadow-[0_10px_40px_rgba(0,0,0,0.5)] border border-[#2C2C2C]">
-            <div className="w-full aspect-video rounded-[16px] overflow-hidden">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d202570.62768594246!2d126.68536735234567!3d37.40422998393529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b6f6f9fb1978b%3A0xc3af3bb2337d4f9!2sSiheung-si%2C%20Gyeonggi-do!5e0!3m2!1sen!2skr!4v1714457718000!5m2!1sen!2skr"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen={true}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Premium Service Area Map"
-              ></iframe>
-            </div>
-          </div>
+
         </div>
       </section>
 
