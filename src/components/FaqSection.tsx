@@ -25,7 +25,7 @@ export default function FaqSection({ regionName }: FaqSectionProps) {
           <span className="text-xs text-[#C1121F] font-sans font-semibold tracking-[0.2em] uppercase block">
             질문과 답변
           </span>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8F8F8] tracking-tight leading-tight flex items-center justify-center gap-3">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#F8F8F8] tracking-tight leading-tight flex items-center justify-center gap-3 break-keep whitespace-nowrap md:whitespace-normal">
             <span className="premium-icon-wrapper">
               <HelpCircle className="premium-icon" />
             </span>

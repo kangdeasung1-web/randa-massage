@@ -35,11 +35,11 @@ export default function ReviewSection() {
           <span className="text-xs text-[#C1121F] font-sans font-semibold tracking-[0.2em] uppercase block">
             소중한 고객 만족 후기
           </span>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8F8F8] tracking-tight leading-tight flex items-center justify-center gap-3">
-            <span className="premium-icon-wrapper">
+          <h2 className="text-xl xs:text-2xl md:text-3xl font-bold text-[#F8F8F8] tracking-tight leading-tight flex items-center justify-center gap-2 break-keep flex-wrap">
+            <span className="premium-icon-wrapper shrink-0">
               <Heart className="premium-icon" />
             </span>
-            고객이 다시 찾는 간다출장마사지
+            <span className="text-center">고객이 다시 찾는 <span className="whitespace-nowrap">간다출장마사지</span></span>
           </h2>
           <p className="text-sm md:text-base text-[#A8A8A8]">
             실제 이용 고객들의 솔직하고 만족스러운 후기를 소개합니다.

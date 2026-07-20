@@ -58,8 +58,8 @@ export default function CourseSection() {
           <span className="text-xs text-[#C1121F] font-sans font-semibold tracking-wider block">
             엄선된 맞춤형 코스
           </span>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#FFFFFF] tracking-tight flex items-center justify-center gap-3">
-            <span className="premium-icon-wrapper">
+          <h2 className="text-xl xs:text-2xl md:text-3xl font-bold text-[#FFFFFF] tracking-tight flex items-center justify-center gap-2 break-keep whitespace-nowrap md:whitespace-normal">
+            <span className="premium-icon-wrapper shrink-0">
               <Award className="premium-icon" />
             </span>
             프리미엄 케어 프로그램

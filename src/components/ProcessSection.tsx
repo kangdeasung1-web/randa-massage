@@ -38,7 +38,7 @@ export default function ProcessSection({ regionName }: ProcessSectionProps) {
           <span className="text-xs text-[#C1121F] font-sans font-semibold tracking-[0.2em] uppercase block">
             간편하고 안전한 홈케어
           </span>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8F8F8] tracking-tight flex items-center justify-center gap-3">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#F8F8F8] tracking-tight flex items-center justify-center gap-3 break-keep whitespace-nowrap md:whitespace-normal">
             <span className="premium-icon-wrapper">
               <CheckCircle className="premium-icon" />
             </span>

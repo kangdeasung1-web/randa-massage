@@ -371,13 +371,13 @@ export default function App({ initialPath }: { initialPath?: string }) {
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-              className="w-full max-w-full mx-auto lg:mx-0 text-center lg:text-left text-3xl lg:text-5xl font-sans font-bold leading-[1.25] tracking-tight text-[#F8F8F8] break-keep"
+              className="w-full max-w-full mx-auto lg:mx-0 text-center lg:text-left text-2xl xs:text-3xl lg:text-5xl font-sans font-bold leading-[1.25] tracking-tight text-[#F8F8F8] break-keep"
               style={{ wordBreak: 'keep-all', overflowWrap: 'normal' }}
               id="main-h1-header"
             >
-              <span className="block">{activeRegionData.name}</span>
-              <span className="block mt-1 lg:mt-2">당신만의</span>
-              <span className="text-[#C1121F] block mt-1 lg:mt-2">24시 홈케어</span>
+              <span className="block whitespace-nowrap">{activeRegionData.name}</span>
+              <span className="block mt-1 lg:mt-2 whitespace-nowrap">당신만의</span>
+              <span className="text-[#C1121F] block mt-1 lg:mt-2 whitespace-nowrap">24시 홈케어</span>
             </motion.h1>
 
             <motion.p 
@@ -577,9 +577,9 @@ export default function App({ initialPath }: { initialPath?: string }) {
               >
                 {/* Mobile layout: 3 lines */}
                 <span className="block md:hidden">
-                  <span className="block">{activeRegionData.name}</span>
-                  <span className="block mt-1 text-[#C1121F] text-lg font-sans font-semibold">프리미엄</span>
-                  <span className="block mt-1 text-[#C1121F] text-lg font-sans font-semibold">프리미엄 출장마사지 전문</span>
+                  <span className="block whitespace-nowrap">{activeRegionData.name}</span>
+                  <span className="block mt-1 text-[#C1121F] text-lg font-sans font-semibold whitespace-nowrap">프리미엄</span>
+                  <span className="block mt-1 text-[#C1121F] text-lg font-sans font-semibold whitespace-nowrap">프리미엄 출장마사지 전문</span>
                 </span>
 
                 {/* Desktop layout: 2 lines */}
@@ -666,7 +666,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             
             {/* Left Column: Premium Brand Text & Fast Tags (col-span-5) */}
-            <div className="lg:col-span-5 flex flex-col justify-between p-8 md:p-10 bg-[#181818]/80 backdrop-blur-md rounded-[24px] border border-white/[0.06] shadow-[0_20px_50px_rgba(0,0,0,0.6)] relative overflow-hidden group">
+            <div className="lg:col-span-5 flex flex-col justify-between p-6 md:p-10 bg-[#181818]/80 backdrop-blur-md rounded-[24px] border border-white/[0.06] shadow-[0_20px_50px_rgba(0,0,0,0.6)] relative overflow-hidden group">
               {/* Decorative internal glass highlights */}
               <div className="absolute -top-24 -left-24 w-48 h-48 bg-[#E63946]/10 rounded-full blur-[80px] pointer-events-none group-hover:bg-[#E63946]/15 transition-colors duration-500" />
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent pointer-events-none" />
@@ -676,7 +676,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
                   <span className="text-xs text-[#E63946] font-sans font-semibold tracking-[0.25em] uppercase block mb-2">
                     Area Map
                   </span>
-                  <h2 className="text-2xl md:text-3.5xl font-bold text-[#F8F8F8] tracking-tight flex items-center gap-3">
+                  <h2 className="text-2xl md:text-3.5xl font-bold text-[#F8F8F8] tracking-tight flex items-center gap-3 break-keep whitespace-nowrap">
                     <span className="premium-map-pin-wrapper shrink-0 shadow-[0_0_20px_rgba(230,57,70,0.25)]">
                       <MapPin className="premium-icon" />
                     </span>
@@ -723,7 +723,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
                   onClick={() => setIsRegionsExpanded(!isRegionsExpanded)}
                   className="w-full h-[52px] rounded-[14px] bg-gradient-to-r from-[#C1121F] to-[#E63946] text-[#FFFFFF] font-sans font-bold text-sm tracking-wide hover:shadow-[0_12px_30px_rgba(193,18,31,0.25)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <span>{isRegionsExpanded ? "전체 지역 목록 닫기 ▲" : "시흥시 전체 세부 지역 보기 ▼"}</span>
+                  <span className="whitespace-nowrap">{isRegionsExpanded ? "전체 지역 목록 닫기 ▲" : "시흥시 전체 세부 지역 보기 ▼"}</span>
                 </button>
               </div>
             </div>
