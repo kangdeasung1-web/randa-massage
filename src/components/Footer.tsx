@@ -110,7 +110,7 @@ export default function Footer({ currentRegionId, onNavigate }: FooterProps) {
               </div>
             </div>
 
-            <p className="text-[11px] text-[#A8A8A8] leading-relaxed font-sans max-w-sm pt-2">
+            <p className="text-[11px] text-[#A8A8A8] leading-relaxed font-sans max-w-sm pt-2" style={{ wordBreak: "keep-all", overflowWrap: "break-word" }}>
               저희 간다 브랜드는 시흥출장마사지, 출장안마, 출장마사지 및 홈타이 서비스를 대표하는 공인 플랫폼으로서, 음주 만취자 및 선입금 사기 방지를 준수합니다.
             </p>
           </div>
@@ -203,13 +203,13 @@ export default function Footer({ currentRegionId, onNavigate }: FooterProps) {
         <div className="border-t border-[#2C2C2C] py-8 grid grid-cols-1 md:grid-cols-2 gap-6 text-[11px] text-[#A8A8A8] font-sans leading-relaxed">
           <div className="space-y-2">
             <span className="text-[#A8A8A8] font-semibold block">안심 보증 제도 안내</span>
-            <p className="break-keep font-light">
+            <p className="break-keep font-light" style={{ wordBreak: "keep-all", overflowWrap: "break-word" }}>
               최근 출장마사지 업계를 사칭하여 예약금, 유니폼 비용, 선지급 수수료를 무단 요구하는 보이스피싱 및 입금 사기가 극성을 부리고 있습니다. 저희 간다는 어떠한 사전 비용도 절대 요구하지 않는 100% 완전 대면 후불 안전보장 장치를 고수합니다.
             </p>
           </div>
           <div className="space-y-2">
             <span className="text-[#A8A8A8] font-semibold block">이용 제한 정책 고지</span>
-            <p className="break-keep font-light">
+            <p className="break-keep font-light" style={{ wordBreak: "keep-all", overflowWrap: "break-word" }}>
               공정거래위원회 표준 약관 및 매니저 보호 매뉴얼에 따라 폭력, 과도한 만취, 비상식적인 행동, 무단 예약 파기(노쇼) 전력이 있으신 분들은 실시간 배차 차단 시스템에 등록되며 영구적으로 이용이 불가능합니다.
             </p>
           </div>

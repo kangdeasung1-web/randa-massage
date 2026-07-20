@@ -18,8 +18,13 @@ export default function BrandLogo({ className = '', isSmall = false }: BrandLogo
           <span className="text-[5px] text-[#A8A8A8] font-sans tracking-[0.08em] mt-0.5 leading-none font-bold">PREMIUM</span>
         </div>
         <div className="flex flex-col justify-center border-l-2 border-[#5A151B] pl-3 h-8">
-          <span className="font-sans font-extrabold text-[15px] text-[#FFFFFF] tracking-tight leading-none whitespace-nowrap">간다출장마사지</span>
-          <span className="text-[8px] text-[#A8A8A8] font-sans tracking-[0.1em] uppercase leading-none mt-1 font-bold">Premium Hotel Spa</span>
+          <span 
+            className="font-sans font-extrabold text-[#FFFFFF] tracking-tight leading-none whitespace-nowrap"
+            style={{ fontSize: "clamp(13px, 3.8vw, 15px)", letterSpacing: "-0.03em" }}
+          >
+            간다출장마사지
+          </span>
+          <span className="text-[8px] text-[#A8A8A8] font-sans tracking-[0.15em] uppercase leading-none mt-1 font-bold">Premium Hotel Spa</span>
         </div>
       </div>
     );
@@ -52,7 +57,12 @@ export default function BrandLogo({ className = '', isSmall = false }: BrandLogo
 
       {/* Text Brand - "간다출장마사지" vertically aligned, highly readable */}
       <div className="flex flex-col justify-center border-l-2 border-[#5A151B] pl-4 h-11">
-        <span className="font-sans font-black text-[22px] text-[#FFFFFF] tracking-tight leading-none whitespace-nowrap">간다출장마사지</span>
+        <span 
+          className="font-sans font-black text-[#FFFFFF] tracking-tight leading-none whitespace-nowrap"
+          style={{ fontSize: "clamp(17px, 5.2vw, 22px)", letterSpacing: "-0.04em" }}
+        >
+          간다출장마사지
+        </span>
         <span className="text-[10px] text-[#A8A8A8] font-sans tracking-[0.15em] uppercase leading-none mt-1.5 font-bold">Premium Hotel Spa</span>
       </div>
     </div>

@@ -132,18 +132,6 @@ export default function CourseSection() {
           })}
         </div>
 
-        {/* Brand Promise Footer */}
-        <div className="mt-12 pt-8 border-t border-[#2C2C2C] flex flex-col items-center text-center space-y-4">
-          <p className="text-xs text-[#A8A8A8] font-sans leading-relaxed max-w-xl italic">
-            "간다출장마사지는 선입금을 요구하지 않습니다. 고객님의 안전한 웰니스 경험을 위해 100% 현장 후불제 시스템을 고수합니다."
-          </p>
-          <div className="flex gap-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#C1121F]" />
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2C2C2C]" />
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2C2C2C]" />
-          </div>
-        </div>
-
       </div>
     </section>
   );

@@ -35,13 +35,18 @@ export default function ReviewSection() {
           <span className="text-xs text-[#C1121F] font-sans font-semibold tracking-[0.2em] uppercase block">
             소중한 고객 만족 후기
           </span>
-          <h2 className="text-xl xs:text-2xl md:text-3xl font-bold text-[#F8F8F8] tracking-tight leading-tight flex items-center justify-center gap-2 break-keep flex-wrap">
+          <h2 className="text-xl xs:text-2xl md:text-3xl font-bold text-[#F8F8F8] tracking-tight leading-tight flex items-center justify-center gap-2 flex-wrap">
             <span className="premium-icon-wrapper shrink-0">
               <Heart className="premium-icon" />
             </span>
-            <span className="text-center">고객이 다시 찾는 <span className="whitespace-nowrap">간다출장마사지</span></span>
+            <span className="text-center" style={{ wordBreak: "keep-all", overflowWrap: "break-word" }}>
+              고객이 다시 찾는 <span className="whitespace-nowrap">간다출장마사지</span>
+            </span>
           </h2>
-          <p className="text-sm md:text-base text-[#A8A8A8]">
+          <p 
+            className="text-[12px] xs:text-sm md:text-base text-[#A8A8A8] whitespace-nowrap"
+            style={{ wordBreak: "keep-all", overflowWrap: "break-word" }}
+          >
             실제 이용 고객들의 솔직하고 만족스러운 후기를 소개합니다.
           </p>
           <div className="w-10 h-[1px] bg-[#C1121F] mx-auto mt-4" />
@@ -68,7 +73,10 @@ export default function ReviewSection() {
                   </div>
 
                   {/* Review Text */}
-                  <p className="text-[#A8A8A8] font-sans text-sm sm:text-base leading-relaxed break-keep font-light">
+                  <p 
+                    className="text-[#A8A8A8] font-sans leading-relaxed font-light" 
+                    style={{ fontSize: "clamp(12px, 3.4vw, 15px)", wordBreak: "keep-all", overflowWrap: "break-word" }}
+                  >
                     "{review.text}"
                   </p>
                 </div>
@@ -85,13 +93,6 @@ export default function ReviewSection() {
               </motion.div>
             );
           })}
-        </div>
-
-        {/* Footer Note */}
-        <div className="mt-10 text-center">
-          <p className="text-[11px] text-[#A8A8A8] font-sans">
-            ※ 고객 개인정보 보호 및 식별성 방지를 위해 일부 내용(이름)은 안전하게 편집되었습니다.
-          </p>
         </div>
 
       </div>

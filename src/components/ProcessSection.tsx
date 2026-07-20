@@ -69,11 +69,11 @@ export default function ProcessSection({ regionName }: ProcessSectionProps) {
                     </span>
                   </div>
 
-                  <span className="text-base sm:text-lg font-bold text-[#F8F8F8] tracking-tight mb-2 block">
+                  <span className="text-base sm:text-lg font-bold text-[#F8F8F8] tracking-tight mb-2 block break-keep whitespace-nowrap">
                     {step.title}
                   </span>
                   
-                  <p className="text-xs sm:text-sm text-[#A8A8A8] leading-relaxed font-sans break-keep max-w-[180px] mx-auto group-hover/process-card:text-[#F8F8F8] transition-colors duration-300">
+                  <p className="text-[#A8A8A8] leading-relaxed font-sans group-hover/process-card:text-[#F8F8F8] transition-colors duration-300 max-w-[200px] mx-auto" style={{ fontSize: "clamp(12px, 3.4vw, 14px)", wordBreak: "keep-all", overflowWrap: "break-word" }}>
                     {step.description}
                   </p>
 
@@ -93,9 +93,14 @@ export default function ProcessSection({ regionName }: ProcessSectionProps) {
         </div>
 
         {/* Footer Notice */}
-        <div className="mt-12 text-center">
-          <p className="text-xs md:text-sm text-[#C1121F] font-sans font-semibold tracking-wide">
-            24시간 실시간 예약 · 100% 현장 후불제 · {regionName} 전지역 신속 방문
+        <div className="mt-12 text-center px-4">
+          <p 
+            className="text-xs md:text-sm text-[#C1121F] font-sans font-semibold tracking-wide flex flex-col md:flex-row items-center justify-center gap-1.5 md:gap-1"
+            style={{ wordBreak: 'keep-all', overflowWrap: 'break-word', whiteSpace: 'normal' }}
+          >
+            <span className="whitespace-nowrap">24시간 실시간 예약 · 100% 현장 후불제</span>
+            <span className="hidden md:inline">·</span>
+            <span className="whitespace-nowrap">{regionName.replace("출장마사지", "")} 전 지역 신속 방문</span>
           </p>
         </div>
 
