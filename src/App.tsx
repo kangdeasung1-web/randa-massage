@@ -380,18 +380,22 @@ export default function App({ initialPath }: { initialPath?: string }) {
               <span className="text-[#C1121F] block mt-1 lg:mt-2 whitespace-nowrap">24시 홈케어</span>
             </motion.h1>
 
+            <motion.h2
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="text-[#F8F8F8] text-lg lg:text-xl font-bold mt-5 lg:mt-6 text-center lg:text-left tracking-tight"
+            >
+              간다출장마사지
+            </motion.h2>
+
             <motion.p 
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-center lg:text-left text-[#A8A8A8] text-sm md:text-base leading-[1.7] mt-6 w-full max-w-[340px] lg:max-w-[500px] mx-auto lg:mx-0 break-keep font-light"
+              className="text-center lg:text-left text-[#A8A8A8] text-sm md:text-base leading-[1.7] mt-3 w-full max-w-[340px] lg:max-w-[500px] mx-auto lg:mx-0 break-keep font-light"
             >
-              {activeRegionData.name}와 {activeRegionData.name.replace("출장마사지", "출장안마")}를<br />
-              24시간 운영합니다.
-              <br /><br />
-              예약금 없는 후불제로<br />
-              호텔·자택 어디서나<br />
-              편하게 이용할 수 있습니다.
+              간다출장마사지는 {activeRegionData.name} 전문 홈케어 브랜드입니다.<br className="hidden sm:block" /> 24시간 예약 및 후불제로 자택·호텔·오피스까지 편안하게 방문 서비스를 제공합니다.
             </motion.p>
 
             {/* CTA Group Buttons */}
